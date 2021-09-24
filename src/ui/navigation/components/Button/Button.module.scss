@@ -1,0 +1,65 @@
+.container {
+  text-align: center;
+  margin: 0 auto;
+  font-size: 1.2em;
+}
+
+.btnContainer {
+  width: 120px;
+  text-align: center;
+  height: 20px;
+}
+
+.buttons {
+  box-sizing: inherit;
+  transition-property: all;
+  transition-duration: .4s;
+  transition-timing-function: ease;
+}
+
+
+.btn {
+  color: #ececec;
+  cursor: pointer;
+  font-weight: 500;
+  line-height: 45px;
+  margin: 0 0 2em;
+  max-width: 160px;
+  position: relative;
+  text-decoration: none;
+  transition: color 0.4s;
+  width: 100%;
+
+  &:hover {
+    color: #efc241;
+  }
+}
+
+.btn:after {
+  backface-visibility: hidden;
+  border-bottom: 3px solid rgba(#f8742d, 0);
+  bottom: 0;
+  content: " ";
+  display: block;
+  margin: -4px auto;
+  position: relative;
+  transition: all 180ms ease-in-out;
+  width: 0;
+}
+
+.btn:hover:after {
+  backface-visibility: hidden;
+  border-color: #f8742d;
+  transition: width 250ms ease-in-out;
+  width: 90%;
+
+}
+
+.btn:hover:before {
+  bottom: auto;
+  top: 0;
+  width: 20%;
+}
+
+@media screen and (max-width: 680px) {
+}
