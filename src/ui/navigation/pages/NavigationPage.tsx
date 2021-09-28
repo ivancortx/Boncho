@@ -1,12 +1,22 @@
-import React, {useContext} from 'react'
+import React, { useContext, useState } from 'react'
 import {Link} from 'react-router-dom'
 
 import {Routes} from '../const/routes'
 import {Button} from '../components/Button/Button'
 
 import styles from './NavidationPage.module.scss'
+import { LoginModal } from '../components/LoginModal/LoginModal'
 
 export const NavigationPage: React.VFC = () => {
+
+  const [showModal, setShowModall] = useState<boolean>(false)
+  const openedModal = () => {
+    setShowModall(true)
+  }
+
+  const closeModal = () => {
+    setShowModall(false)
+  }
 
   return (
       <div className={styles.navContainer}>
@@ -29,14 +39,22 @@ export const NavigationPage: React.VFC = () => {
             </div>
           </div>
         </div>
+
+
+
         <div className={styles.loginBlock}>
-          <div className={styles.button}>
-            <Link to={Routes.Home}><Button text={'Войти'}/></Link>
+          <div onClick={openedModal} className={styles.button}>
+            <Button  text={'Войти'}/>
           </div>
           <div className={styles.button}>
             <Link to={Routes.Home}><Button text={'Регистрация'}/></Link>
           </div>
         </div>
+
+        {showModal && <div className={styles.portal}>
+          <LoginModal showModal={showModal}
+                      closeModal={closeModal}/>
+        </div>}
       </div>
   )
 }

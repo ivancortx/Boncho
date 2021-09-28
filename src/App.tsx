@@ -1,21 +1,22 @@
-import React from 'react';
-import styles from './App.module.scss';
-import {NavigationPage} from "./ui/navigation/pages";
-import {AppRoutes} from "./ui/navigation/components/AppRoutes/AppRoutes";
-import {BrowserRouter} from "react-router-dom";
-import {FooterPage} from "./ui/footer/pages/FooterPage";
+import React from 'react'
+import styles from './App.module.scss'
+import { NavigationPage } from "./ui/navigation/pages"
+import { BrowserRouter } from "react-router-dom"
+import { FooterPage } from "./ui/footer/pages/FooterPage"
+import { AppRoutes } from './ui/navigation/components/AppRoutes/AppRoutes'
 
-function App() {
+const App: React.FC = () => {
+
   return (
-      <BrowserRouter>
-        <div className={styles.container}>
-          <NavigationPage/>
-          <div className={styles.content}>
-            <AppRoutes/>
-          </div>
-          <FooterPage/>
+    <BrowserRouter>
+      <div className={styles.container}>
+        <NavigationPage/>
+        <div className={styles.content}>
+          <AppRoutes/>
         </div>
-      </BrowserRouter>
+        <FooterPage/>
+      </div>
+    </BrowserRouter>
   );
 }
 
