@@ -1,21 +1,35 @@
-import React, { useContext, useState } from 'react'
-import {Link} from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
-import {Routes} from '../const/routes'
-import {Button} from '../components/Button/Button'
+import { Routes } from '../const/routes'
+import { Button } from '../components/Button/Button'
 
 import styles from './NavidationPage.module.scss'
-import { LoginModal } from '../components/LoginModal/LoginModal'
+import { RegModal } from '../components/RegModal/RegModal'
+import { LoginModal } from "../components/LoginModal/LoginModal";
+import firebase from 'firebase/compat'
+import firebaseApp from '../../../firebase/firebase'
 
 export const NavigationPage: React.VFC = () => {
 
-  const [showModal, setShowModall] = useState<boolean>(false)
-  const openedModal = () => {
-    setShowModall(true)
+  const [showRegModal, setShowRegModall] = useState<boolean>(false)
+  const [showLoginModal, setShowLoginModall] = useState<boolean>(false)
+  const openRegModal = () => {
+    setShowRegModall(true)
+  }
+  const openLoginModal = () => {
+    setShowLoginModall(true)
   }
 
-  const closeModal = () => {
-    setShowModall(false)
+  const closeRegModal = () => {
+    setShowRegModall(false)
+  }
+  const closeLoginModal = () => {
+    setShowLoginModall(false)
+  }
+
+  const exit = () => {
+    firebaseApp.auth().signOut()
   }
 
   return (
@@ -43,17 +57,24 @@ export const NavigationPage: React.VFC = () => {
 
 
         <div className={styles.loginBlock}>
-          <div onClick={openedModal} className={styles.button}>
-            <Button  text={'Войти'}/>
+          <div onClick={openLoginModal} className={styles.button}>
+            <Button text={'Вход'}/>
           </div>
-          <div className={styles.button}>
-            <Link to={Routes.Home}><Button text={'Регистрация'}/></Link>
+          <div onClick={openRegModal} className={styles.button}>
+            <Button text={'Регистрация'}/>
+          </div>
+          <div onClick={exit} className={styles.button}>
+            <Button text={'Вийти'}/>
           </div>
         </div>
 
-        {showModal && <div className={styles.portal}>
-          <LoginModal showModal={showModal}
-                      closeModal={closeModal}/>
+        {showRegModal && <div className={styles.portal}>
+          <RegModal showModal={showRegModal}
+                    closeModal={closeRegModal}/>
+        </div>}
+        {showLoginModal && <div className={styles.portal}>
+          <LoginModal showModal={showLoginModal}
+                    closeModal={closeLoginModal}/>
         </div>}
       </div>
   )
