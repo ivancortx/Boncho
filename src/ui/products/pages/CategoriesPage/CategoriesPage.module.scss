@@ -1,0 +1,29 @@
+.container {
+  width: 100%;
+}
+
+.categoryes {
+  width: 90%;
+  margin: 2vw 0 2vw 5%;
+
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
+}
+
+.item {
+  height: 40px;
+
+  span {
+    cursor: pointer;
+    transition: color linear .3s;
+    color: #8e8e8e;
+
+    &:hover {
+      color: #f8742d;
+    }
+  }
+}
+
+@media screen and (max-width: 680px) {
+
+}

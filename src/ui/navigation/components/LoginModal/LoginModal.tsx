@@ -26,7 +26,6 @@ export const LoginModal: React.VFC<Props> = ({ showModal, closeModal }) => {
             <LoginForm/>
           </div>
         </Modal.Body>
-
       </Modal>
     </>
   );

@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, {useState} from 'react'
+import {Link} from 'react-router-dom'
 
-import { Routes } from '../const/routes'
-import { Button } from '../components/Button/Button'
+import {Routes} from '../const/routes'
+import {Button} from '../components/Button/Button'
 
 import styles from './NavidationPage.module.scss'
-import { RegModal } from '../components/RegModal/RegModal'
-import { LoginModal } from "../components/LoginModal/LoginModal";
-import firebase from 'firebase/compat'
+import {RegModal} from '../components/RegModal/RegModal'
+import {LoginModal} from "../components/LoginModal/LoginModal";
 import firebaseApp from '../../../firebase/firebase'
+
 
 export const NavigationPage: React.VFC = () => {
 
@@ -32,6 +32,12 @@ export const NavigationPage: React.VFC = () => {
     firebaseApp.auth().signOut()
   }
 
+  firebaseApp.auth().onAuthStateChanged(user => {
+    if (user) {
+      console.log('login')
+    } else console.log('out')
+  })
+
   return (
       <div className={styles.navContainer}>
         <div className={styles.logoAndNavButtons}>
@@ -46,7 +52,7 @@ export const NavigationPage: React.VFC = () => {
               <Link to={Routes.Home}><Button text={'Аукционы'}/></Link>
             </div>
             <div className={styles.button}>
-              <Link to={Routes.Home}><Button text={'Категории'}/></Link>
+              <Link to={Routes.Products}><Button text={'Категории'}/></Link>
             </div>
             <div className={styles.button}>
               <Link to={Routes.Home}><Button text={'Новости'}/></Link>

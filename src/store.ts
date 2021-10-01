@@ -2,10 +2,12 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 
 import {reducer as loginDataReducer} from 'ui/navigation'
+import {reducer as categoriesDatareducer} from  'ui/products'
 
 
 let reducers = combineReducers({
-  loginData: loginDataReducer
+  loginData: loginDataReducer,
+  categoriesData: categoriesDatareducer
 })
 
 type RootReducerType = typeof reducers

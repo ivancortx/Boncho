@@ -1,7 +1,12 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL
+  baseURL: process.env.REACT_APP_API_URL,
+  withCredentials: true,
+  headers: {
+    'Content-Type': 'application/json;charset=UTF-8',
+    "Access-Control-Allow-Origin": "http://localhost:3000"
+  }
 })
 
 // export const loadPhotos = (title: string) => {
@@ -36,14 +41,14 @@ const instance = axios.create({
 //     })
 // }
 
-
+export const loadCategories = async () => {
+  return instance.get(`api/fetch-categories`, {
+    withCredentials: false
+  })
+}
 
 export const sendUserData = async (token: string) => {
-  return instance.post('api/save-user',{}, {
-    headers: {
-      'Token': token
-    }
-  })
+  return instance.post('api/save-user')
 }
 
 // export const loadReviews = () => {
