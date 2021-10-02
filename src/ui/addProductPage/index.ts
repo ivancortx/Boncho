@@ -1,0 +1,1 @@
+export {AddProductPage} from './pages/AddProductPage'

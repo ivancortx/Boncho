@@ -1,9 +1,12 @@
 import React, { createContext, useState } from 'react'
 
-export const AuthContext = createContext<any>('')
-export const AuthUpdateContext = createContext<any>('')
-export const IsAuthContext = createContext<any>('')
-export const AuthUpdateTokenContext = createContext<any>('')
+
+
+
+export const AuthContext = createContext<string>('')
+export const AuthUpdateContext = createContext< ((arg: boolean) => void) | undefined >(undefined)
+export const IsAuthContext = createContext<boolean>(false)
+export const AuthUpdateTokenContext = createContext< ((arg: string) => void) | undefined >(undefined)
 
 // @ts-ignore
 export const AuthProvider = ({ children }) => {

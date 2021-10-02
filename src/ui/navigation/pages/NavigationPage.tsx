@@ -57,6 +57,9 @@ export const NavigationPage: React.VFC = () => {
             <div className={styles.button}>
               <Link to={Routes.Home}><Button text={'Новости'}/></Link>
             </div>
+            <div className={styles.button}>
+              <Link to={Routes.AddProductPage}><Button text={'Добавить_аукц'}/></Link>
+            </div>
           </div>
         </div>
 

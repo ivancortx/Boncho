@@ -10,6 +10,7 @@ import { validate } from './validate'
 import { AuthUpdateContext, AuthUpdateTokenContext } from "context/AuthContext";
 
 import styles from './LoginForm.module.scss'
+import { log } from 'util'
 
 export const LoginForm: React.VFC = () => {
   const dispatch = useDispatch()
@@ -27,8 +28,8 @@ export const LoginForm: React.VFC = () => {
               userCred?.getIdToken()
 
                 .then(idToken => {
-                  setIsAuth(true)
-                  setToken(idToken)
+                  setIsAuth!(true)
+                  setToken!(idToken)
                   Cookies.set('token', idToken, { expires: 5 })
                   return dispatch(updateUserRole(idToken))
                 })
@@ -36,6 +37,8 @@ export const LoginForm: React.VFC = () => {
           })
       })
   }
+
+  console.log(typeof setIsAuth)
 
   return (
     <Formik
