@@ -1,15 +1,11 @@
 import React, { createContext, useState } from 'react'
 
-
-
-
 export const AuthContext = createContext<string>('')
 export const AuthUpdateContext = createContext< ((arg: boolean) => void) | undefined >(undefined)
 export const IsAuthContext = createContext<boolean>(false)
 export const AuthUpdateTokenContext = createContext< ((arg: string) => void) | undefined >(undefined)
 
-// @ts-ignore
-export const AuthProvider = ({ children }) => {
+export const AuthProvider:React.FC = ({ children }) => {
   const [token, setToken] = useState('')
   const [isAuth, setIsAuth] = useState(false)
 
