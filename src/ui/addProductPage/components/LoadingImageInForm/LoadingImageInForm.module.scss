@@ -1,0 +1,19 @@
+.container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(10, 120px);
+  grid-gap: .3vw;
+}
+
+.item {
+  margin-top: 0.3vw;
+}
+
+.image {
+  opacity: .8;
+  object-fit: unset;
+  object-position: 50% 50%;
+  border-radius: 7px;
+  width: 120px;
+  height: 80px;
+}

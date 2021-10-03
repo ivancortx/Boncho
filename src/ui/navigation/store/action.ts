@@ -17,7 +17,6 @@ export const writeCurrentUserData = (data: UserDataType): WriteCurrentUserDataTy
 })
 
 export const updateUserRole = (token: string) => async (dispatch: Dispatch<ActionsTypes>) => {
-  debugger
   const response = await sendUserData(token)
   const newObj: UserDataType = {
     auth_time: response.data.auth_time,

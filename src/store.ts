@@ -3,11 +3,13 @@ import thunkMiddleware from 'redux-thunk'
 
 import {reducer as loginDataReducer} from 'ui/navigation'
 import {reducer as categoriesDatareducer} from  'ui/products'
+import {reducer as addProductPageDataReducer} from './ui/addProductPage'
 
 
 let reducers = combineReducers({
   loginData: loginDataReducer,
-  categoriesData: categoriesDatareducer
+  categoriesData: categoriesDatareducer,
+  addProductPageData: addProductPageDataReducer
 })
 
 type RootReducerType = typeof reducers
