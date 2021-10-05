@@ -1,0 +1,46 @@
+.container {
+  position: relative;
+  margin-top: 1vw;
+  width: 90%;
+  margin-left: 5%;
+}
+
+.itemsContainer {
+  display: grid;
+  grid-template-columns: repeat(5, 19.2%);
+  grid-gap: 1%;
+  height: 25vw;
+}
+
+.item {
+  border-radius: 0.8vw;
+  padding-top: 1vw;
+  text-align: center;
+  font-size: 28px;
+  background-color: #ea9d6e;
+}
+
+.itemContent {
+  height: 5vw;
+}
+
+.button {
+  font-size: 0.8em;
+  margin-top: 15vw;
+  height: 4vw;
+  border-radius: 0 0 0.8vw 0.8vw;
+  width: 100%;
+  background-color: #3b1c05;
+  color: #d9d9d9;
+  transition: background-color linear .4s;
+  cursor: pointer;
+  z-index: 1000;
+  padding-top: calc(4vw/2 - 0.8em);
+
+
+  &:hover {
+    background-color: #66330e;
+    color: #ffffff;
+    z-index: 1000;
+  }
+}

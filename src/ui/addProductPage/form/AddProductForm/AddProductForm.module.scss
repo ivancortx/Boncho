@@ -1,14 +1,23 @@
 .container {
-   width: 100%;
+  margin: 2vw 10vw;
+  padding-top: 1vw;
+  width: 80%;
   text-align: center;
+  border: 1px solid #d4d4d4;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(50, 50, 50, 0.3)
 }
 
 .form {
-  width: 90%;
+  width: 100%;
   min-width: 400px;
   text-align: center;
   margin-left: 5%;
   margin-bottom: 10px;
+}
+
+.generalCharacteristic {
+  width: 40%;
 }
 
 .fieldName {
@@ -16,8 +25,57 @@
   text-align: left;
 }
 
+.auctionHeader {
+  margin-right: 10%;
+  color: #383838;
+}
+
+.auctionParametersLine {
+  margin-right: 10%;
+  color: #383838;
+  &:before {
+    display: block;
+    content: '';
+    width: 100%;
+    margin-top: 2vw;
+    height: 1px;
+    background-color: #c1c1c1;
+
+  }
+}
+
 .fieldInput {
   margin-bottom: 10px;
+}
+
+.priceParameters {
+  margin-top: 1vw;
+  display: grid;
+  grid-template-columns: 29% 29% 29%;
+  grid-gap: 1.333%;
+}
+
+.stepTimeParameters {
+  margin-top: 1vw;
+  display: grid;
+  grid-template-columns: 29% 29%;
+  grid-gap: 1.333%;
+}
+
+.startDateDatepicker {
+  margin-top: 1vw;
+  width: 100%;
+  text-align: left;
+}
+
+.datepicker {
+  width: 325px;
+  text-align: center;
+}
+
+.btn {
+  width: 90%;
+  margin-top: 2vw;
 }
 
 @media screen and (max-width: 680px) {

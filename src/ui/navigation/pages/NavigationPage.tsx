@@ -8,6 +8,7 @@ import styles from './NavidationPage.module.scss'
 import {RegModal} from '../components/RegModal/RegModal'
 import {LoginModal} from "../components/LoginModal/LoginModal";
 import firebaseApp from '../../../firebase/firebase'
+import Cookies from 'js-cookie'
 
 
 export const NavigationPage: React.VFC = () => {
@@ -30,6 +31,7 @@ export const NavigationPage: React.VFC = () => {
 
   const exit = () => {
     firebaseApp.auth().signOut()
+    Cookies.remove('token')
   }
 
   firebaseApp.auth().onAuthStateChanged(user => {
@@ -49,7 +51,7 @@ export const NavigationPage: React.VFC = () => {
               <Link to={Routes.Home}><Button text={'Главная'}/></Link>
             </div>
             <div className={styles.button}>
-              <Link to={Routes.Home}><Button text={'Аукционы'}/></Link>
+              <Link to={Routes.AuctionsPage}><Button text={'Аукционы'}/></Link>
             </div>
             <div className={styles.button}>
               <Link to={Routes.Products}><Button text={'Категории'}/></Link>
@@ -62,8 +64,6 @@ export const NavigationPage: React.VFC = () => {
             </div>
           </div>
         </div>
-
-
 
         <div className={styles.loginBlock}>
           <div onClick={openLoginModal} className={styles.button}>
