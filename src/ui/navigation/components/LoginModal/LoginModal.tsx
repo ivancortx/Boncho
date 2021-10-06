@@ -23,7 +23,7 @@ export const LoginModal: React.VFC<Props> = ({ showModal, closeModal }) => {
         </Modal.Header>
         <Modal.Body>
           <div className={styles.bodyContainer}>
-            <LoginForm/>
+            <LoginForm closeModal={closeModal}/>
           </div>
         </Modal.Body>
       </Modal>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Field, Form, Formik } from 'formik'
 import firebaseApp, { auth } from 'firebase/firebase'
 import { useDispatch } from "react-redux";
@@ -7,15 +7,24 @@ import Cookies from 'js-cookie'
 import firebase from 'firebase/compat'
 
 import { validate } from './validate'
-import { AuthUpdateContext, AuthUpdateTokenContext } from "context/AuthContext";
+import { AuthUpdateContext, AuthUpdateTokenContext, IsAuthContext } from "context/AuthContext";
 
 import styles from './LoginForm.module.scss'
 import { log } from 'util'
 
-export const LoginForm: React.VFC = () => {
+type Props = {
+  closeModal: () => void
+}
+
+export const LoginForm: React.VFC <Props> = ({closeModal}) => {
   const dispatch = useDispatch()
   const setIsAuth = useContext(AuthUpdateContext)
   const setToken = useContext(AuthUpdateTokenContext)
+  const isAuth = useContext(IsAuthContext)
+
+  useEffect(() => {
+    if (isAuth) {closeModal()}
+  }, [isAuth])
 
   const addUser = async (email: string, password: string) => {
     firebaseApp.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
@@ -37,8 +46,6 @@ export const LoginForm: React.VFC = () => {
           })
       })
   }
-
-  console.log(typeof setIsAuth)
 
   return (
     <Formik

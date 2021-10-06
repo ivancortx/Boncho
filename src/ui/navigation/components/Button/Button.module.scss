@@ -1,11 +1,11 @@
 .container {
   text-align: center;
   margin: 0 auto;
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 
 .btnContainer {
-  width: 120px;
+  width: 100%;
   text-align: center;
   height: 20px;
 }
@@ -43,14 +43,14 @@
   display: block;
   margin: -4px auto;
   position: relative;
-  transition: all 180ms ease-in-out;
+  transition: all 180ms ease-in;
   width: 0;
 }
 
 .btn:hover:after {
   backface-visibility: hidden;
   border-color: #f8742d;
-  transition: width 250ms ease-in-out;
+  transition: width 250ms initial;
   width: 90%;
 
 }

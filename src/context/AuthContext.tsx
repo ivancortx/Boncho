@@ -13,8 +13,13 @@ export const AuthProvider:React.FC = ({ children }) => {
   const [isAuth, setIsAuth] = useState(false)
   const dispatch = useDispatch()
   const cookieToken = Cookies.get('token')
+  // if (cookieToken) {}
   useEffect(() => {
-    if (cookieToken) dispatch(updateUserRole(cookieToken))
+    if (cookieToken) {
+      dispatch(updateUserRole(cookieToken))
+      setIsAuth(true)
+    }
+
   }, [cookieToken])
 
   return (

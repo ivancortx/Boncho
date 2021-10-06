@@ -20,17 +20,26 @@ export const AuctionsPage: React.VFC = () => {
           {auctionsData.map(auct => (
 
             <div className={styles.item}>
-              <div className={styles.itemContent}>
-                <span>{auct.category}</span>
+              <div className={styles.photo}>
+                <img src={auct.photoUrlsData[0]}/>
               </div>
               <div className={styles.itemContent}>
-                <span>{auct.auctionId}</span>
-              </div>
-              <div className={styles.itemContent}>
-                <span>{auct.description}</span>
+                <div className={styles.productName}>{auct.productName}</div>
+                <div className={styles.price}>
+                  <div className={styles.priceName}>Шаг времени:</div>
+                  <div className={styles.priceData}><span>{auct.stepTime}</span></div>
+                </div>
+                <div className={styles.price}>
+                  <div className={styles.priceName}>Текущая цена:</div>
+                  <div className={styles.priceData}>${auct.startPrice}</div>
+                </div>
+                <div className={styles.price}>
+                  <div className={styles.priceName}>Стоимость просмотра цены:</div>
+                  <div className={styles.priceData}><span>${auct.seePrice}</span></div>
+                </div>
               </div>
               <div className={styles.button}>
-                <span>Посмотреть</span>
+                <span>Посмотреть цену</span>
               </div>
             </div>
 

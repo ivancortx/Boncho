@@ -19,26 +19,59 @@
 
   .navButtonsContainer {
     display: grid;
-    grid-template-columns: 110px 140px 140px 140px 140px;
+    grid-template-columns: 90px 115px 117px 100px 205px;
+    grid-gap: 10px;
     margin: 20px 3.5vw;
   }
 }
 
 .button {
+
   a {
     text-decoration: none;
+
   }
 }
 
+.loginBlockButton {
+  margin-left: 10px;
+  padding: 0 5px;
+}
+
+
+
 .loginBlock{
   height: 100%;
-  width: 250px;
-  //border: 1px solid gray
+  width: 400px;
   margin-left: auto;
   margin-right: 4vw;
-  margin-top: 40px;
+  margin-top: 15px;
+  display: flex;
+  justify-content: right;
+}
+
+.exitBlock {
+  height: 100%;
+  width: 400px;
+  margin-left: auto;
+  margin-right: 4vw;
+  margin-top: 15px;
   display: grid;
-  grid-template-columns: 110px 110px;
+
+  .userNameBlock {
+    padding-top: 10px;
+    text-align: right;
+    color: #d2d2d2;
+
+    .userName {
+      color: darkgoldenrod;
+    }
+  }
+
+  .exitButton {
+    display: grid;
+    grid-template-columns: 300px 100px;
+  }
 }
 
   @media screen and (max-width: 680px) {

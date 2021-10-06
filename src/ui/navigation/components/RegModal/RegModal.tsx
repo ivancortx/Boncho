@@ -23,7 +23,7 @@ export const RegModal: React.VFC<Props> = ({ showModal, closeModal }) => {
         </Modal.Header>
         <Modal.Body>
           <div className={styles.bodyContainer}>
-            <RegForm/>
+            <RegForm closeModal={closeModal}/>
           </div>
         </Modal.Body>
       </Modal>
