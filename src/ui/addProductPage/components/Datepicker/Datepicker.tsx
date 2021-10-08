@@ -7,8 +7,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import styles from './Datepicker.module.scss'
 
 type Props = {
-  startDate: Date,
-  finishDate: Date,
+  startDate: Date | null,
+  finishDate: Date | null,
   setStartDate: (arg: Date) => void,
   setFinishDate: (arg: Date) => void
 }
@@ -23,13 +23,16 @@ export const DatepickerBlock: React.VFC<Props> = ({ startDate, finishDate, setFi
         </div>
         <DatePicker className={styles.datepicker}
                     selected={startDate}
-                    onChange={(date: any) => setStartDate(date)}
+                    onChange={(date: Date) => setStartDate(date)}
                     locale="es"
                     showTimeSelect
                     timeFormat="p"
                     timeIntervals={15}
                     dateFormat="Pp"
+                    isClearable={true}
+                    placeholderText="Выберите дату и время"
         />
+        {startDate === null &&  <div className={styles.error}>Время начала аукциона не выбрано</div>}
       </div>
       <div className={styles.dateDatepicker}>
         <div>
@@ -43,7 +46,10 @@ export const DatepickerBlock: React.VFC<Props> = ({ startDate, finishDate, setFi
                     timeFormat="p"
                     timeIntervals={15}
                     dateFormat="Pp"
+                    isClearable={true}
+                    placeholderText="Выберите дату и время"
         />
+        {finishDate === null &&  <div className={styles.error}>Время конца аукциона не выбрано</div>}
       </div>
     </div>
 

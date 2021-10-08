@@ -14,8 +14,10 @@ import shortid from 'shortid'
 import { addAuction, writePhotoUrl } from '../../store/action'
 import { LoadingImageInForm } from '../../components/LoadingImageInForm/LoadingImageInForm'
 import { DatepickerBlock } from '../../components/Datepicker/Datepicker'
-import { InputGroup } from 'react-bootstrap'
-import { SetCategoryField } from '../../components/SetCategoryField/SetCategoryField'
+import { TextField } from './TextField/TextField'
+import { DescriptionField } from './DescriptionField/DescriptionField'
+import { SelectCategoryField } from './SelectCategoryField/SelectCategoryField'
+import { SettingAuctionField } from './SettingAuctionField/SettingAuctionField'
 
 export const AddProductForm: React.VFC = () => {
   const dispatch = useDispatch()
@@ -23,8 +25,8 @@ export const AddProductForm: React.VFC = () => {
   const [auctionId, setAuctionId] = useState<string>('')
   const [filePath, setFilePath] = useState<string>('')
   const [isUploaded, setIsUploaded] = useState<boolean>(false)
-  const [startDate, setStartDate] = useState(new Date());
-  const [finishDate, setFinishDate] = useState(new Date());
+  const [startDate, setStartDate] = useState<Date|null>(null);
+  const [finishDate, setFinishDate] = useState<Date|null>(null);
 
   useEffect(() => {
     dispatch(fetchCategories())
@@ -60,24 +62,19 @@ export const AddProductForm: React.VFC = () => {
       }}
       validationSchema={validate}
       onSubmit={(values) => {
-        dispatch(addAuction(values, startDate, finishDate, photoUrlsData, auctionId, userData))
+        if (startDate !== null && finishDate !== null) {
+          dispatch(addAuction(values, startDate, finishDate, photoUrlsData, auctionId, userData))
+          console.log(values)
+        }
 
       }}>
       <div className={styles.container}>
         <Form className={styles.form}>
           <div className={styles.auctionHeader}><h3>Создание аукциона</h3></div>
           <div className={styles.generalCharacteristic}>
-            <div className={styles.fieldName}>Введите название продукта</div>
-            <Field component="input" className="form-control" id='productName' name="productName" placeholder=""/>
-            <div className={styles.fieldName}>Выберите категорию</div>
-            <div className={styles.fieldInput}>
-              <Field component="select" className="form-control" id="category" name="category"
-                     placeholder="Выберите категорию товара">
-                {categoriesData !== [] &&
-                  <SetCategoryField categoriesData={categoriesData} />
-                }
-              </Field>
-            </div>
+
+            <TextField label={'Название продукта'} name={'productName'} type={'input'}/>
+            <SelectCategoryField categoriesData={categoriesData} label={'Выберите категорию продукта'} name={'category'} type={'input'}/>
 
             <div className={styles.fieldName}>Загрузить фото</div>
             <div className={styles.fieldInput}>
@@ -85,49 +82,19 @@ export const AddProductForm: React.VFC = () => {
                      name="photo"/>
               <LoadingImageInForm photoUrlsData={photoUrlsData}/>
             </div>
-            <div>
-              <div className={styles.fieldName}>Описание продукта</div>
-              <Field component="textarea" className="form-control" id='description' name="description" placeholder=""/>
-            </div>
+            <DescriptionField label={'Описание продукта'} name={'description'} type={'input'}/>
           </div>
 
           <div className={styles.auctionParametersLine}><h3>Параметры аукциона</h3></div>
           <div className={styles.priceParameters}>
-            <div>
-              <div className={styles.fieldName}>Стартовая цена</div>
-              <InputGroup>
-                <Field component="input" className="form-control" id='startPrice' name="startPrice" placeholder=""/>
-                <InputGroup.Text>$</InputGroup.Text>
-              </InputGroup>
-            </div>
-            <div>
-              <div className={styles.fieldName}>Шаг цены</div>
-              <InputGroup>
-                <Field component="input" className="form-control" id='priceStep' name="priceStep" placeholder=""/>
-                <InputGroup.Text>$</InputGroup.Text>
-              </InputGroup>
-            </div>
-            <div>
-              <div className={styles.fieldName}>Стоимость просмотра цены</div>
-              <InputGroup>
-                <Field component="input" className="form-control" id='seePrice' name="seePrice" placeholder=""/>
-                <InputGroup.Text>$</InputGroup.Text>
-              </InputGroup>
-            </div>
+            <SettingAuctionField label={'Стартовая цена'} name={'startPrice'} type={'input'} triggerText={'$'}/>
+            <SettingAuctionField label={'Шаг цены'} name={'priceStep'} type={'input'} triggerText={'$'}/>
+            <SettingAuctionField label={'Стоимость просмотра цены'} name={'seePrice'} type={'input'} triggerText={'$'}/>
           </div>
+
           <div className={styles.stepTimeParameters}>
-            <div>
-              <div className={styles.fieldName}>Время шага</div>
-              <InputGroup>
-                <Field component="input" className="form-control" id='stepTime' name="stepTime" placeholder=""/>
-                <InputGroup.Text>сек</InputGroup.Text>
-              </InputGroup>
-            </div>
-            <div>
-              <div className={styles.fieldName}>Проценты временного шага</div>
-              <Field component="input" className="form-control" id='percentTimeStep' name="percentTimeStep"
-                     placeholder=""/>
-            </div>
+            <SettingAuctionField label={'Время шага'} name={'stepTime'} type={'input'} triggerText={'сек'}/>
+            <TextField label={'Проценты временного шага'} name={'percentTimeStep'} type={'input'}/>
           </div>
 
           <DatepickerBlock startDate={startDate} finishDate={finishDate}

@@ -30,7 +30,7 @@ export const writePhotoUrl = (url: string) => async (dispatch: Dispatch<ActionsT
   dispatch(writePhotoUrlAction(url))
 }
 
-export const addAuction = (formValues: formValuesType, startDate: Date, finishDate: Date, photoUrlsData: string[], auctionId: string, userData: UserDataType[]) => async (dispatch: Dispatch<ActionsTypes>) => {
+export const addAuction = (formValues: formValuesType, startDate: Date|null, finishDate: Date|null, photoUrlsData: string[], auctionId: string, userData: UserDataType[]) => async (dispatch: Dispatch<ActionsTypes>) => {
   const obj = {
     userEmail: userData[0].email,
     userUid: userData[0].uid,
