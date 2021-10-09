@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import { Field, Form, Formik } from 'formik'
+import { Form, Formik } from 'formik'
 import { auth } from 'firebase/firebase'
 
-
 import { validate } from './validate'
-
+import { TextlField } from '../LoginForm/TextlField/TextlField'
 
 import styles from './RegForm.module.scss'
 
@@ -14,29 +13,29 @@ type Props = {
 
 export const RegForm: React.VFC<Props> = ({ closeModal }) => {
   const [isRegister, setIsRegister] = useState<boolean>(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
   const addUser = async (email: string, password: string) => {
     auth.createUserWithEmailAndPassword(email, password)
       .then((userCredential: any) => {
-        // Signed in
-        const user = userCredential.user;
+        setErrorMessage('')
         setIsRegister(true)
         setTimeout(closeModal, 2500);
-        // ...
       })
-      .catch((error: any) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
-      });
 
+      .catch((error: any) => {
+        const errorMessage = error.message;
+        if (errorMessage === 'Firebase: The email address is already in use by another account. (auth/email-already-in-use).')
+        {setErrorMessage('Указанный Вами email уже используется')}
+      });
   }
 
   return (
     <Formik
       initialValues={{
         email: '',
-        password: ''
+        password: '',
+        confirmPassword: ''
       }}
       validationSchema={validate}
       onSubmit={(values) => {
@@ -44,20 +43,12 @@ export const RegForm: React.VFC<Props> = ({ closeModal }) => {
       }}>
       <div className={styles.container}>
         <Form className={styles.form}>
-          <div className={styles.fieldName}>Введите email</div>
-          <div className={styles.fieldInput}>
-            <Field component="input" className="form-control" id="email" name="email" placeholder="Введите логин"/>
-          </div>
-          <div className={styles.fieldName}>Введите пароль</div>
-          <div className={styles.fieldInput}>
-            <Field component="input" className="form-control" id="password" name="password"
-                   placeholder="Введите пароль"/>
-          </div>
-          <button type='submit' className="btn btn-success">Зарегистрировать</button>
-
-          {isRegister &&
-          <div className={styles.userIsRegistred}>Пользователь успешно зарегистрирован</div>
-          }
+          <TextlField label={'Введите email'} name={'email'} type={'input'}/>
+          <TextlField label={'Введите пароль'} name={'password'} type={'password'}/>
+          <TextlField label={'Повторите пароль'} name={'confirmPassword'} type={'password'}/>
+          {errorMessage !== '' && <div className={styles.error}>{errorMessage}</div>}
+          <button type='submit' className="btn btn-success mt-3">Зарегистрировать</button>
+          {isRegister && <div className={styles.userIsRegistred}>Пользователь успешно зарегистрирован</div>}
         </Form>
       </div>
     </Formik>

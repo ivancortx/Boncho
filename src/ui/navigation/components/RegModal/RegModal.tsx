@@ -1,5 +1,6 @@
 import React from 'react'
 import { Modal } from 'react-bootstrap'
+
 import {RegForm} from "../../forms/RegForm/RegForm";
 
 import styles from './RegModal.module.scss'
@@ -28,5 +29,5 @@ export const RegModal: React.VFC<Props> = ({ showModal, closeModal }) => {
         </Modal.Body>
       </Modal>
     </>
-  );
+  )
 }

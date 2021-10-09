@@ -77,7 +77,6 @@ export const ItemsCarousel: React.VFC = () => {
               }
             </div>
           </Carousel.Item>
-
         </Carousel>
         <div className={styles.prevButton} onClick={prevSlide}>
           <img src={prev} alt="prev"/>

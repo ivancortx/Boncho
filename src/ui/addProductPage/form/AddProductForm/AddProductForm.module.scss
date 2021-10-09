@@ -40,12 +40,22 @@
     margin-top: 2vw;
     height: 1px;
     background-color: #c1c1c1;
-
   }
 }
 
 .fieldInput {
   margin-bottom: 10px;
+}
+
+.loadImageContainer {
+   display: flex;
+  justify-content: left;
+}
+
+.spinner {
+  margin-top: 2px;
+  position: absolute;
+  margin-left: 32.1%;
 }
 
 .priceParameters {
@@ -79,12 +89,5 @@
 }
 
 @media screen and (max-width: 680px) {
-  .container {
-    margin: 20px auto 0;
-  }
 
-  .form {
-    width: 100%;
-    margin-left: 0;
-  }
 }

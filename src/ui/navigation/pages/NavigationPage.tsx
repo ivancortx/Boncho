@@ -1,17 +1,16 @@
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 import { Routes } from '../const/routes'
 import { Button } from '../components/Button/Button'
-
-import styles from './NavidationPage.module.scss'
 import { RegModal } from '../components/RegModal/RegModal'
-import { LoginModal } from "../components/LoginModal/LoginModal";
+import { LoginModal } from '../components/LoginModal/LoginModal'
 import firebaseApp from 'firebase/firebase'
-import Cookies from 'js-cookie'
-import { AuthUpdateContext, AuthUpdateTokenContext, IsAuthContext } from 'context/AuthContext'
+import { AuthUpdateContext, IsAuthContext } from 'context/AuthContext'
 import { useNavigationPage } from '../hooks/useNavigationPage/useNavigationPage'
 
+import styles from './NavidationPage.module.scss'
 
 export const NavigationPage: React.VFC = () => {
   const isAuth = useContext(IsAuthContext)
@@ -38,12 +37,10 @@ export const NavigationPage: React.VFC = () => {
     firebaseApp.auth().signOut()
     Cookies.remove('token')
     if (setIsAuth) setIsAuth(false)
-
   }
 
   firebaseApp.auth().onAuthStateChanged(user => {
     if (user) {
-      console.log('login')
     } else console.log('out')
   })
 
@@ -72,7 +69,6 @@ export const NavigationPage: React.VFC = () => {
         </div>
       </div>
 
-
       {!isAuth &&
       <div className={styles.loginBlock}>
         <>
@@ -86,7 +82,6 @@ export const NavigationPage: React.VFC = () => {
       </div>
       }
 
-
       {isAuth &&
       <div className={styles.exitBlock}>
         <div>
@@ -97,7 +92,6 @@ export const NavigationPage: React.VFC = () => {
         </div>
       </div>
       }
-
 
       {showRegModal && <div className={styles.portal}>
         <RegModal showModal={showRegModal}

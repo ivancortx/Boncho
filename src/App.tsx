@@ -1,10 +1,12 @@
 import React from 'react'
-import styles from './App.module.scss'
-import {NavigationPage} from "./ui/navigation/pages"
-import {BrowserRouter} from "react-router-dom"
-import {FooterPage} from "./ui/footer/pages/FooterPage"
+import {BrowserRouter} from 'react-router-dom'
+
+import {NavigationPage} from './ui/navigation/pages'
+import {FooterPage} from './ui/footer/pages/FooterPage'
 import {AppRoutes} from './ui/navigation/components/AppRoutes/AppRoutes'
-import {AuthProvider} from "./context/AuthContext";
+import {AuthProvider} from './context/AuthContext'
+
+import styles from './App.module.scss'
 
 const App: React.FC = () => {
 
@@ -20,7 +22,6 @@ const App: React.FC = () => {
           </div>
         </AuthProvider>
       </BrowserRouter>
-  );
+  )
 }
-
 export default App;

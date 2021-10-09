@@ -1,6 +1,5 @@
 .container {
   position: relative;
-  //margin-top: 1vw;
   width: 90%;
   margin-left: 5%;
 }
@@ -37,7 +36,6 @@
   cursor: pointer;
   z-index: 1000;
   padding-top: calc(4vw/2 - 0.8em);
-
 
   &:hover {
     background-color: #66330e;

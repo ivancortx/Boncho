@@ -1,9 +1,10 @@
 import React, {useEffect} from 'react'
 
+import {useCategoriesPage} from '../../hooks/useCategoriesPage'
+import {fetchCategories} from '../../'
+import {useDispatch} from 'react-redux'
+
 import styles from './CategoriesPage.module.scss'
-import {useCategoriesPage} from "../../hooks/useCategoriesPage";
-import {fetchCategories} from "../../store/action";
-import {useDispatch} from "react-redux";
 
 export const CategoriesPage: React.VFC = () => {
   const dispatch = useDispatch()

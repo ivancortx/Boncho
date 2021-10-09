@@ -1,9 +1,8 @@
 import React from 'react'
-import DatePicker, { registerLocale } from "react-datepicker";
-import es from 'date-fns/locale/es';
+import DatePicker, { registerLocale } from 'react-datepicker'
+import es from 'date-fns/locale/es'
 
-
-import "react-datepicker/dist/react-datepicker.css";
+import 'react-datepicker/dist/react-datepicker.css'
 import styles from './Datepicker.module.scss'
 
 type Props = {
@@ -15,6 +14,7 @@ type Props = {
 
 export const DatepickerBlock: React.VFC<Props> = ({ startDate, finishDate, setFinishDate, setStartDate }) => {
   registerLocale('es', es)
+
   return (
     <div className={styles.container}>
       <div className={styles.dateDatepicker}>
@@ -52,6 +52,5 @@ export const DatepickerBlock: React.VFC<Props> = ({ startDate, finishDate, setFi
         {finishDate === null &&  <div className={styles.error}>Время конца аукциона не выбрано</div>}
       </div>
     </div>
-
   )
 }

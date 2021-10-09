@@ -21,9 +21,3 @@ export const fetchCategories = () => async (dispatch: Dispatch<ActionsTypes>) =>
   const data: Category[] = await response.data.categories
   dispatch(setCategories(data))
 }
-
-// export const updatePhotos = (title: string, data: object, token: string) => async (dispatch: any) => {
-//   await sendPhoto(title, data, token)
-//     .then (response => dispatch(fetchPhotos(title))
-//   )
-

@@ -22,7 +22,5 @@ export const DescriptionField: React.VFC<Props> = ({ ...props }) => {
       />
       <ErrorMessage component={'div'} name={field.name} className={styles.error}/>
     </div>
-
-
   )
 }

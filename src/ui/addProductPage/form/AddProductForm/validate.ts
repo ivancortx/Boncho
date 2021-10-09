@@ -1,7 +1,6 @@
 import * as Yup from 'yup'
 
-const numberOnly: RegExp = /^[0-9]*$/;
-
+const numberOnlyReg: RegExp = /^[0-9]*$/
 
 export const validate = Yup.object({
   productName: Yup.string()
@@ -16,21 +15,23 @@ export const validate = Yup.object({
     .max(300, 'Описание может содержать максимум 300 символов')
     .required('Поле не должно быть пустым'),
   startPrice: Yup.string()
-    .max(15, 'Описание может содержать максимум 20 символов')
-    .required('Required'),
+    .matches(numberOnlyReg, 'Цена может быть только числовым значением')
+    .max(11, 'Цена может быть не более 999,999,999')
+    .required('Поле не должно быть пустым'),
   priceStep: Yup.string()
-    .matches(numberOnly, 'Шаг цены может быть только числовым значением')
+    .matches(numberOnlyReg, 'Шаг цены может быть только числовым значением')
     .max(10, 'Шаг цены ограничен 10 символами')
     .required('Поле не должно быть пустым'),
   seePrice: Yup.string()
+    .matches(numberOnlyReg, 'Цена может быть только числовым значением')
     .max(15, 'Описание может содержать максимум 20 символов')
-    .required('Required'),
+    .required('Поле не должно быть пустым'),
   stepTime: Yup.string()
-    .max(15, 'Описание может содержать максимум 20 символов')
-    .required('Required'),
+    .matches(numberOnlyReg, 'Время в секундах можно указывать только в виде числовых значений')
+    .max(10, 'Максимальное количество символов: 10')
+    .required('Поле не должно быть пустым'),
   percentTimeStep: Yup.string()
+    .matches(numberOnlyReg, 'Допускаються только числовые значения')
     .max(2, 'Значение процента должно быть от 0 до 99')
     .required('Поле не должно быть пустым'),
-
-
 })

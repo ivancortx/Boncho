@@ -9,8 +9,9 @@ type Props = {
   type: string
 }
 
-export const TextField: React.VFC<Props> = ({ ...props }) => {
+export const TextlField: React.VFC<Props> = ({ ...props }) => {
   const [field, meta] = useField(props)
+
   return (
     <div className={styles.label}>
       <label htmlFor={field.name}>{props.label}</label>

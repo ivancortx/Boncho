@@ -1,29 +1,32 @@
-import React, { useContext, useEffect } from 'react'
-import { Field, Form, Formik } from 'formik'
-import firebaseApp, { auth } from 'firebase/firebase'
-import { useDispatch } from "react-redux";
-import { updateUserRole } from "../../store/action";
+import React, { useContext, useEffect, useState } from 'react'
+import { Form, Formik } from 'formik'
+import { useDispatch } from 'react-redux'
 import Cookies from 'js-cookie'
 import firebase from 'firebase/compat'
 
+import firebaseApp, { auth } from 'firebase/firebase'
+import { updateUserRole } from '../../store/action'
 import { validate } from './validate'
-import { AuthUpdateContext, AuthUpdateTokenContext, IsAuthContext } from "context/AuthContext";
+import { AuthUpdateContext, AuthUpdateTokenContext, IsAuthContext } from 'context/AuthContext'
+import { TextlField } from './TextlField/TextlField'
 
 import styles from './LoginForm.module.scss'
-import { log } from 'util'
 
 type Props = {
   closeModal: () => void
 }
 
-export const LoginForm: React.VFC <Props> = ({closeModal}) => {
+export const LoginForm: React.VFC<Props> = ({ closeModal }) => {
   const dispatch = useDispatch()
   const setIsAuth = useContext(AuthUpdateContext)
   const setToken = useContext(AuthUpdateTokenContext)
   const isAuth = useContext(IsAuthContext)
+  const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
-    if (isAuth) {closeModal()}
+    if (isAuth) {
+      closeModal()
+    }
   }, [isAuth])
 
   const addUser = async (email: string, password: string) => {
@@ -44,6 +47,9 @@ export const LoginForm: React.VFC <Props> = ({closeModal}) => {
                 })
             })
           })
+          .catch((error) => {
+           setErrorMessage('Логин и пароль не совпадают!')
+          })
       })
   }
 
@@ -59,16 +65,10 @@ export const LoginForm: React.VFC <Props> = ({closeModal}) => {
       }}>
       <div className={styles.container}>
         <Form className={styles.form}>
-          <div className={styles.fieldName}>Введите email</div>
-          <div className={styles.fieldInput}>
-            <Field component="input" className="form-control" id="email" name="email" placeholder="Введите логин"/>
-          </div>
-          <div className={styles.fieldName}>Введите пароль</div>
-          <div className={styles.fieldInput}>
-            <Field component="input" className="form-control" id="password" name="password"
-                   placeholder="Введите пароль"/>
-          </div>
-          <button type='submit' className="btn btn-success">Войти</button>
+          <TextlField label={'Введите email'} name={'email'} type={'input'}/>
+          <TextlField label={'Введите пароль'} name={'password'} type={'password'}/>
+          {errorMessage !== '' && <div className={styles.error}>{errorMessage}</div>}
+          <button type='submit' className="btn btn-success mt-3">Войти</button>
         </Form>
       </div>
     </Formik>

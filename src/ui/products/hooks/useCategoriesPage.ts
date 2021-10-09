@@ -1,6 +1,5 @@
-import {useSelector} from "react-redux";
-import {AppStateType} from "store";
-import {useEffect} from "react";
+import {useSelector} from 'react-redux'
+import {AppStateType} from 'store'
 
 export const useCategoriesPage = () => {
   const categoriesData = useSelector((state: AppStateType) => state.categoriesData.categories)

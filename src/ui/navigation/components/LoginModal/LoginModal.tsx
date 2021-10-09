@@ -1,5 +1,6 @@
 import React from 'react'
 import { Modal } from 'react-bootstrap'
+
 import { LoginForm } from '../../forms/LoginForm/LoginForm'
 
 import styles from './LoginModal.module.scss'
@@ -28,5 +29,5 @@ export const LoginModal: React.VFC<Props> = ({ showModal, closeModal }) => {
         </Modal.Body>
       </Modal>
     </>
-  );
+  )
 }
