@@ -3,12 +3,14 @@ type RoutesType = {
   Products: string
   AddProductPage: string
   AuctionsPage: string
+  AuctionsPageItem: string
 }
 
 export const Routes: RoutesType = {
   Home: '/',
   Products: '/products',
   AddProductPage: '/add-product',
-  AuctionsPage: '/auctions-page'
+  AuctionsPage: '/auctions-page',
+  AuctionsPageItem: '/auctions-page/:auctionId?'
 }
 

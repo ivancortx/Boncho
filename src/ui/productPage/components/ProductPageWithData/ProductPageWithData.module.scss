@@ -1,0 +1,113 @@
+.container {
+  max-width: 1200px;
+  width: 100vw;
+  margin: 2vh auto;
+  padding: 2vh;
+  display: grid;
+  grid-template-columns: 49.5% 49.5%;
+  grid-gap: 1%;
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(50, 50, 50, 0.4);
+}
+
+.photoBlock {
+  padding: 1%;
+
+  img {
+    width: 100%;
+    border-radius: 10px;
+  }
+}
+
+.contentBlock {
+  border-left: 1px solid #dbdbdb;
+  padding: 0 4%;
+
+  .productTitle {
+    font-size: 1.8em;
+    font-weight: 500;
+  }
+
+  .stringContainer {
+    display: flex;
+    justify-content: space-between;
+
+    .stringContainer__name {
+      color: #8e8e8e;
+    }
+
+    .stringContainer__content {
+      color: #383838;
+    }
+  }
+
+  .buttonPriceBlock {
+    margin-top: 20px;
+    width: 70%;
+    margin-left: 15%;
+    height: 70px;
+    border-radius: 7px;
+
+    .currentPriceBlock {
+      width: 100%;
+      height: 35px;
+      display: grid;
+      grid-template-columns: repeat(3, 33.3333%);
+      border: 1px solid #d0d0d0;
+      border-top-left-radius: 7px;
+      border-top-right-radius: 7px;
+      font-size: 0.8em;
+      text-align: center;
+
+      .currentPriceBlock__title {
+        width: 100%;
+        text-align: center;
+        border-right: 1px solid #dbdbdb;
+      }
+
+      .currentPriceBlock__price {
+        width: 100%;
+        border-right: 1px solid #dbdbdb;
+      }
+    }
+
+    .buttonBlock {
+      width: 100%;
+      height: 35px;
+      border-bottom-left-radius: 7px;
+      border-bottom-right-radius: 7px;
+      text-align: center;
+      cursor: pointer;
+      background-color: #d4d4d4;
+      transition: color linear .1s, background-color linear .1s;
+
+      &:hover {
+        background-color: #282828;
+        color: white;
+      }
+    }
+  }
+
+  .descriptionBlock {
+    margin-top: 20px;
+    width: 100%;
+
+    &:before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: #cbcbcb;
+    }
+
+    .descriptionBlock__title {
+      color: #8e8e8e;
+      font-size: 0.7em;
+    }
+  }
+}
+
+@media screen and (max-width: 680px) {
+
+}

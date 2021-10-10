@@ -6,6 +6,7 @@ import { HomePage } from "ui/home";
 import { CategoriesPage } from "ui/products/pages/CategoriesPage";
 import { AddProductPage } from 'ui/addProductPage/pages/AddProductPage'
 import { AuctionsPage } from 'ui/auctions/pages/AuctionsPage'
+import { ProductPage } from '../../../productPage/pages/ProductPage'
 
 export const AppRoutes: React.VFC = () => {
   return <Switch>
@@ -13,6 +14,7 @@ export const AppRoutes: React.VFC = () => {
     <Route path={Routes.Products} exact component={CategoriesPage}/>
     <Route path={Routes.AddProductPage} exact component={AddProductPage}/>
     <Route path={Routes.AuctionsPage} exact component={AuctionsPage}/>
+    <Route path={Routes.AuctionsPageItem} exact component={ProductPage}/>
     <Redirect to={Routes.Home}/>
   </Switch>
 }

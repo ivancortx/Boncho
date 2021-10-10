@@ -1,6 +1,6 @@
 import {ActionsTypes} from './action'
-import {Category} from "../interfaces/CategoriesPage/categoriesPageInterfaces";
-import {FETCH_CATEGORIES_DATA} from "./types";
+import {Category} from '..'
+import {FETCH_CATEGORIES_DATA} from './types'
 
 type InitialStateType = {
   categories: Category[]

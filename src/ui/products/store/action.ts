@@ -1,8 +1,8 @@
 import { Dispatch } from 'react'
 
 import { FETCH_CATEGORIES_DATA } from './types'
-import {loadCategories} from "api/api";
-import {Category} from "../interfaces/CategoriesPage/categoriesPageInterfaces";
+import {loadCategories} from "api/api"
+import {Category} from ".."
 
 export type ActionsTypes = SetPhotosType
 

@@ -12,6 +12,10 @@ const instance = axios.create({
 export const loadAuctions = () => {
   return instance.get(`api/fetch-auctions`)
 }
+
+export const loadProduct = (auctionId: string) => {
+  return instance.get(`api/fetch-product/${auctionId}`)
+}
 //
 // export const sendPhoto = (title: string, data: object, token: string) => {
 //   return instance.post(`api/add-photo`, {
