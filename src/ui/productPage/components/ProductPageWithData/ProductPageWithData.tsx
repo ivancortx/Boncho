@@ -5,6 +5,7 @@ import { Portal } from 'ui/products/components/Portal/Portal'
 import emptyImage from 'assets/images/empty_image.png'
 
 import styles from './ProductPageWithData.module.scss'
+import { SeePriceModal } from '../SeePriceModal/SeePriceModal'
 
 type Props = {
   productData: ProductDataType
@@ -12,6 +13,17 @@ type Props = {
 
 export const ProductPageWithData: React.VFC<Props> = ({ productData }) => {
   const [openModal, setOpenModal] = useState<boolean>(false)
+  const [showSeePriceModal, setShowSeePriceModal] = useState<boolean>(false)
+  const [seePricePeriod, setSeePricePeriod] = useState<boolean>(false)
+  const [timerSeconds, setTimerSeconds] = useState<string>('')
+
+  const closeSeePriceModal = () => {
+    setShowSeePriceModal(false)
+  }
+
+  const openSeePriceModal = () => {
+    setShowSeePriceModal(true)
+  }
 
   const photoHandler = () => {
     setOpenModal(true)
@@ -19,6 +31,29 @@ export const ProductPageWithData: React.VFC<Props> = ({ productData }) => {
   const closeModal = () => {
     setOpenModal(false)
   }
+
+  const timer = (t: number) => {
+    setTimerSeconds(String(t))
+    let seconds = t
+    const interval = setInterval(() => {
+      if (seconds <= 0) {
+        setTimerSeconds('')
+        clearInterval(interval)
+      } else {
+        setTimerSeconds(`${Math.trunc(seconds - 1)}`)
+      }
+      --seconds
+    }, 1000)
+  }
+
+  const openCurrentPrice = () => {
+    timer(Number(productData.stepTime))
+    setSeePricePeriod(true)
+    setTimeout(() => {
+      setSeePricePeriod(false)
+    }, (Number(productData.stepTime)) * 1000)
+  }
+
 
   return (
     <div className={styles.container}>
@@ -70,13 +105,20 @@ export const ProductPageWithData: React.VFC<Props> = ({ productData }) => {
               <div className='mt-1'>Текущая цена</div>
             </div>
             <div className={styles.currentPriceBlock__price}>
-              <div className='mt-1'>хххх</div>
+              {seePricePeriod ?
+                <div className='mt-1'>{productData.startPrice}</div>
+                :
+                <div className='mt-1'>хххх</div>}
             </div>
             <div className={styles.currentPriceBlock__timeStep}>
-              <div className='mt-1'>{productData.stepTime} сек</div>
+              {seePricePeriod ?
+                <div className='mt-1'>{timerSeconds} сек</div>
+                :
+                <div className='mt-1'>{productData.stepTime} сек</div>
+              }
             </div>
           </div>
-          <div className={styles.buttonBlock}>
+          <div onClick={openSeePriceModal} className={styles.buttonBlock}>
             Посмотреть цену
           </div>
         </div>
@@ -85,6 +127,10 @@ export const ProductPageWithData: React.VFC<Props> = ({ productData }) => {
           <div className={styles.descriptionBlock__content}>{productData.description}</div>
         </div>
       </div>
+      {showSeePriceModal && <SeePriceModal
+          showSeePriceModal={showSeePriceModal}
+          closeSeePriceModal={closeSeePriceModal}
+          openCurrentPrice={openCurrentPrice}/>}
     </div>
   )
 }
