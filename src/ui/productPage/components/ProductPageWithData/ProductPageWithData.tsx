@@ -1,21 +1,38 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { ProductDataType } from '../../interfaces/ProductPage/ProductPageInterfaces'
-import { Portal } from 'ui/products/components/Portal/Portal'
+import { Portal } from 'ui/productPage/components/Portal/Portal'
 import emptyImage from 'assets/images/empty_image.png'
 
 import styles from './ProductPageWithData.module.scss'
 import { SeePriceModal } from '../SeePriceModal/SeePriceModal'
+import { clearCurrentPrice, fetchCurrentPrice } from '../../store/action'
+import { useDispatch } from 'react-redux'
+import { useProductPageWithData } from '../../hooks/useProductPageWithData'
+import { Spinner } from 'react-bootstrap'
+import { modificatedCurrentPrice } from '../../../../api/api'
 
 type Props = {
   productData: ProductDataType
 }
 
 export const ProductPageWithData: React.VFC<Props> = ({ productData }) => {
+  const dispatch = useDispatch()
+  const { currentPrice } = useProductPageWithData()
   const [openModal, setOpenModal] = useState<boolean>(false)
   const [showSeePriceModal, setShowSeePriceModal] = useState<boolean>(false)
   const [seePricePeriod, setSeePricePeriod] = useState<boolean>(false)
   const [timerSeconds, setTimerSeconds] = useState<string>('')
+  const [loader, setLoader] = useState<boolean>(false)
+
+  useEffect(() => {
+    if (currentPrice !== '') {
+      setLoader(false)
+      showCurrentPrice()
+    }
+  }, [currentPrice])
+
+  console.log(loader)
 
   const closeSeePriceModal = () => {
     setShowSeePriceModal(false)
@@ -47,10 +64,17 @@ export const ProductPageWithData: React.VFC<Props> = ({ productData }) => {
   }
 
   const openCurrentPrice = () => {
+    dispatch(fetchCurrentPrice(productData.auctionId))
+    setLoader(true)
+  }
+
+  const showCurrentPrice = () => {
     timer(Number(productData.stepTime))
     setSeePricePeriod(true)
     setTimeout(() => {
       setSeePricePeriod(false)
+      modificatedCurrentPrice(productData.auctionId, productData.priceStep)
+      dispatch(clearCurrentPrice())
     }, (Number(productData.stepTime)) * 1000)
   }
 
@@ -106,15 +130,29 @@ export const ProductPageWithData: React.VFC<Props> = ({ productData }) => {
             </div>
             <div className={styles.currentPriceBlock__price}>
               {seePricePeriod ?
-                <div className='mt-1'>{productData.startPrice}</div>
+                <div className='mt-1'>{currentPrice}</div>
                 :
-                <div className='mt-1'>хххх</div>}
+                <>
+                  {loader ?
+                    <div className='pt-2'><Spinner animation="grow" variant="secondary" size="sm"/></div>
+                    :
+                    <div className='mt-1'>хххх</div>
+                  }
+                </>
+              }
             </div>
             <div className={styles.currentPriceBlock__timeStep}>
               {seePricePeriod ?
                 <div className='mt-1'>{timerSeconds} сек</div>
                 :
-                <div className='mt-1'>{productData.stepTime} сек</div>
+                <>
+                  {loader ?
+                    <div className='pt-2'><Spinner animation="grow" variant="secondary" size="sm"/></div>
+                    :
+                    <div className='mt-1'>{productData.stepTime} сек</div>
+                  }
+                </>
+
               }
             </div>
           </div>

@@ -25,12 +25,12 @@ export const SeePriceModal: React.VFC<Props> = ({ showSeePriceModal, closeSeePri
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <div>Подтверждение просомтра цены</div>
+          <div>Вы точно желаете просмотреть цену?</div>
         </Modal.Header>
         <Modal.Body>
           <div className={styles.bodyContainer}>
-            <div><Button onClick={startSeePriceProcess} variant="outline-success">ДА</Button></div>
-            <div><Button onClick={closeSeePriceModal} variant="outline-danger">Нет</Button></div>
+            <div><Button onClick={startSeePriceProcess} className={styles.btn} variant="outline-success">Да</Button></div>
+            <div><Button onClick={closeSeePriceModal} className={styles.btn} variant="outline-danger">Нет</Button></div>
           </div>
         </Modal.Body>
       </Modal>

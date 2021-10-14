@@ -24,7 +24,7 @@ export const AuctionsPage: React.VFC = () => {
         <>
           {auctionsData.map(auct => (
 
-            <div className={styles.item}>
+            <div className={styles.item} key={auct.auctionId}>
               <NavLink className={styles.link} to={`/auctions-page/${auct.auctionId}`}>
                 <div className={styles.photo}>
                   {auct.photoUrlsData[0] ?
