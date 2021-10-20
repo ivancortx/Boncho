@@ -9,6 +9,7 @@ import { LoginModal } from '../components/LoginModal/LoginModal'
 import firebaseApp from 'firebase/firebase'
 import { AuthUpdateContext, IsAuthContext } from 'context/AuthContext'
 import { useNavigationPage } from '../hooks/useNavigationPage/useNavigationPage'
+import logo from 'assets/images/HomePage/Logo.svg'
 
 import styles from './NavidationPage.module.scss'
 
@@ -46,10 +47,36 @@ export const NavigationPage: React.VFC = () => {
 
   return (
     <div className={styles.navContainer}>
-      <div className={styles.logoAndNavButtons}>
-        <div className={styles.logoContainer}>
-          Logo
+      {!isAuth &&
+      <div className={styles.loginBlock}>
+        <>
+          <div onClick={openLoginModal} className={styles.enterButton}>
+            Вход
+          </div>
+          <div onClick={openRegModal} className={styles.enterButton}>
+            Регистрация
+          </div>
+        </>
+      </div>
+      }
+
+      {isAuth &&
+      <div className={styles.exitBlock}>
+        <div>
+          <div onClick={exit} className={styles.exitButtonContainer}>
+            {userData[0] ? <div className={styles.userNameBlock}>Вы вошли как <span className={styles.userName}>{`${userData[0].email},`}</span></div> : <div></div>}
+            <div onClick={openRegModal} className={styles.exitButton}>
+              Выйти
+            </div>
+          </div>
         </div>
+      </div>
+      }
+
+
+
+      <div className={styles.logoAndNavButtons}>
+        <img className={styles.logo} src={logo} alt={'logo'}/>
         <div className={styles.navButtonsContainer}>
           <div className={styles.button}>
             <Link to={Routes.Home}><Button text={'Главная'}/></Link>
@@ -69,30 +96,6 @@ export const NavigationPage: React.VFC = () => {
         </div>
       </div>
 
-      {!isAuth &&
-      <div className={styles.loginBlock}>
-        <>
-          <div onClick={openLoginModal} className={styles.loginBlockButton}>
-            <Button text={'Вход'}/>
-          </div>
-          <div onClick={openRegModal} className={styles.loginBlockButton}>
-            <Button text={'Регистрация'}/>
-          </div>
-        </>
-      </div>
-      }
-
-      {isAuth &&
-      <div className={styles.exitBlock}>
-        <div>
-          <div onClick={exit} className={styles.exitButton}>
-            {userData[0] ? <div className={styles.userNameBlock}>Вы вошли как <span className={styles.userName}>{userData[0].email}</span>,</div> : <div></div>}
-            <Button text={'Вийти'}/>
-          </div>
-        </div>
-      </div>
-      }
-
       {showRegModal && <div className={styles.portal}>
         <RegModal showModal={showRegModal}
                   closeModal={closeRegModal}/>
@@ -101,6 +104,7 @@ export const NavigationPage: React.VFC = () => {
         <LoginModal showModal={showLoginModal}
                     closeModal={closeLoginModal}/>
       </div>}
+
     </div>
   )
 }

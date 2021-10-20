@@ -18,11 +18,11 @@
 }
 
 .btn {
-  color: #ececec;
+  color: #f1f1f1;
   cursor: pointer;
   font-weight: 500;
   line-height: 45px;
-  margin: 0 0 2em;
+  //margin: 0 0 2em;
   max-width: 160px;
   position: relative;
   text-decoration: none;
@@ -30,7 +30,7 @@
   width: 100%;
 
   &:hover {
-    color: #efc241;
+    color: #e5ca62;
   }
 }
 
@@ -48,7 +48,7 @@
 
 .btn:hover:after {
   backface-visibility: hidden;
-  border-color: #f8742d;
+  border-color: #e5ca62;
   transition: width 250ms initial;
   width: 90%;
 

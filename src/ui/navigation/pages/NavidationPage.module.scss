@@ -1,26 +1,32 @@
 .navContainer {
   margin: 0 auto;
   width: 100%;
-  height: 200px;
   display: grid;
-  grid-template-columns: 50% 50%;
-  background-color: #383838;
+  grid-template-rows: 100px 60px;
+  background-color: #efeeee;
+  box-shadow: 0 10px 10px 0 rgba(50, 50, 50, 0.2);
 }
 
 .logoAndNavButtons {
-  display: grid;
-  grid-template-rows: 120px 80px;
+  position: relative;
+  height: 100%;
+  background-color: #404040;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 0 10px 0 rgba(50, 50, 50, 0.6);
 
-  .logoContainer {
-    margin: 50px 0 0 90px;
-    color: #8e8e8e;
+  .logo {
+    position: absolute;
+    height: 80px;
+    left: 50px;
+    top: -90px;
   }
 
   .navButtonsContainer {
+    padding-top: 7px;
     display: grid;
     grid-template-columns: 90px 115px 117px 100px 205px;
-    grid-gap: 10px;
-    margin: 20px 3.5vw;
+    grid-gap: 30px;
   }
 }
 
@@ -32,16 +38,17 @@
   }
 }
 
-.loginBlockButton {
-  margin-left: 10px;
+.enterButton {
+  margin: 20px 40px 0 0;
   padding: 0 5px;
+  cursor: pointer;
 }
 
 .loginBlock {
   height: 100%;
   width: 400px;
   margin-left: auto;
-  margin-right: 4vw;
+  //margin-right: 4vw;
   margin-top: 15px;
   display: flex;
   justify-content: right;
@@ -51,23 +58,26 @@
   height: 100%;
   width: 400px;
   margin-left: auto;
-  margin-right: 4vw;
-  margin-top: 15px;
+  margin-top: 35px;
   display: grid;
 
   .userNameBlock {
-    padding-top: 10px;
     text-align: right;
-    color: #d2d2d2;
+    color: #783636;
 
     .userName {
       color: darkgoldenrod;
     }
   }
 
-  .exitButton {
+  .exitButtonContainer {
     display: grid;
     grid-template-columns: 300px 100px;
+    .exitButton {
+      margin-left: 3px;
+      font-weight: 500;
+      cursor: pointer;
+    }
   }
 }
 

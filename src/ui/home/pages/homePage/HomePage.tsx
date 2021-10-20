@@ -9,7 +9,11 @@ import styles from './HomePage.module.scss'
 export const HomePage: React.VFC = () => (
   <div className={styles.container}>
     <Slider/>
-    <ProductsNavigation/>
-    <ItemsCarousel/>
+    <div className={styles.productNavigation}>
+      <ProductsNavigation/>
+    </div>
+
+      <ItemsCarousel/>
+
   </div>
 )

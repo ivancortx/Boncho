@@ -7,9 +7,8 @@
 .itemsContainer {
   margin: 12px;
   display: grid;
-  grid-template-columns: repeat(5, 19.2%);
-  grid-gap: 1%;
-  height: 25vw;
+  grid-template-columns: repeat(5, 280px);
+  grid-gap: 1.5%;
 }
 
 .item {
