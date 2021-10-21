@@ -48,32 +48,30 @@ export const NavigationPage: React.VFC = () => {
   return (
     <div className={styles.navContainer}>
       {!isAuth &&
-      <div className={styles.loginBlock}>
-        <>
-          <div onClick={openLoginModal} className={styles.enterButton}>
-            Вход
-          </div>
-          <div onClick={openRegModal} className={styles.enterButton}>
-            Регистрация
-          </div>
-        </>
-      </div>
-      }
+        <div className={styles.loginBlock}>
+          <>
+            <div onClick={openLoginModal} className={styles.enterButton}>
+              Вход
+            </div>
+            <div onClick={openRegModal} className={styles.enterButton}>
+              Регистрация
+            </div>
+          </>
+        </div>
+        }
 
-      {isAuth &&
-      <div className={styles.exitBlock}>
-        <div>
-          <div onClick={exit} className={styles.exitButtonContainer}>
-            {userData[0] ? <div className={styles.userNameBlock}>Вы вошли как <span className={styles.userName}>{`${userData[0].email},`}</span></div> : <div></div>}
-            <div onClick={openRegModal} className={styles.exitButton}>
-              Выйти
+        {isAuth &&
+        <div className={styles.exitBlock}>
+          <div>
+            <div onClick={exit} className={styles.exitButtonContainer}>
+              {userData[0] ? <div className={styles.userNameBlock}>Вы вошли как <span className={styles.userName}>{`${userData[0].email},`}</span></div> : <div></div>}
+              <div onClick={openRegModal} className={styles.exitButton}>
+                Выйти
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      }
-
-
+        }
 
       <div className={styles.logoAndNavButtons}>
         <img className={styles.logo} src={logo} alt={'logo'}/>
@@ -92,6 +90,9 @@ export const NavigationPage: React.VFC = () => {
           </div>
           <div className={styles.button}>
             <Link to={Routes.AddProductPage}><Button text={'Добавить аукцион'}/></Link>
+          </div>
+          <div className={styles.button}>
+            <Link to={Routes.ProfilePage}><Button text={'Мой профайл'}/></Link>
           </div>
         </div>
       </div>

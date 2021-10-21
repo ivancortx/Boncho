@@ -1,13 +1,14 @@
 .item {
   background-color: white;
-  height: 100%;
+  //height: 100%;
   width: 100%;
   display: grid;
   grid-template-rows: 50% 40% 10%;
   border-radius: 0.8vw;
   box-shadow: 0 0 12px rgba(50, 50, 50, 0.8);
   text-align: center;
-  font-size: 28px;
+  font-size: 1em;
+  height: 260px;
 
   a {
     text-decoration: none;
@@ -15,10 +16,11 @@
 }
 
 .photo {
-
+  width: 100%;
+  height: 100%;
   img {
     width: 100%;
-    height: 200px;
+    height: 100%;
     border-top-left-radius: 0.8vw;
     border-top-right-radius: 0.8vw;
     object-fit: cover;
@@ -27,37 +29,41 @@
 }
 
 .itemContent {
-  margin-top: 10px;
+
+  width: 100%;
   .productName {
     text-align: left;
-    font-size: 0.6em;
-    padding-left: 0.5vw;
+    font-size: 0.8em;
     font-weight: 500;
-    margin-bottom: 10px;
+    padding-left: 4px;
   }
 
   .price {
-    margin-bottom: 5px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.5em;
-    padding-left: 0.5vw;
-    padding-right: 0.5vw;
+    margin: 4px 0 4px 5px;
+    display: grid;
+    grid-template-columns: 85px 1fr;
 
     .priceName {
+      //padding-top: 3px;
       text-align: left;
       color: #8e8e8e;
-      width: 140px;
+      width: 100%;
+      font-size: 0.7em;
+      line-height: 10px;
     }
 
     .priceData {
       height: 100%;
       font-weight: 500;
+      font-size: 0.8em;
+      text-align: right;
+      padding-right: 3px;
 
       .timer {
-        margin-top: 2px;
-        margin-right: 5px;
-        width: 15px;
+        //margin-top: 2px;
+        //margin-right: 5px;
+        width: 12px;
+        margin-right: 4px;
       }
 
       span {

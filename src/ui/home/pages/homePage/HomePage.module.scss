@@ -1,4 +1,6 @@
 .container {
+  width: 100%;
+  margin-bottom: 15px;
 }
 
 .productNavigation {
@@ -9,6 +11,38 @@
   border-radius: 0.2vw;
 }
 
-@media screen and (max-width: 680px) {
+.itemCarousel4Position {
+  display: none;
+}
 
+.itemCarousel3Position {
+  display: none;
+}
+
+@media screen and (max-width: 950px) {
+  .itemCarousel5Position {
+    display: none;
+  }
+
+  .itemCarousel4Position {
+    display: block;
+  }
+
+  .itemCarousel3Position {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .itemCarousel5Position {
+    display: none;
+  }
+
+  .itemCarousel4Position {
+    display: none;
+  }
+
+  .itemCarousel3Position {
+    display: block;
+  }
 }

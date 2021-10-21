@@ -1,5 +1,6 @@
 .navContainer {
-  margin: 0 auto;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
   width: 100%;
   display: grid;
   grid-template-rows: 100px 60px;
@@ -25,7 +26,7 @@
   .navButtonsContainer {
     padding-top: 7px;
     display: grid;
-    grid-template-columns: 90px 115px 117px 100px 205px;
+    grid-template-columns: 90px 115px 117px 100px 205px 140px;
     grid-gap: 30px;
   }
 }
@@ -73,6 +74,7 @@
   .exitButtonContainer {
     display: grid;
     grid-template-columns: 300px 100px;
+
     .exitButton {
       margin-left: 3px;
       font-weight: 500;
@@ -81,6 +83,13 @@
   }
 }
 
-@media screen and (max-width: 680px) {
-
+@media screen and (max-width: 950px) {
+  .navContainer {
+    grid-template-rows: 100px 90px;
+    .navButtonsContainer {
+      padding-top: 0;
+      grid-template-columns: repeat(3, 150px);
+      grid-gap: 5px;
+    }
+  }
 }

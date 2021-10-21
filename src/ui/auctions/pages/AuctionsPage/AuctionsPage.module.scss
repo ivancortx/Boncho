@@ -2,13 +2,32 @@
   position: relative;
   margin-top: 15px;
   margin-bottom: 15px;
-  width: 90%;
-  margin-left: 5%;
+  width: 98%;
+  height: 100%;
+  margin-left: 1%;
 }
 
 .itemsContainer {
   display: grid;
-  grid-template-columns: repeat(5, 280px);
-  grid-gap: 1%;
+  grid-template-columns: repeat(5, 18.5%);
+  grid-template-rows: 265px;
+  grid-column-gap: 1.875%;
+  grid-row-gap: 10px;
 }
 
+@media screen and (max-width: 950px) {
+  .container {
+
+  }
+  .itemsContainer {
+    grid-template-columns: repeat(4, 23.5%);
+    grid-column-gap: 2%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .itemsContainer {
+    grid-template-columns: repeat(3, 32.5%);
+    grid-column-gap: 2.25%;
+  }
+}

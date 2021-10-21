@@ -1,14 +1,25 @@
-.container{
+.container {
   margin: 0 auto;
-  max-width: 100vw;
+  max-width: 1440px;
   width: 100%;
   min-height: 100vh;
   display: grid;
   grid-template-rows: 160px 1fr 110px;
   box-shadow: 0 10px 10px 0 rgba(50, 50, 50, 0.2);
 
-  .content{
+  .content {
     background-color: #efeeee;
   }
 }
 
+@media screen and (max-width: 950px) {
+  .container {
+    margin: 0 auto;
+    max-width: 1440px;
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 190px 1fr 110px;
+    box-shadow: 0 10px 10px 0 rgba(50, 50, 50, 0.2);
+  }
+}

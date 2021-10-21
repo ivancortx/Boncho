@@ -1,10 +1,12 @@
 import React from 'react'
 
 import { Slider } from "../../components/Slider/Slider";
-import { ItemsCarousel } from '../../components/ItemsCarousel/ItemsCarousel'
+import { ItemsCarousel5Position } from '../../components/ItemsCarousel5Position/ItemsCarousel5Position'
 import { ProductsNavigation } from '../../components/ProductsNavigation/ProductsNavigation'
 
 import styles from './HomePage.module.scss'
+import { ItemsCarousel4Position } from '../../components/ItemsCarousel4Position/ItemsCarousel4Position'
+import { ItemsCarousel3Position } from '../../components/ItemsCarousel3Position/ItemsCarousel3Position'
 
 export const HomePage: React.VFC = () => (
   <div className={styles.container}>
@@ -13,7 +15,16 @@ export const HomePage: React.VFC = () => (
       <ProductsNavigation/>
     </div>
 
-      <ItemsCarousel/>
+    <div className={styles.itemCarousel5Position}>
+      <ItemsCarousel5Position/>
+    </div>
+    <div className={styles.itemCarousel4Position}>
+      <ItemsCarousel4Position/>
+    </div>
+    <div className={styles.itemCarousel3Position}>
+      <ItemsCarousel3Position/>
+    </div>
+
 
   </div>
 )

@@ -20,7 +20,9 @@ export const AuctionsPage: React.VFC = () => {
         {auctionsData &&
         <>
           {auctionsData.map(auct => (
-            <Auction auct={auct}/>
+            <div className={styles.item}>
+              <Auction auct={auct}/>
+            </div>
           ))}
         </>
         }

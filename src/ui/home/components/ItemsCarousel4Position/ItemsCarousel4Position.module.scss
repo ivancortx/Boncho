@@ -5,22 +5,20 @@
 }
 
 .itemsContainer {
+  //height: 25vw;
   margin: 12px;
   display: grid;
-  grid-template-columns: repeat(5, 280px);
+  grid-template-columns: repeat(4, 23.45%);
   grid-gap: 1.5%;
 }
 
 .item {
   border-radius: 0.8vw;
+  height: 15vw;
   padding-top: 1vw;
   text-align: center;
-  font-size: 28px;
+  font-size: 1em;
   background-color: #ea9d6e;
-}
-
-.itemContent {
-  height: 5vw;
 }
 
 .button {
@@ -48,16 +46,16 @@
 
   img {
     position: absolute;
-    width: 5vw;
-    top: 9vw;
-    left: -3.5vw;
+    width: 50px;
+    top: 125px;
+    left: -50px;
     transition: 0.2s;
   }
 
   img:hover {
-    margin-top: -0.4vw;
-    margin-left: -0.8vw;
-    width: 6vw
+    margin-top: -7px;
+    margin-left: -6px;
+    width: 65px
   }
 }
 
@@ -66,16 +64,16 @@
 
   img {
     position: absolute;
-    width: 5vw;
-    top: 9vw;
-    right: -3.5vw;
+    width: 50px;
+    top: 125px;
+    right: -30px;
     transition: 0.2s;
   }
 
   img:hover {
-    margin-top: -0.4vw;
-    margin-right: -0.8vw;
-    width: 6vw
+    margin-top: -7px;
+    margin-right: -7px;
+    width: 65px
   }
 }
 

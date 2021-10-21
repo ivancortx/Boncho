@@ -4,13 +4,13 @@ import Carousel from 'react-bootstrap/Carousel'
 import prev from 'assets/images/HomePage/ItemsCarousel/prev.png'
 import next from 'assets/images/HomePage/ItemsCarousel/next.png'
 
-import styles from './ItemsCarousel.module.scss'
+import styles from "./ItemsCarousel4Position.module.scss"
 import 'scss/custom.scss'
 import { useDispatch } from 'react-redux'
 import { useAuctionPage } from '../../../auctions/hooks/useAuctionPage'
 import { Auction, fetchAuctions } from '../../../auctions'
 
-export const ItemsCarousel: React.VFC = () => {
+export const ItemsCarousel4Position: React.VFC = () => {
   const dispatch = useDispatch()
   const { auctionsData } = useAuctionPage()
   useEffect(() => {
@@ -36,37 +36,27 @@ export const ItemsCarousel: React.VFC = () => {
   const secondBl = []
   const thirdBl = []
   if (auctionsData.length > 0) {
-    if(auctionsData.length > 4) {
-      for(let i = 0; i <= 4; i++) {
+    if(auctionsData.length > 3) {
+      for(let i = 0; i <= 3; i++) {
         firstBl.push(auctionsData[i])
       }
     }
-    if (auctionsData.length > 9) {
-      for(let i = 5; i <= 9; i++) {
+    if (auctionsData.length > 7) {
+      for(let i = 4; i <= 7; i++) {
         secondBl.push(auctionsData[i])
       }
     }
     if(auctionsData.length >= 14) {
-      for(let i = 10; i <= 14; i++) {
+      for(let i = 8; i <= 11; i++) {
         thirdBl.push(auctionsData[i])
       }
     }
   }
 
-
-
   return (
     <div className={styles.container}>
       <Carousel activeIndex={index} onSelect={handleSelect} prevLabel='' nextLabel=''
                 interval={null} indicators={false} controls={false}>
-        <div className={styles.itemsContainer}>
-          {auctionsData &&
-          <>
-            {auctionsData.map(auct => (
-              <Auction auct={auct}/>
-            ))}
-          </>
-          }
           <Carousel.Item>
             <div className={styles.itemsContainer}>
               {firstBl.map(block => (
@@ -91,7 +81,6 @@ export const ItemsCarousel: React.VFC = () => {
               }
             </div>
           </Carousel.Item>
-        </div>
       </Carousel>
       <div className={styles.prevButton} onClick={prevSlide}>
         <img src={prev} alt="prev"/>

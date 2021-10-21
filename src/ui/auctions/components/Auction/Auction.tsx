@@ -14,7 +14,7 @@ type Props = {
 export const Auction: React.VFC<Props> = ({auct}) => {
 
   return <div className={styles.item} key={auct.auctionId}>
-    <NavLink className={styles.link} to={`/auctions-page/${auct.auctionId}`}>
+    <NavLink className={styles.photo} to={`/auctions-page/${auct.auctionId}`}>
       <div className={styles.photo}>
         {auct.photoUrlsData[0] ?
           <img src={auct.photoUrlsData[0]} alt={'img'}/>
@@ -28,7 +28,7 @@ export const Auction: React.VFC<Props> = ({auct}) => {
       <div className={styles.price}>
         <div className={styles.priceName}>Шаг времени:</div>
         <div className={styles.priceData}>
-          <img className={styles.timer} src={timer} alt={'timer'}/><span>{auct.stepTime}</span>
+          <img className={styles.timer} src={timer} alt={'timer'}/><span>{auct.stepTime} с</span>
         </div>
       </div>
       <div className={styles.price}>
@@ -36,7 +36,7 @@ export const Auction: React.VFC<Props> = ({auct}) => {
         <div className={styles.priceData}>{auct.startPrice} $</div>
       </div>
       <div className={styles.price}>
-        <div className={styles.priceName}>Стоимость просмотра цены:</div>
+        <div className={styles.priceName}>Стоимость просм. цены:</div>
         <div className={styles.priceData}><span>{auct.seePrice} $</span></div>
       </div>
     </div>

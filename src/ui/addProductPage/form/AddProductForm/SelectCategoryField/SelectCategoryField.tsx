@@ -1,7 +1,7 @@
 import React from 'react'
 import { ErrorMessage, Field, useField } from 'formik'
 
-import { SetCategoryField } from 'ui/addProductPage/components/SetCategoryField/SetCategoryField'
+import { SetCategoryField } from 'ui/addProductPage/form/AddProductForm/SetCategoryField/SetCategoryField'
 import { Category } from 'ui/products'
 
 import styles from './SelectCategoryField.module.scss'
