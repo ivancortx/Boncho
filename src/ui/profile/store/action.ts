@@ -1,0 +1,44 @@
+import { Dispatch } from 'react'
+
+import { WRITE_PROFILE_DATA } from './types'
+import { ProfileDataType } from '../interfaces/PrfilePageInterfaces'
+import { addNewProfile, loadProfile } from '../../../api/api'
+
+export type ActionsTypes = writeProfileType
+
+type writeProfileType = {
+  type: typeof WRITE_PROFILE_DATA
+  data: ProfileDataType
+}
+
+export const writeProfile = (data: ProfileDataType): writeProfileType => ({
+  type: WRITE_PROFILE_DATA,
+  data
+})
+
+export const addProfile = (formValues: ProfileDataType, email: string, photoUrl: string,
+                           currentUserProfile: ProfileDataType[]) => async (dispatch: Dispatch<ActionsTypes>) => {
+  const obj = {
+    email: email,
+    login: formValues.login,
+    name: formValues.name,
+    secondName: formValues.secondName,
+    photoUrl: photoUrl
+  }
+  console.log(obj, currentUserProfile)
+  if (obj.photoUrl == '' && currentUserProfile[0] !== undefined) {
+    if (currentUserProfile[0].photoUrl !== undefined) {
+      if (currentUserProfile[0].photoUrl.length > 0){
+        obj.photoUrl = currentUserProfile[0].photoUrl
+      }
+    }
+  }
+
+   addNewProfile(obj)
+}
+
+export const fetchProfileData = (email: string) => async (dispatch: Dispatch<ActionsTypes>) => {
+  const res = await loadProfile(email)
+  const data = await res.data
+  dispatch(writeProfile(data))
+}

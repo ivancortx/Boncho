@@ -1,0 +1,85 @@
+.container {
+  position: relative;
+  width: 90%;
+  margin-left: 5%;
+}
+
+.itemsContainer {
+  //height: 25vw;
+  margin: 12px;
+  display: grid;
+  grid-template-columns: repeat(5, 18.5%);
+  grid-gap: 1.5%;
+}
+
+.item {
+  border-radius: 0.8vw;
+  height: 15vw;
+  padding-top: 1vw;
+  text-align: center;
+  font-size: 1em;
+  background-color: #ea9d6e;
+}
+
+//.itemContent {
+//  height: 5vw;
+//}
+
+.button {
+  font-size: 0.8em;
+  margin-top: 15vw;
+  height: 4vw;
+  border-radius: 0 0 0.8vw 0.8vw;
+  width: 100%;
+  background-color: #3b1c05;
+  color: #d9d9d9;
+  transition: background-color linear .4s;
+  cursor: pointer;
+  z-index: 1000;
+  padding-top: calc(4vw/2 - 0.8em);
+
+  &:hover {
+    background-color: #66330e;
+    color: #ffffff;
+    z-index: 1000;
+  }
+}
+
+.prevButton {
+  cursor: pointer;
+
+  img {
+    position: absolute;
+    width: 5vw;
+    top: 9vw;
+    left: -3.5vw;
+    transition: 0.2s;
+  }
+
+  img:hover {
+    margin-top: -0.4vw;
+    margin-left: -0.8vw;
+    width: 6vw
+  }
+}
+
+.nextButton {
+  cursor: pointer;
+
+  img {
+    position: absolute;
+    width: 5vw;
+    top: 9vw;
+    right: -3.5vw;
+    transition: 0.2s;
+  }
+
+  img:hover {
+    margin-top: -0.4vw;
+    margin-right: -0.8vw;
+    width: 6vw
+  }
+}
+
+
+

@@ -1,0 +1,27 @@
+.label {
+  position: relative;
+  display: grid;
+  grid-template-columns: 30% 60%;
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.error {
+  position: absolute;
+  top: 34px;
+  color: red;
+  font-size: 0.8em;
+}
+
+@media screen and (max-width: 1150px) {
+  .label {
+    grid-template-columns: 25% 72%;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .label {
+    display: block;
+    width: 95%;
+  }
+}

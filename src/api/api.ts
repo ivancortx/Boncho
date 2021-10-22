@@ -24,6 +24,19 @@ export const loadCurrentPrice = (auctionId: string) => {
 export const modificatedCurrentPrice = (auctionId: string, stepPrice: string) => {
   return instance.get(`api/modificated-currentPrice/${auctionId}&${stepPrice}`)
 }
+
+export const addNewProfile = (profile: object) => {
+  debugger
+  return instance.post(`api/add-profile`, {
+      profile
+    }
+  )
+}
+
+export const loadProfile = (email: string) => {
+  return instance.get(`api/fetch-profile/${email}`)
+}
+
 //
 // export const sendPhoto = (title: string, data: object, token: string) => {
 //   return instance.post(`api/add-photo`, {
