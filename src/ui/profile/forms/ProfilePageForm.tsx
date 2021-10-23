@@ -1,16 +1,17 @@
-import React, { useState } from 'react'
-
-import styles from "./ProfilePageForm.module.scss"
+import React, { useEffect, useState } from 'react'
 import { Form, Formik } from 'formik'
+import { Spinner } from 'react-bootstrap'
+import { useDispatch } from 'react-redux'
+
 import { validate } from './validate'
 import { TextField } from './TextField/TextField'
-import { Spinner } from 'react-bootstrap'
 import emptyPhoto from 'assets/images/empty_image.png'
-import firebaseApp from '../../../firebase/firebase'
+import firebaseApp from 'firebase/firebase'
 import { UserDataType } from '../../navigation/interfaces/navigationPage/navigationPageInterfaces'
-import { useDispatch } from 'react-redux'
-import { addProfile } from '../store/action'
+import { addPhotoToProfile, addProfile } from '../store/action'
 import { ProfileDataType } from '../interfaces/PrfilePageInterfaces'
+
+import styles from "./ProfilePageForm.module.scss"
 
 type Props = {
   setIsUploaded: (x: boolean) => void
@@ -23,7 +24,8 @@ type Props = {
 
 export const ProfilePageForm: React.VFC<Props> = ({ ...props }) => {
   const dispatch = useDispatch()
-  const { setFilePath, setIsUploaded, isUploaded, filePath, userData, userProfile  } = props
+  const { setFilePath, setIsUploaded, isUploaded, filePath, userData, userProfile } = props
+  const [photoUrl, setPhotoUrl] = useState<string>('')
 
   const saveFile = async (e: any) => {
     setIsUploaded(false)
@@ -33,14 +35,19 @@ export const ProfilePageForm: React.VFC<Props> = ({ ...props }) => {
     const fileRef = storageRef.child(pathPhoto)
     const metadata = { contentType: 'image/jpeg' }
     await fileRef.put(file, metadata)
-    // dispatch(writePhotoUrl(await fileRef.getDownloadURL()))
-    setFilePath(await fileRef.getDownloadURL())
+    await setPhotoUrl(await fileRef.getDownloadURL())
 
     if (await fileRef.getDownloadURL()) {
       setIsUploaded(true)
     }
   }
-  console.log(userProfile)
+
+  useEffect(() => {
+    if (photoUrl !== '') {
+      setFilePath(photoUrl)
+      dispatch(addPhotoToProfile(userData[0].email, photoUrl, userProfile))
+    }
+  }, [photoUrl])
 
   return (
     <div>
@@ -52,9 +59,7 @@ export const ProfilePageForm: React.VFC<Props> = ({ ...props }) => {
         }}
         validationSchema={validate}
         onSubmit={(values) => {
-
           dispatch(addProfile(values, userData[0].email, filePath, userProfile))
-
         }}>
         <div className={styles.container}>
           <Form>
@@ -62,8 +67,8 @@ export const ProfilePageForm: React.VFC<Props> = ({ ...props }) => {
 
             <div className={styles.form}>
               <div className={styles.photoContainer}>
-                {filePath !== '' ? <div>
-                    <img src={filePath} alt={'photo'}/>
+                {userProfile[0] !== undefined && userProfile[0].photoUrl !== '' ? <div>
+                    <img src={userProfile[0].photoUrl} alt={'photo'}/>
                   </div>
                   :
                   <div>
@@ -81,10 +86,14 @@ export const ProfilePageForm: React.VFC<Props> = ({ ...props }) => {
                 </div>
               </div>
               <div className={styles.profileInformationContainer}>
-                <TextField label={'Email'} name={'email'} type={'input'}/>
-                <TextField label={'Логин'} name={'login'} type={'input'}/>
-                <TextField label={'Имя'} name={'name'} type={'input'}/>
-                <TextField label={'Фамилия'} name={'secondName'} type={'input'}/>
+                <div className={styles.emailContainer}>
+                  <div>Email</div>
+                  {userData[0] !== undefined && <div className={styles.emailValue}>{userData[0].email}</div>}
+                </div>
+                <TextField label={'Логин'} name={'login'} type={'input'} userProfile={userProfile[0]?.login}/>
+                <TextField label={'Имя'} name={'name'} type={'input'} userProfile={userProfile[0]?.name}/>
+                <TextField label={'Фамилия'} name={'secondName'} type={'input'}
+                           userProfile={userProfile[0]?.secondName}/>
                 <label className={styles.loadImageButton} onChange={saveFile}>
                   <input type='submit' className={styles.input}/>
                   Сохранить

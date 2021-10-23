@@ -32,7 +32,7 @@ export const DatepickerBlock: React.VFC<Props> = ({ startDate, finishDate, setFi
                     isClearable={true}
                     placeholderText="Выберите дату и время"
         />
-        {startDate === null &&  <div className={styles.error}>Время начала аукциона не выбрано</div>}
+        {startDate === null && <div className={styles.error}>Время начала аукциона не выбрано</div>}
       </div>
       <div className={styles.dateDatepicker}>
         <div>
@@ -49,7 +49,7 @@ export const DatepickerBlock: React.VFC<Props> = ({ startDate, finishDate, setFi
                     isClearable={true}
                     placeholderText="Выберите дату и время"
         />
-        {finishDate === null &&  <div className={styles.error}>Время конца аукциона не выбрано</div>}
+        {finishDate === null && <div className={styles.error}>Время конца аукциона не выбрано</div>}
       </div>
     </div>
   )

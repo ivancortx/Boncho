@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux'
 
 import { fetchAuctions } from '../../store/action'
 import { useAuctionPage } from '../../hooks/useAuctionPage'
+import { Auction } from '../../components/Auction/Auction'
 
 import styles from './AuctionsPage.module.scss'
-import { Auction } from '../../components/Auction/Auction'
 
 export const AuctionsPage: React.VFC = () => {
   const dispatch = useDispatch()

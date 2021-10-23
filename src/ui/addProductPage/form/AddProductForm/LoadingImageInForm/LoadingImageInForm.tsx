@@ -6,7 +6,7 @@ type Props = {
   photoUrlsData: string[]
 }
 
-export const LoadingImageInForm:React.VFC<Props> = ({photoUrlsData}) => {
+export const LoadingImageInForm: React.VFC<Props> = ({ photoUrlsData }) => {
   return (
     <div className={styles.container}>
       {photoUrlsData.map(photo => (

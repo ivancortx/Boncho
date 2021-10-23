@@ -19,6 +19,18 @@
   width: 100%;
 }
 
+.emailContainer {
+  position: relative;
+  display: grid;
+  grid-template-columns: 30% 60%;
+  text-align: left;
+  margin-bottom: 18px;
+
+  .emailValue {
+    color: #5c5c5c;
+  }
+}
+
 .photoContainer {
   margin: 0 20px;
   border-right: 1px solid #dedede;
@@ -82,6 +94,12 @@
 
 .input {
   display: none;
+}
+
+@media screen and (max-width: 1150px) {
+  .emailContainer {
+    grid-template-columns: 25% 72%;
+  }
 }
 
 @media screen and (max-width: 850px) {

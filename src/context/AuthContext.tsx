@@ -25,7 +25,6 @@ export const AuthProvider: React.FC = ({ children }) => {
     })
   }
 
-
   useEffect(() => {
     if (cookieToken) {
       checkUserAuth(token)

@@ -26,7 +26,7 @@
   .navButtonsContainer {
     padding-top: 7px;
     display: grid;
-    grid-template-columns: 90px 115px 117px 100px 205px 140px;
+    grid-template-columns: 90px 115px 117px 100px 205px;
     grid-gap: 30px;
   }
 }
@@ -49,36 +49,61 @@
   height: 100%;
   width: 400px;
   margin-left: auto;
-  //margin-right: 4vw;
   margin-top: 15px;
   display: flex;
   justify-content: right;
 }
 
-.exitBlock {
-  height: 100%;
-  width: 400px;
-  margin-left: auto;
-  margin-top: 35px;
-  display: grid;
+.configureIconContainer {
+  position: relative;
+  display: flex;
 
-  .userNameBlock {
-    text-align: right;
-    color: #783636;
-
-    .userName {
-      color: darkgoldenrod;
-    }
+  .configureIcon {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
   }
 
-  .exitButtonContainer {
-    display: grid;
-    grid-template-columns: 300px 100px;
+  .configureList {
+    position: absolute;
+  }
+}
 
-    .exitButton {
-      margin-left: 3px;
-      font-weight: 500;
-      cursor: pointer;
+.exitBlock {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+
+  .exitButtonContainer {
+    width: 100%;
+    height: 100%;
+
+    .configureIconContainer {
+      position: relative;
+
+      .configureIcon {
+        position: absolute;
+        top: 35px;
+        right: 20px;
+        cursor: pointer;
+      }
+
+      .userName {
+        font-style: italic;
+        position: absolute;
+        right: 45px;
+        top: 30px;
+        color: #5f5004;
+      }
+
+      .configureList {
+        position: absolute;
+        top: 65px;
+        right: 10px;
+        z-index: 1000;
+      }
+
     }
   }
 }
@@ -86,6 +111,7 @@
 @media screen and (max-width: 950px) {
   .navContainer {
     grid-template-rows: 100px 90px;
+
     .navButtonsContainer {
       padding-top: 0;
       grid-template-columns: repeat(3, 150px);

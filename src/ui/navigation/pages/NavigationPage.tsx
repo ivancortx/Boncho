@@ -1,6 +1,7 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Cookies from 'js-cookie'
+import { useDispatch } from 'react-redux'
 
 import { Routes } from '../const/routes'
 import { Button } from '../components/Button/Button'
@@ -9,16 +10,34 @@ import { LoginModal } from '../components/LoginModal/LoginModal'
 import firebaseApp from 'firebase/firebase'
 import { AuthUpdateContext, IsAuthContext } from 'context/AuthContext'
 import { useNavigationPage } from '../hooks/useNavigationPage/useNavigationPage'
+import { useProfilePage } from 'ui/profile/hooks/useProfilePage'
+import { fetchProfileData } from 'ui/profile/store/action'
+import { DropDownSettingsList } from '../components/DropDownSettingsList/DropDownSettingsList'
+import { ModalCloseContext, ModalShowContext, ModalStatusContext } from 'context/SettingsUserModalContext'
 import logo from 'assets/images/HomePage/Logo.svg'
+import configure from 'assets/images/configure.png'
 
 import styles from './NavidationPage.module.scss'
 
 export const NavigationPage: React.VFC = () => {
+  const dispatch = useDispatch()
   const isAuth = useContext(IsAuthContext)
   const setIsAuth = useContext(AuthUpdateContext)
+  const closeModal = useContext<() => void>(ModalCloseContext)
+  const showModal = useContext<() => void>(ModalShowContext)
+  const isActiveModal = useContext<boolean>(ModalStatusContext)
+
   const [showRegModal, setShowRegModall] = useState<boolean>(false)
   const [showLoginModal, setShowLoginModall] = useState<boolean>(false)
   const { userData } = useNavigationPage()
+  const { userProfile } = useProfilePage()
+
+
+  useEffect(() => {
+    if (userData[0] !== undefined) {
+      dispatch(fetchProfileData(userData[0].email))
+    }
+  }, [userData])
 
   const openRegModal = () => {
     setShowRegModall(true)
@@ -46,32 +65,47 @@ export const NavigationPage: React.VFC = () => {
   })
 
   return (
-    <div className={styles.navContainer}>
+    <div onClick={closeModal} className={styles.navContainer}>
       {!isAuth &&
-        <div className={styles.loginBlock}>
-          <>
-            <div onClick={openLoginModal} className={styles.enterButton}>
-              Вход
-            </div>
-            <div onClick={openRegModal} className={styles.enterButton}>
-              Регистрация
-            </div>
-          </>
-        </div>
-        }
+      <div className={styles.loginBlock}>
+        <>
+          <div onClick={openLoginModal} className={styles.enterButton}>
+            Вход
+          </div>
+          <div onClick={openRegModal} className={styles.enterButton}>
+            Регистрация
+          </div>
+        </>
+      </div>
+      }
 
-        {isAuth &&
-        <div className={styles.exitBlock}>
-          <div>
-            <div onClick={exit} className={styles.exitButtonContainer}>
-              {userData[0] ? <div className={styles.userNameBlock}>Вы вошли как <span className={styles.userName}>{`${userData[0].email},`}</span></div> : <div></div>}
-              <div onClick={openRegModal} className={styles.exitButton}>
-                Выйти
+      {isAuth &&
+      <div className={styles.exitBlock}>
+        <div></div>
+        <div>
+          <div className={styles.exitButtonContainer}>
+            {userProfile[0] ? <div className={styles.userNameBlock}>
+
+                {userProfile[0].login && <div className={styles.configureIconContainer}>
+                  <span className={styles.userName}>{`${userProfile[0].login}`}</span>
+                  <div onClick={(e) => {
+                    e.stopPropagation()
+                  }}>
+                    <img onClick={showModal} className={styles.configureIcon} src={configure} alt="c"/>
+                    {isActiveModal &&
+                    <div className={styles.configureList}>
+                      <DropDownSettingsList exit={exit}
+                                            hideSettingsList={closeModal}/>
+                    </div>
+                    }
+                  </div>
+                </div>}
               </div>
-            </div>
+              : <div></div>}
           </div>
         </div>
-        }
+      </div>
+      }
 
       <div className={styles.logoAndNavButtons}>
         <img className={styles.logo} src={logo} alt={'logo'}/>
@@ -90,9 +124,6 @@ export const NavigationPage: React.VFC = () => {
           </div>
           <div className={styles.button}>
             <Link to={Routes.AddProductPage}><Button text={'Добавить аукцион'}/></Link>
-          </div>
-          <div className={styles.button}>
-            <Link to={Routes.ProfilePage}><Button text={'Мой профайл'}/></Link>
           </div>
         </div>
       </div>

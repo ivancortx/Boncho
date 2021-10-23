@@ -1,0 +1,41 @@
+.container {
+  width: 200px;
+  height: 110px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 10px 10px 0 rgba(50, 50, 50, 1);
+  padding-top: 15px;
+}
+
+.item {
+  width: 190px;
+  margin-left: 15px;
+  display: grid;
+  grid-template-columns: 20px 160px;
+  grid-column-gap: 10px;
+  cursor: pointer;
+
+  .icon {
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .link {
+    font-size: 16px;
+    transition: margin-left linear .2s;
+
+    a {
+      text-decoration: none;
+      color: #383838;
+    }
+  }
+
+  &:hover {
+    .link {
+      margin-left: 10px;
+    }
+  }
+}
+

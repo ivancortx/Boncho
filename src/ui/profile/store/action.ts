@@ -1,8 +1,8 @@
-import { Dispatch } from 'react'
+import {Dispatch} from 'react'
 
-import { WRITE_PROFILE_DATA } from './types'
-import { ProfileDataType } from '../interfaces/PrfilePageInterfaces'
-import { addNewProfile, loadProfile } from '../../../api/api'
+import {WRITE_PROFILE_DATA} from './types'
+import {ProfileDataType} from '../interfaces/PrfilePageInterfaces'
+import {addNewProfile, loadProfile} from '../../../api/api'
 
 export type ActionsTypes = writeProfileType
 
@@ -25,16 +25,28 @@ export const addProfile = (formValues: ProfileDataType, email: string, photoUrl:
     secondName: formValues.secondName,
     photoUrl: photoUrl
   }
-  console.log(obj, currentUserProfile)
   if (obj.photoUrl == '' && currentUserProfile[0] !== undefined) {
     if (currentUserProfile[0].photoUrl !== undefined) {
-      if (currentUserProfile[0].photoUrl.length > 0){
+      if (currentUserProfile[0].photoUrl.length > 0) {
         obj.photoUrl = currentUserProfile[0].photoUrl
       }
     }
   }
+  addNewProfile(obj)
+}
 
-   addNewProfile(obj)
+export const addPhotoToProfile = (email: string, photoUrl: string,
+                                  currentUserProfile: ProfileDataType[]) => async (dispatch: Dispatch<ActionsTypes>) => {
+  const obj = {
+    email: email,
+    login: currentUserProfile[0].login,
+    name: currentUserProfile[0].name,
+    secondName: currentUserProfile[0].secondName,
+    photoUrl: photoUrl
+  }
+  await addNewProfile(obj)
+  // @ts-ignore
+  dispatch(fetchProfileData(email))
 }
 
 export const fetchProfileData = (email: string) => async (dispatch: Dispatch<ActionsTypes>) => {

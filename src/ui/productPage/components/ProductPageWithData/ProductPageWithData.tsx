@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
+import { Spinner } from 'react-bootstrap'
+import { useDispatch } from 'react-redux'
 
 import { ProductDataType } from '../../interfaces/ProductPage/ProductPageInterfaces'
 import { Portal } from 'ui/productPage/components/Portal/Portal'
 import emptyImage from 'assets/images/empty_image.png'
-
-import styles from './ProductPageWithData.module.scss'
 import { SeePriceModal } from '../SeePriceModal/SeePriceModal'
 import { clearCurrentPrice, fetchCurrentPrice } from '../../store/action'
-import { useDispatch } from 'react-redux'
 import { useProductPageWithData } from '../../hooks/useProductPageWithData'
-import { Spinner } from 'react-bootstrap'
-import { modificatedCurrentPrice } from '../../../../api/api'
+import { modificatedCurrentPrice } from 'api/api'
+
+import styles from './ProductPageWithData.module.scss'
 
 type Props = {
   productData: ProductDataType
@@ -77,7 +77,6 @@ export const ProductPageWithData: React.VFC<Props> = ({ productData }) => {
       dispatch(clearCurrentPrice())
     }, (Number(productData.stepTime)) * 1000)
   }
-
 
   return (
     <div className={styles.container}>
@@ -152,7 +151,6 @@ export const ProductPageWithData: React.VFC<Props> = ({ productData }) => {
                     <div className='mt-1'>{productData.stepTime} сек</div>
                   }
                 </>
-
               }
             </div>
           </div>

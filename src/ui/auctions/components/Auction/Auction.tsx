@@ -1,18 +1,17 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 import emptyImage from 'assets/images/empty_image.png'
 import timer from 'assets/images/timer.png'
+import { AuctionDataType } from '../../interfaces/AddProductPage/addProductPageInterfaces'
 
 import styles from "./Auction.module.scss"
-import { NavLink } from 'react-router-dom'
-import { AuctionDataType } from '../../interfaces/AddProductPage/addProductPageInterfaces'
 
 type Props = {
   auct: AuctionDataType
 }
 
-export const Auction: React.VFC<Props> = ({auct}) => {
-
+export const Auction: React.VFC<Props> = ({ auct }) => {
   return <div className={styles.item} key={auct.auctionId}>
     <NavLink className={styles.photo} to={`/auctions-page/${auct.auctionId}`}>
       <div className={styles.photo}>

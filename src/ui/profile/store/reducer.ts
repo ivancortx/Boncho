@@ -15,7 +15,7 @@ export const reducer = (state = initialState, action: ActionsTypes): InitialStat
     case WRITE_PROFILE_DATA:
       return {
         ...state,
-        profileData: [...state.profileData, action.data]
+        profileData: [action.data]
       }
     default:
       return state

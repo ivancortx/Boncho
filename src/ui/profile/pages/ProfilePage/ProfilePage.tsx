@@ -18,7 +18,6 @@ export const ProfilePage: React.VFC = () => {
     }
   }, [userData])
 
-
   return (
     <div>
       <ProfilePageForm setIsUploaded={setIsUploaded}

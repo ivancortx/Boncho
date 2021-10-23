@@ -1,4 +1,3 @@
-import { useAuctionPage } from './hooks/useAuctionPage'
 export { AuctionsPage } from './pages/AuctionsPage'
 export { reducer } from './store/reducer'
 export { Auction } from './components/Auction/Auction'

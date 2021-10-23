@@ -26,7 +26,6 @@ export const modificatedCurrentPrice = (auctionId: string, stepPrice: string) =>
 }
 
 export const addNewProfile = (profile: object) => {
-  debugger
   return instance.post(`api/add-profile`, {
       profile
     }
@@ -36,35 +35,6 @@ export const addNewProfile = (profile: object) => {
 export const loadProfile = (email: string) => {
   return instance.get(`api/fetch-profile/${email}`)
 }
-
-//
-// export const sendPhoto = (title: string, data: object, token: string) => {
-//   return instance.post(`api/add-photo`, {
-//       title,
-//       data
-//     },
-//     {
-//       headers: {
-//         'Token': token
-//       }
-//     })
-// }
-//
-// export const loadVideos = (title: string) => {
-//   return instance.get(`api/fetch-video/${title}`)
-// }
-//
-// export const sendVideo = (title: string, data: object, token: string) => {
-//   return instance.post(`api/add-video`, {
-//       title,
-//       data
-//     },
-//     {
-//       headers: {
-//         'Token': token
-//       }
-//     })
-// }
 
 export const loadCategories = async () => {
   return instance.get(`api/fetch-categories`, {
@@ -82,18 +52,3 @@ export const addNewAuction = (data: object) => {
     }
   )
 }
-
-// export const loadReviews = () => {
-//   return instance.get(`api/fetch-reviews`)
-// }
-//
-// export const sendReview = (data: object, token: string) => {
-//   return instance.post(`api/add-review`, {
-//     data
-//   },
-//     {
-//       headers: {
-//         'Token': token
-//       }
-//     })
-// }
