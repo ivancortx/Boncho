@@ -92,12 +92,10 @@ export const NavigationPage: React.VFC = () => {
                     e.stopPropagation()
                   }}>
                     <img onClick={showModal} className={styles.configureIcon} src={configure} alt="c"/>
-                    {isActiveModal &&
-                    <div className={styles.configureList}>
+                    <div className={isActiveModal? styles.configureList : styles.hide}>
                       <DropDownSettingsList exit={exit}
                                             hideSettingsList={closeModal}/>
                     </div>
-                    }
                   </div>
                 </div>}
               </div>

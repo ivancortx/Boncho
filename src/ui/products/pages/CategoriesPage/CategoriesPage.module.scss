@@ -1,12 +1,16 @@
 .container {
   width: 100%;
+  display: grid;
+  grid-template-columns: 200px 1fr;
 }
 
 .categoryes {
-  width: 90%;
-  margin: 2vw 0 2vw 5%;
-  display: grid;
-  grid-template-columns: repeat(5, 20%);
+  border: 1px solid #eeeeee;
+  border-radius: 4px;
+  box-shadow: 0 0 7px rgba(50, 50, 50, 0.2);
+  background: white;
+  margin: 15px 0 15px 10px;
+  padding: 10px 3px 10px 8px;
 }
 
 .item {
@@ -14,11 +18,11 @@
 
   span {
     cursor: pointer;
-    transition: color linear .3s;
+    transition: padding-left linear .2s;
     color: #8e8e8e;
 
     &:hover {
-      color: #f8742d;
+      padding-left: 8px;
     }
   }
 }

@@ -52,3 +52,7 @@ export const addNewAuction = (data: object) => {
     }
   )
 }
+
+export const loadProductsByCategory = (category: string) => {
+  return instance.get(`api/fetch-products-by-category/${category}`)
+}

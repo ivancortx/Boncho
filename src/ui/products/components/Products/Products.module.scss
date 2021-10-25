@@ -1,0 +1,98 @@
+.itemContainer {
+ margin: 15px;
+  width: 97.5%;
+  display: grid;
+  grid-template-columns: repeat(3, 33.33333333%);
+
+}
+
+.link {
+  text-decoration: none;
+  color: #383838;
+}
+
+
+.item {
+  //margin-bottom: 5px;
+  border: 1px solid #e0e0e0;
+  //width: 50%;
+  //padding: 60% 50%;
+  //box-sizing: border-box;
+  //width: 100%;
+  height: calc((40vw + 350px) * 0.6);
+  max-height: 500px;
+  position: relative;
+
+  display: grid;
+  grid-template-rows: 1fr 120px;
+  background: white;
+  transition: box-shadow .3s;
+  cursor: pointer;
+
+  img {
+    position: absolute;
+    right: 1.5%;
+    top: 4%;
+    width: 97%;
+    height: 50%;
+    border-radius: 10px;
+
+
+
+  }
+
+  &:hover {
+    box-shadow: 0 0 32px rgba(133, 133, 133, 1);
+    z-index: 1000;
+    text-decoration: none;
+    color: #383838;
+  }
+}
+
+.itemContent {
+  padding: 0 10px;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+
+  .productName {
+    text-align: left;
+    font-size: 1.2em;
+    font-weight: 500;
+    padding-left: 4px;
+  }
+
+  .price {
+    margin: 4px 0 4px 5px;
+    display: grid;
+    grid-template-columns: 85px 1fr;
+
+    .priceName {
+      text-align: left;
+      color: #8e8e8e;
+      width: 100%;
+      font-size: 1em;
+      line-height: 15px;
+    }
+
+    .priceData {
+      height: 100%;
+      font-weight: 400;
+      font-size: 1em;
+      text-align: right;
+      padding-right: 3px;
+
+      .timer {
+        position: relative;
+        width: 15px;
+        height: 15px;
+        margin-right: 4px;
+      }
+
+      span {
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
