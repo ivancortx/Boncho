@@ -56,3 +56,10 @@ export const addNewAuction = (data: object) => {
 export const loadProductsByCategory = (category: string) => {
   return instance.get(`api/fetch-products-by-category/${category}`)
 }
+
+export const sendUserCash = (cash: number) => {
+  return instance.post(`api/update-user-cash`, {
+      cash
+    }
+  )
+}

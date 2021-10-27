@@ -1,0 +1,75 @@
+.title {
+  margin-left: 10px;
+  padding-top: 5px;
+}
+
+.cashModal {
+  width: 230px;
+  height: 150px;
+  position: absolute;
+  z-index: 1000;
+  top: 30px;
+  right: 0;
+  border: 1px solid #d7d7d7;
+  box-shadow: 0 0 10px 0 rgba(50, 50, 50, 1);
+  background: white;
+  border-radius: 5px;
+  transition: opacity linear .2s;
+}
+
+.hide {
+  display: none;
+}
+
+.form {
+  padding: 10px;
+  width: 225px;
+
+  .input {
+    width: 130px;
+    margin-left: 25px;
+    border: 1px solid gray;
+    border-radius: 4px;
+  }
+
+  .inputError {
+    border: 2px solid #bd1010;
+  }
+
+  span {
+    margin-left: 10px;
+  }
+
+  .button {
+    margin: 22px 0 0 25px;
+    width: 153px;
+    text-align: center;
+    border: 2px solid darkgreen;
+    color: darkgreen;
+    background-color: white;
+    padding: 5px 22px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .2s linear;
+    line-height: 18px;
+
+    &:hover {
+      border: 2px solid darkgreen;
+      background-color: darkgreen;
+      color: white;
+    }
+  }
+}
+
+.errorMessage {
+  width: 220px;
+  position: absolute;
+  text-align: center;
+  top: 72px;
+  left: 5px;
+  color: #e33737;
+  font-size: 0.665em;
+  font-weight: 700;
+}

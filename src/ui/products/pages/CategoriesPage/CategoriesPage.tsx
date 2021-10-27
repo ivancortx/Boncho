@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, {useEffect, useState} from 'react'
 import { useDispatch } from 'react-redux'
 
 import { useCategoriesPage } from '../../hooks/useCategoriesPage'
@@ -11,6 +11,7 @@ import { Products } from '../../components/Products/Products'
 export const CategoriesPage: React.VFC = () => {
   const { categoriesData } = useCategoriesPage()
   const dispatch = useDispatch()
+  const [activeCategory, setActiveCategory] = useState<string>('all')
 
   useEffect(() => {
     dispatch(fetchCategories())
@@ -20,18 +21,28 @@ export const CategoriesPage: React.VFC = () => {
     dispatch(fetchProductsByCategory(category))
   }
 
+  useEffect(() => {
+    dispatch(fetchProductsByCategory('all'))
+  }, [])
+
   return (
     <div className={styles.container}>
       <div>
         {categoriesData !== [] &&
         <div className={styles.categoryes}>
-          <div className={styles.item} onClick={() => fetchProducts('all')}>
+          <div className={'all' === activeCategory ? styles.activeItem : styles.item} onClick={() => {
+            fetchProducts('all')
+            setActiveCategory('all')
+          }}>
                 <span>
                  Все
                 </span>
           </div>
           {categoriesData.map(category => (
-            <div className={styles.item} key={category.id} onClick={() => fetchProducts(category.name)}>
+            <div className={category.name === activeCategory ? styles.activeItem : styles.item} key={category.id} onClick={() => {
+              fetchProducts(category.name)
+              setActiveCategory(category.name)
+            }}>
                 <span>
                   {category.name}
                 </span>

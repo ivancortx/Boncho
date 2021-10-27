@@ -1,10 +1,13 @@
-import React from 'react'
+import React, {useContext} from 'react'
 
 import styles from './FooterPage.module.scss'
+import {GetCashModalCloseContext} from "context/GetCashModalContext";
 
 export const FooterPage: React.VFC = () => {
+  const closeModal = useContext(GetCashModalCloseContext)
+
   return (
-      <div className={styles.container}>
+      <div onClick={closeModal} className={styles.container}>
         <div className={styles.contactsBlock}>
           <div className={styles.contactsItem}>
             <a href="mailto:test@gmail.com">test@gmail.com</a>

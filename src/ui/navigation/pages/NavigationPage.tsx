@@ -16,8 +16,11 @@ import { DropDownSettingsList } from '../components/DropDownSettingsList/DropDow
 import { ModalCloseContext, ModalShowContext, ModalStatusContext } from 'context/SettingsUserModalContext'
 import logo from 'assets/images/HomePage/Logo.svg'
 import configure from 'assets/images/configure.png'
+import cash from 'assets/images/purse.png'
 
 import styles from './NavidationPage.module.scss'
+import { GetCashModal } from '../components/GetCashModal/GetCashModal'
+import { GetCashModalCloseContext, GetCashModalShowContext } from 'context/GetCashModalContext'
 
 export const NavigationPage: React.VFC = () => {
   const dispatch = useDispatch()
@@ -26,12 +29,13 @@ export const NavigationPage: React.VFC = () => {
   const closeModal = useContext<() => void>(ModalCloseContext)
   const showModal = useContext<() => void>(ModalShowContext)
   const isActiveModal = useContext<boolean>(ModalStatusContext)
+  const showGetCashModal = useContext(GetCashModalShowContext)
+  const closeGetCashModal = useContext(GetCashModalCloseContext)
 
   const [showRegModal, setShowRegModall] = useState<boolean>(false)
   const [showLoginModal, setShowLoginModall] = useState<boolean>(false)
   const { userData } = useNavigationPage()
   const { userProfile } = useProfilePage()
-
 
   useEffect(() => {
     if (userData[0] !== undefined) {
@@ -65,7 +69,10 @@ export const NavigationPage: React.VFC = () => {
   })
 
   return (
-    <div onClick={closeModal} className={styles.navContainer}>
+    <div onClick={() => {
+      closeGetCashModal()
+      closeModal()
+    }} className={styles.navContainer}>
       {!isAuth &&
       <div className={styles.loginBlock}>
         <>
@@ -81,7 +88,15 @@ export const NavigationPage: React.VFC = () => {
 
       {isAuth &&
       <div className={styles.exitBlock}>
-        <div></div>
+        <div onClick={(e) => e.stopPropagation()} className={styles.moneyBlock}>
+          <div onClick={showGetCashModal} className={styles.money}>
+            <img src={cash} alt="$"/>
+            1000 $
+          </div>
+          <div  className={styles.cashContainer}>
+            <GetCashModal/>
+          </div>
+        </div>
         <div>
           <div className={styles.exitButtonContainer}>
             {userProfile[0] ? <div className={styles.userNameBlock}>
@@ -92,7 +107,7 @@ export const NavigationPage: React.VFC = () => {
                     e.stopPropagation()
                   }}>
                     <img onClick={showModal} className={styles.configureIcon} src={configure} alt="c"/>
-                    <div className={isActiveModal? styles.configureList : styles.hide}>
+                    <div className={isActiveModal ? styles.configureList : styles.hide}>
                       <DropDownSettingsList exit={exit}
                                             hideSettingsList={closeModal}/>
                     </div>

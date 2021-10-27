@@ -1,9 +1,8 @@
 .itemContainer {
- margin: 15px;
+  margin: 15px;
   width: 97.5%;
   display: grid;
   grid-template-columns: repeat(3, 33.33333333%);
-
 }
 
 .link {
@@ -11,14 +10,8 @@
   color: #383838;
 }
 
-
 .item {
-  //margin-bottom: 5px;
   border: 1px solid #e0e0e0;
-  //width: 50%;
-  //padding: 60% 50%;
-  //box-sizing: border-box;
-  //width: 100%;
   height: calc((40vw + 350px) * 0.6);
   max-height: 500px;
   position: relative;
@@ -36,9 +29,7 @@
     width: 97%;
     height: 50%;
     border-radius: 10px;
-
-
-
+    object-fit: cover;
   }
 
   &:hover {
@@ -96,3 +87,28 @@
   }
 }
 
+@media screen and (max-width: 950px) {
+  .itemContainer {
+    width: 96.5%;
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .itemContainer {
+    width: 96.5%;
+    display: block;
+  }
+
+  .item {
+    width: 97%;
+    height: calc((40vw + 350px) * 0.85);
+    max-height: 650px;
+
+    img {
+      position: absolute;
+      height: 65%;
+      object-fit: contain;
+    }
+  }
+}

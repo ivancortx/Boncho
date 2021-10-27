@@ -96,6 +96,12 @@
   display: none;
 }
 
+.cashContainer {
+  width: 185px;
+  position: relative;
+  margin-top: 20px;
+}
+
 @media screen and (max-width: 1150px) {
   .emailContainer {
     grid-template-columns: 25% 72%;

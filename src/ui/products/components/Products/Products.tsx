@@ -1,9 +1,9 @@
 import React from 'react'
-import { useCategoriesPage } from '../../hooks/useCategoriesPage'
+import {useCategoriesPage} from '../../hooks/useCategoriesPage'
 
 import styles from './Products.module.scss'
 import timer from '../../../../assets/images/timer.png'
-import { NavLink } from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 export const Products: React.VFC = () => {
   const { productsData } = useCategoriesPage()
@@ -35,11 +35,6 @@ export const Products: React.VFC = () => {
                     <div className={styles.priceData}><span>{product.seePrice} $</span></div>
                   </div>
                 </div>
-                {/*<NavLink className={styles.link} to={`/auctions-page/${product.auctionId}`}>*/}
-                {/*  <div className={styles.button}>*/}
-                {/*    <span>Посмотреть товар</span>*/}
-                {/*  </div>*/}
-                {/*</NavLink>*/}
               </div>
             </NavLink>
 
@@ -48,7 +43,6 @@ export const Products: React.VFC = () => {
         </div>
         :
         <div>
-          упс.. Ничего нет
         </div>}
     </>
   )

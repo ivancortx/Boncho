@@ -5,7 +5,7 @@ export const ModalCloseContext = createContext<() => void>(() => {})
 export const ModalStatusContext = createContext<boolean>(false)
 
 export const UserModalProvider: React.FC = ({ children }) => {
-  const [isActiveModal, setIsActiveModal] = useState<boolean>(true)
+  const [isActiveModal, setIsActiveModal] = useState<boolean>(false)
 
   const closeModal = () => {
    setIsActiveModal(false)

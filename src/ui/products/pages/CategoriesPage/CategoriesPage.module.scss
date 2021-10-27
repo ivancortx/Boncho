@@ -26,3 +26,15 @@
     }
   }
 }
+
+.activeItem {
+  height: 40px;
+
+  span {
+    cursor: pointer;
+    transition: padding-left linear .2s;
+    color: #82301b;
+    padding-left: 8px;
+
+  }
+}

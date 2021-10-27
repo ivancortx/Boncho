@@ -73,7 +73,28 @@
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 400px;
+  grid-template-columns: 1fr 250px;
+
+  .moneyBlock {
+    position: relative;
+    display: flex;
+    justify-content: right;
+    margin-top: 36px;
+
+    .money {
+      cursor: pointer;
+      font-size: 14px;
+      color: darkgreen;
+      font-weight: 400;
+
+      img {
+        width: 14px;
+        height: 14px;
+        margin-right: 4px;
+        margin-bottom: 3px;
+      }
+    }
+  }
 
   .exitButtonContainer {
     width: 100%;
@@ -107,12 +128,7 @@
       }
 
       .hide {
-        opacity: 0;
-        position: absolute;
-        top: 65px;
-        right: 10px;
-        z-index: 1000;
-        transition: opacity .2s;
+        display: none;
       }
 
     }
