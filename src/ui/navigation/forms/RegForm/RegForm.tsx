@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Form, Formik } from 'formik'
 import { auth } from 'firebase/firebase'
+import {useDispatch} from 'react-redux'
 
 import { validate } from './validate'
 import { TextlField } from '../LoginForm/TextlField/TextlField'
+import {addProfile} from 'ui/profile/store/action'
 
 import styles from './RegForm.module.scss'
-import {useDispatch} from "react-redux";
-import {addProfile} from "../../../profile/store/action";
 
 type Props = {
   closeModal: () => void

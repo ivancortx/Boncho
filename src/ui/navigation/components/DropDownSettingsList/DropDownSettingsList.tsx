@@ -14,6 +14,9 @@ type Props = {
 }
 
 export const DropDownSettingsList: React.VFC<Props> = ({ exit, hideSettingsList }) => {
+  const clearLocalStorage = () => {
+    localStorage.clear()
+  }
   return (
     <div className={styles.container}>
       <div className={styles.item}>
@@ -39,7 +42,7 @@ export const DropDownSettingsList: React.VFC<Props> = ({ exit, hideSettingsList 
         <div className={styles.icon}>
           <img src={outIcon} alt="u"/>
         </div>
-        <div className={styles.link}>
+        <div onClick={clearLocalStorage} className={styles.link}>
           Выйти
         </div>
       </div>

@@ -9,14 +9,17 @@ import { SeePriceModal } from '../SeePriceModal/SeePriceModal'
 import { clearCurrentPrice, fetchCurrentPrice } from '../../store/action'
 import { useProductPageWithData } from '../../hooks/useProductPageWithData'
 import { modificatedCurrentPrice } from 'api/api'
+import { fetchUserCash } from 'ui/navigation'
+import { UserDataType } from 'ui/navigation/interfaces/navigationPage/navigationPageInterfaces'
 
 import styles from './ProductPageWithData.module.scss'
 
 type Props = {
   productData: ProductDataType
+  userData: UserDataType[]
 }
 
-export const ProductPageWithData: React.VFC<Props> = ({ productData }) => {
+export const ProductPageWithData: React.VFC<Props> = ({ productData, userData }) => {
   const dispatch = useDispatch()
   const { currentPrice } = useProductPageWithData()
   const [openModal, setOpenModal] = useState<boolean>(false)
@@ -31,8 +34,6 @@ export const ProductPageWithData: React.VFC<Props> = ({ productData }) => {
       showCurrentPrice()
     }
   }, [currentPrice])
-
-  console.log(loader)
 
   const closeSeePriceModal = () => {
     setShowSeePriceModal(false)
@@ -63,8 +64,10 @@ export const ProductPageWithData: React.VFC<Props> = ({ productData }) => {
     }, 1000)
   }
 
-  const openCurrentPrice = () => {
+  const openCurrentPrice = async () => {
+    await modificatedCurrentPrice(productData.auctionId, productData.priceStep, productData.seePrice)
     dispatch(fetchCurrentPrice(productData.auctionId))
+    dispatch(fetchUserCash(userData[0].email))
     setLoader(true)
   }
 
@@ -73,7 +76,7 @@ export const ProductPageWithData: React.VFC<Props> = ({ productData }) => {
     setSeePricePeriod(true)
     setTimeout(() => {
       setSeePricePeriod(false)
-      modificatedCurrentPrice(productData.auctionId, productData.priceStep)
+
       dispatch(clearCurrentPrice())
     }, (Number(productData.stepTime)) * 1000)
   }
@@ -164,6 +167,7 @@ export const ProductPageWithData: React.VFC<Props> = ({ productData }) => {
         </div>
       </div>
       {showSeePriceModal && <SeePriceModal
+          seePrice={productData.seePrice}
           showSeePriceModal={showSeePriceModal}
           closeSeePriceModal={closeSeePriceModal}
           openCurrentPrice={openCurrentPrice}/>}

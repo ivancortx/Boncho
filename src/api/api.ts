@@ -21,14 +21,14 @@ export const loadCurrentPrice = (auctionId: string) => {
   return instance.get(`api/fetch-currentPrice/${auctionId}`)
 }
 
-export const modificatedCurrentPrice = (auctionId: string, stepPrice: string) => {
-  return instance.get(`api/modificated-currentPrice/${auctionId}&${stepPrice}`)
+export const modificatedCurrentPrice = (auctionId: string, stepPrice: string, seePrice: string) => {
+  return instance.get(`api/modificated-currentPrice/${auctionId}&${stepPrice}&${seePrice}`)
 }
 
 export const addNewProfile = (profile: object) => {
   return instance.post(`api/add-profile`, {
-      profile
-    }
+        profile
+      }
   )
 }
 
@@ -48,8 +48,8 @@ export const sendUserData = async (token: string) => {
 
 export const addNewAuction = (data: object) => {
   return instance.post(`api/add-auction`, {
-      data
-    }
+        data
+      }
   )
 }
 
@@ -59,7 +59,14 @@ export const loadProductsByCategory = (category: string) => {
 
 export const sendUserCash = (cash: number) => {
   return instance.post(`api/update-user-cash`, {
-      cash
-    }
-  )
+    cash
+  })
 }
+
+export const loadUserCash = (email: string) => {
+  return instance.post(`api/fetch-user-cash`, {
+    email
+  })
+}
+
+

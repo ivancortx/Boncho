@@ -35,6 +35,7 @@ export const fetchProduct = (auctionId: string) => async (dispatch: Dispatch<Act
 export const fetchCurrentPrice = (auctionId: string) => async (dispatch: Dispatch<ActionsTypes>) => {
   const response = await loadCurrentPrice(auctionId)
   const data = await response.data.currentPrice
+  console.log(data)
   dispatch(setCurrentPrice(data))
 }
 

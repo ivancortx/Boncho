@@ -1,0 +1,40 @@
+.getCash {
+  width: 183px;
+  text-align: center;
+  border: 2px solid darkgreen;
+  color: darkgreen;
+  background-color: white;
+  padding: 0 35px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .2s linear;
+  line-height: 18px;
+
+  &:hover {
+    border: 2px solid darkgreen;
+    background-color: darkgreen;
+    color: white;
+  }
+}
+
+.cashModal,
+.hide {
+  width: 183px;
+  height: 100px;
+  position: absolute;
+  z-index: 1000;
+  top: 50px;
+  left: 0;
+  border: 1px solid #d7d7d7;
+  box-shadow: 0 0 10px 0 rgba(50, 50, 50, 1);
+  background: white;
+  border-radius: 5px;
+  transition: opacity linear .2s;
+}
+
+.hide {
+  opacity: 0;
+  transition: opacity linear .2s;
+}

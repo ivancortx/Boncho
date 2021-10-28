@@ -1,8 +1,8 @@
-import { Dispatch } from 'react'
+import {Dispatch} from 'react'
 
-import { WRITE_CASH_DATA, WRITE_CURRENT_USER_DATA } from './types'
-import { sendUserCash, sendUserData } from 'api/api'
-import { UserDataType } from '../interfaces/navigationPage/navigationPageInterfaces'
+import {WRITE_CASH_DATA, WRITE_CURRENT_USER_DATA} from './types'
+import {loadUserCash, sendUserCash, sendUserData} from 'api/api'
+import {UserDataType} from '../interfaces/navigationPage/navigationPageInterfaces'
 
 export type ActionsTypes = WriteCurrentUserDataType | WriteCashDataType
 
@@ -42,8 +42,10 @@ export const updateUserRole = (token: string) => async (dispatch: Dispatch<Actio
 
 export const updateUserCash = (cash: number) => async (dispatch: Dispatch<ActionsTypes>) => {
   const response = await sendUserCash(cash)
+  dispatch(writeCashData(response.data.cash))
+}
 
-  console.log(response.data)
-  // const confirmCash: number = response.data.cash
-  // dispatch(writeCashData(confirmCash))
+export const fetchUserCash = (email: string) => async (dispatch: Dispatch<ActionsTypes>) => {
+  const response = await loadUserCash(email)
+  dispatch(writeCashData(response.data.cash))
 }

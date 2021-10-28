@@ -1,0 +1,28 @@
+.logoAndNavButtons {
+  position: relative;
+  height: 100%;
+  background-color: #404040;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 0 10px 0 rgba(50, 50, 50, 0.6);
+}
+
+.logo {
+  position: absolute;
+  height: 80px;
+  left: 50px;
+  top: -90px;
+}
+
+.navButtonsContainer {
+  padding-top: 7px;
+  display: grid;
+  grid-template-columns: 90px 115px 117px 100px 205px;
+  grid-gap: 30px;
+}
+
+.button {
+  a {
+    text-decoration: none;
+  }
+}

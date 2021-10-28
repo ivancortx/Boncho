@@ -8,9 +8,10 @@ type Props = {
   showSeePriceModal: boolean
   closeSeePriceModal: () => void
   openCurrentPrice: () => void
+  seePrice: string
 }
 
-export const SeePriceModal: React.VFC<Props> = ({ showSeePriceModal, closeSeePriceModal, openCurrentPrice }) => {
+export const SeePriceModal: React.VFC<Props> = ({ showSeePriceModal, closeSeePriceModal, openCurrentPrice, seePrice }) => {
   const startSeePriceProcess = () => {
     openCurrentPrice()
     closeSeePriceModal()
@@ -25,11 +26,12 @@ export const SeePriceModal: React.VFC<Props> = ({ showSeePriceModal, closeSeePri
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <div>Вы точно желаете просмотреть цену?</div>
+          <div className={styles.warning}>Стоимость просмотра цены {seePrice} $, Вы точно желаете прододжить?</div>
         </Modal.Header>
         <Modal.Body>
           <div className={styles.bodyContainer}>
-            <div><Button onClick={startSeePriceProcess} className={styles.btn} variant="outline-success">Да</Button></div>
+            <div><Button onClick={startSeePriceProcess} className={styles.btn} variant="outline-success">Да</Button>
+            </div>
             <div><Button onClick={closeSeePriceModal} className={styles.btn} variant="outline-danger">Нет</Button></div>
           </div>
         </Modal.Body>

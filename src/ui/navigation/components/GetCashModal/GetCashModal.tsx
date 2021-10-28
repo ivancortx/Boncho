@@ -1,16 +1,18 @@
 import React, { useContext } from 'react'
 
-import styles from './GetCashModal.module.scss'
-import { GetCashModalStatusContext } from "context/GetCashModalContext";
+import { GetCashModalCloseContext, GetCashModalStatusContext } from 'context/GetCashModalContext'
 import { validate } from './validate'
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from 'formik'
 import cn from 'classnames'
 import { useDispatch } from 'react-redux'
 import { updateUserCash } from '../../store/action'
 
+import styles from './GetCashModal.module.scss'
+
 export const GetCashModal: React.VFC = () => {
   const dispatch = useDispatch()
   const isActiveModal = useContext(GetCashModalStatusContext)
+  const closeGetCashModal = useContext(GetCashModalCloseContext)
 
   return (
     <>
@@ -23,6 +25,7 @@ export const GetCashModal: React.VFC = () => {
           validationSchema={validate}
           onSubmit={(values) => {
             dispatch(updateUserCash(Number(values.cash)))
+            setTimeout(closeGetCashModal, 1000)
           }}>
           {({ errors, touched }) => (
             <Form className={styles.form}>
