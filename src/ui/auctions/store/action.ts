@@ -19,6 +19,5 @@ export const writeAuctions = (data: AuctionDataType[]): writeAuctionsType => ({
 export const fetchAuctions = () => async (dispatch: Dispatch<ActionsTypes>) => {
   const response = await loadAuctions()
   const data = await response.data
-  console.log()
   dispatch(writeAuctions(data.auctions))
 }

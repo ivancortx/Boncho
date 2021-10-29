@@ -53,9 +53,6 @@ export const ItemsCarousel5Position: React.VFC = () => {
     }
   }
 
-
-
-
   return (
     <div className={styles.container}>
       <Carousel activeIndex={index} onSelect={handleSelect} prevLabel='' nextLabel=''

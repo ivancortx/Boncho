@@ -21,7 +21,6 @@ type Props = {
 
 export const MoneyAndNameUserBlock: React.VFC<Props> = ({ ...props }) => {
   const { showGetCashModal, userCash, userProfile, showModal, isActiveModal, closeModal, exit } = props
-  console.log(userCash)
   return (
     <div className={styles.exitBlock}>
       <div onClick={(e) => e.stopPropagation()} className={styles.moneyBlock}>
@@ -58,7 +57,7 @@ export const MoneyAndNameUserBlock: React.VFC<Props> = ({ ...props }) => {
                 </div>
               </div>}
             </div>
-            : <div></div>}
+            : <div className='mt-4' onClick={exit}>Выход</div>}
         </div>
       </div>
     </div>

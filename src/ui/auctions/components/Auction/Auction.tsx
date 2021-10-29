@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 import emptyImage from 'assets/images/empty_image.png'
 import timer from 'assets/images/timer.png'
+import sold_out from 'assets/images/sold_out.png'
 import { AuctionDataType } from '../../interfaces/AddProductPage/addProductPageInterfaces'
 
 import styles from "./Auction.module.scss"
@@ -15,10 +16,13 @@ export const Auction: React.VFC<Props> = ({ auct }) => {
   return <div className={styles.item} key={auct.auctionId}>
     <NavLink className={styles.photo} to={`/auctions-page/${auct.auctionId}`}>
       <div className={styles.photo}>
+        {!auct.isInStock && <img src={sold_out} className={styles.isInStock} alt={'sold out'}/>}
         {auct.photoUrlsData[0] ?
-          <img src={auct.photoUrlsData[0]} alt={'img'}/>
+          <img className={!auct.isInStock ? `${styles.image} ${styles.soldOut}` : styles.image}
+               src={auct.photoUrlsData[0]} alt={'img'}/>
           :
-          <img src={emptyImage} alt={'img'}/>
+          <img className={!auct.isInStock ? `${styles.image} ${styles.soldOut}` : styles.image}
+               src={emptyImage} alt={'img'}/>
         }
       </div>
     </NavLink>

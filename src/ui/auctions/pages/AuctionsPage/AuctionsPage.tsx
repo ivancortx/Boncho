@@ -13,7 +13,6 @@ export const AuctionsPage: React.VFC = () => {
   useEffect(() => {
     dispatch(fetchAuctions())
   }, [])
-
   return (
     <div className={styles.container}>
       <div className={styles.itemsContainer}>

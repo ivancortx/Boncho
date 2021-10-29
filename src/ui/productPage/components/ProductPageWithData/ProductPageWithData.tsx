@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import { Spinner } from 'react-bootstrap'
-import { useDispatch } from 'react-redux'
+import React, {useEffect, useState} from 'react'
+import {Spinner} from 'react-bootstrap'
+import {useDispatch} from 'react-redux'
 
-import { ProductDataType } from '../../interfaces/ProductPage/ProductPageInterfaces'
-import { Portal } from 'ui/productPage/components/Portal/Portal'
+import {ProductDataType} from '../../interfaces/ProductPage/ProductPageInterfaces'
+import {Portal} from 'ui/productPage/components/Portal/Portal'
 import emptyImage from 'assets/images/empty_image.png'
-import { SeePriceModal } from '../SeePriceModal/SeePriceModal'
-import { clearCurrentPrice, fetchCurrentPrice } from '../../store/action'
-import { useProductPageWithData } from '../../hooks/useProductPageWithData'
-import { modificatedCurrentPrice } from 'api/api'
-import { fetchUserCash } from 'ui/navigation'
-import { UserDataType } from 'ui/navigation/interfaces/navigationPage/navigationPageInterfaces'
+import sold_out from 'assets/images/sold_out.png'
+import {SeePriceModal} from '../SeePriceModal/SeePriceModal'
+import {buyProduct, clearCurrentPrice, fetchCurrentPrice} from '../../store/action'
+import {useProductPageWithData} from '../../hooks/useProductPageWithData'
+import {modificatedCurrentPrice} from 'api/api'
+import {fetchUserCash} from 'ui/navigation'
+import {UserDataType} from 'ui/navigation/interfaces/navigationPage/navigationPageInterfaces'
 
 import styles from './ProductPageWithData.module.scss'
 
@@ -19,9 +20,9 @@ type Props = {
   userData: UserDataType[]
 }
 
-export const ProductPageWithData: React.VFC<Props> = ({ productData, userData }) => {
+export const ProductPageWithData: React.VFC<Props> = ({productData, userData}) => {
   const dispatch = useDispatch()
-  const { currentPrice } = useProductPageWithData()
+  const {currentPrice} = useProductPageWithData()
   const [openModal, setOpenModal] = useState<boolean>(false)
   const [showSeePriceModal, setShowSeePriceModal] = useState<boolean>(false)
   const [seePricePeriod, setSeePricePeriod] = useState<boolean>(false)
@@ -81,96 +82,110 @@ export const ProductPageWithData: React.VFC<Props> = ({ productData, userData })
     }, (Number(productData.stepTime)) * 1000)
   }
 
+  const buyThisProduct = () => {
+    if (currentPrice !== '') {
+      dispatch(buyProduct(currentPrice, productData, userData[0]))
+    }
+  }
+
   return (
-    <div className={styles.container}>
-      <div className={styles.photoBlock}>
-        {openModal && <div className={styles.portal}>
-          <Portal openModal={openModal}
-                  closeModal={closeModal}
-                  photo={productData.photoUrlsData[0]}/>
-        </div>}
-        {productData.photoUrlsData[0] ?
-          <img onClick={() => photoHandler()} src={productData.photoUrlsData[0]} alt={productData.productName}/>
-          :
-          <img src={emptyImage} alt={'emptyImage'}/>
-        }
-      </div>
-      <div className={styles.contentBlock}>
-        <div className={styles.productTitle}>
-          {productData.productName}
+      <div className={styles.container}>
+        {!productData.isInStock && <img src={sold_out} className={styles.isInStock} />}
+        <div className={styles.photoBlock}>
+          {openModal && <div>
+            <Portal openModal={openModal}
+                    closeModal={closeModal}
+                    photo={productData.photoUrlsData[0]}/>
+          </div>}
+          {productData.photoUrlsData[0] ?
+              <img className={!productData.isInStock ? `${styles.image} ${styles.soldOut}` : styles.image}
+                onClick={() => photoHandler()} src={productData.photoUrlsData[0]} alt={productData.productName}/>
+              :
+              <img className={styles.image} src={emptyImage} alt={'emptyImage'}/>
+          }
         </div>
-        <div className='mt-3 mb-3'>
+        <div className={styles.contentBlock}>
+          <div className={styles.productTitle}>
+            {productData.productName}
+          </div>
+          <div className='mt-3 mb-3'>
+            <div className={styles.stringContainer}>
+              <div className={styles.stringContainer__name}>Категория</div>
+              <div className={styles.stringContainer__content}>{productData.category}</div>
+            </div>
+            <div className={styles.stringContainer}>
+              <div className={styles.stringContainer__name}>Автор</div>
+              <div className={styles.stringContainer__content}>{productData.userEmail}</div>
+            </div>
+          </div>
           <div className={styles.stringContainer}>
-            <div className={styles.stringContainer__name}>Категория</div>
-            <div className={styles.stringContainer__content}>{productData.category}</div>
+            <div className={styles.stringContainer__name}>Стоимость просмотра цены</div>
+            <div className={styles.stringContainer__content}>{productData.seePrice} $</div>
           </div>
           <div className={styles.stringContainer}>
-            <div className={styles.stringContainer__name}>Автор</div>
-            <div className={styles.stringContainer__content}>{productData.userEmail}</div>
+            <div className={styles.stringContainer__name}>Стартовая цена</div>
+            <div className={styles.stringContainer__content}>{productData.startPrice} $</div>
           </div>
-        </div>
-        <div className={styles.stringContainer}>
-          <div className={styles.stringContainer__name}>Стоимость просмотра цены</div>
-          <div className={styles.stringContainer__content}>{productData.seePrice} $</div>
-        </div>
-        <div className={styles.stringContainer}>
-          <div className={styles.stringContainer__name}>Стартовая цена</div>
-          <div className={styles.stringContainer__content}>{productData.startPrice} $</div>
-        </div>
-        <div className={styles.stringContainer}>
-          <div className={styles.stringContainer__name}>Шаг цены</div>
-          <div className={styles.stringContainer__content}>{productData.priceStep} $</div>
-        </div>
-        <div className={styles.stringContainer}>
-          <div className={styles.stringContainer__name}>Шаг времени</div>
-          <div className={styles.stringContainer__content}>{productData.stepTime} сек</div>
-        </div>
-        <div className={styles.buttonPriceBlock}>
-          <div className={styles.currentPriceBlock}>
-            <div className={styles.currentPriceBlock__title}>
-              <div className='mt-1'>Текущая цена</div>
-            </div>
-            <div className={styles.currentPriceBlock__price}>
-              {seePricePeriod ?
-                <div className='mt-1'>{currentPrice}</div>
-                :
-                <>
-                  {loader ?
-                    <div className='pt-2'><Spinner animation="grow" variant="secondary" size="sm"/></div>
+          <div className={styles.stringContainer}>
+            <div className={styles.stringContainer__name}>Шаг цены</div>
+            <div className={styles.stringContainer__content}>{productData.priceStep} $</div>
+          </div>
+          <div className={styles.stringContainer}>
+            <div className={styles.stringContainer__name}>Шаг времени</div>
+            <div className={styles.stringContainer__content}>{productData.stepTime} сек</div>
+          </div>
+          <div className={productData.isInStock ? styles.buttonPriceBlock : `${styles.buttonPriceBlock} ${styles.hide}`}>
+            <div className={styles.currentPriceBlock}>
+              <div className={styles.currentPriceBlock__title}>
+                <div className='mt-1'>Текущая цена</div>
+              </div>
+              <div className={styles.currentPriceBlock__price}>
+                {seePricePeriod ?
+                    <div className='mt-1'>{currentPrice}</div>
                     :
-                    <div className='mt-1'>хххх</div>
-                  }
-                </>
-              }
-            </div>
-            <div className={styles.currentPriceBlock__timeStep}>
-              {seePricePeriod ?
-                <div className='mt-1'>{timerSeconds} сек</div>
-                :
-                <>
-                  {loader ?
-                    <div className='pt-2'><Spinner animation="grow" variant="secondary" size="sm"/></div>
+                    <>
+                      {loader ?
+                          <div className='pt-2'><Spinner animation="grow" variant="secondary" size="sm"/></div>
+                          :
+                          <div className='mt-1'>хххх</div>
+                      }
+                    </>
+                }
+              </div>
+              <div className={styles.currentPriceBlock__timeStep}>
+                {seePricePeriod ?
+                    <div className='mt-1'>{timerSeconds} сек</div>
                     :
-                    <div className='mt-1'>{productData.stepTime} сек</div>
-                  }
-                </>
-              }
+                    <>
+                      {loader ?
+                          <div className='pt-2'><Spinner animation="grow" variant="secondary" size="sm"/></div>
+                          :
+                          <div className='mt-1'>{productData.stepTime} сек</div>
+                      }
+                    </>
+                }
+              </div>
             </div>
+            {seePricePeriod ?
+                <div onClick={buyThisProduct} className={styles.buttonBlock}>
+                  Купить
+                </div>
+                :
+                <div onClick={openSeePriceModal} className={styles.buttonBlock}>
+                  Посмотреть цену
+                </div>
+            }
           </div>
-          <div onClick={openSeePriceModal} className={styles.buttonBlock}>
-            Посмотреть цену
+          <div className={styles.descriptionBlock}>
+            <div className={styles.descriptionBlock__title}>Описание:</div>
+            <div className={styles.descriptionBlock__content}>{productData.description}</div>
           </div>
         </div>
-        <div className={styles.descriptionBlock}>
-          <div className={styles.descriptionBlock__title}>Описание:</div>
-          <div className={styles.descriptionBlock__content}>{productData.description}</div>
-        </div>
+        {showSeePriceModal && <SeePriceModal
+            seePrice={productData.seePrice}
+            showSeePriceModal={showSeePriceModal}
+            closeSeePriceModal={closeSeePriceModal}
+            openCurrentPrice={openCurrentPrice}/>}
       </div>
-      {showSeePriceModal && <SeePriceModal
-          seePrice={productData.seePrice}
-          showSeePriceModal={showSeePriceModal}
-          closeSeePriceModal={closeSeePriceModal}
-          openCurrentPrice={openCurrentPrice}/>}
-    </div>
   )
 }

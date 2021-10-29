@@ -2,7 +2,9 @@ import { Dispatch } from 'react'
 
 import { FETCH_CURRENT_PRICE, FETCH_PRODUCT } from './types'
 import { ProductDataType } from '../interfaces/ProductPage/ProductPageInterfaces'
-import { loadCurrentPrice, loadProduct } from 'api/api'
+import { buyCurrentProduct, loadCurrentPrice, loadProduct } from 'api/api'
+import { UserDataType } from "../../navigation/interfaces/navigationPage/navigationPageInterfaces";
+import { fetchUserCash } from '../../navigation'
 
 export type ActionsTypes = SetProductType | SetCurrentPriceType
 
@@ -21,7 +23,7 @@ export const setProduct = (data: ProductDataType[]): SetProductType => ({
   data
 })
 
-export const  setCurrentPrice = (data: string) : SetCurrentPriceType => ({
+export const setCurrentPrice = (data: string): SetCurrentPriceType => ({
   type: FETCH_CURRENT_PRICE,
   data
 })
@@ -35,7 +37,6 @@ export const fetchProduct = (auctionId: string) => async (dispatch: Dispatch<Act
 export const fetchCurrentPrice = (auctionId: string) => async (dispatch: Dispatch<ActionsTypes>) => {
   const response = await loadCurrentPrice(auctionId)
   const data = await response.data.currentPrice
-  console.log(data)
   dispatch(setCurrentPrice(data))
 }
 
@@ -43,9 +44,14 @@ export const clearCurrentPrice = () => (dispatch: Dispatch<ActionsTypes>) => {
   dispatch(setCurrentPrice(''))
 }
 
-// export const updatePhotos = (title: string, data: object, token: string) => async (dispatch: any) => {
-//   await sendPhoto(title, data, token)
-//     .then (response => dispatch(fetchPhotos(title))
-//     )
-//
-// }
+export const buyProduct = (currentPrice: string, productData: ProductDataType, userData: UserDataType) =>
+  async (dispatch: Dispatch<ActionsTypes>) => {
+    const response = await buyCurrentProduct(currentPrice, productData, userData)
+    const data = await response.data
+    if (data.status === 'good') {
+      // @ts-ignore
+      dispatch(fetchProduct(productData.auctionId))
+      // @ts-ignore
+      dispatch(fetchUserCash(userData.email))
+    }
+  }

@@ -11,6 +11,7 @@ export type ProductDataType = {
   percentTimeStep: string
   startDate: Date
   finishDate: Date
-  photoUrlsData: string[],
+  photoUrlsData: string[]
   auctionId: string
+  isInStock: boolean
 }

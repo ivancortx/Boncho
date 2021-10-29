@@ -1,4 +1,6 @@
 import axios from 'axios'
+import {ProductDataType} from "../ui/productPage/interfaces/ProductPage/ProductPageInterfaces";
+import {UserDataType} from "../ui/navigation/interfaces/navigationPage/navigationPageInterfaces";
 
 const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
@@ -68,5 +70,15 @@ export const loadUserCash = (email: string) => {
     email
   })
 }
+
+export const buyCurrentProduct = (currentPrice: string, productData: ProductDataType, userData: UserDataType) => {
+  return instance.post(`api/buy-product`, {
+    currentPrice,
+    productData,
+    userData
+  })
+}
+
+
 
 

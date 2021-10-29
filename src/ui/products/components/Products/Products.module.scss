@@ -22,7 +22,16 @@
   transition: box-shadow .3s;
   cursor: pointer;
 
-  img {
+  .isInStock {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    width: 180px;
+    height: 100px;
+    z-index: 1000;
+  }
+
+  .image {
     position: absolute;
     right: 1.5%;
     top: 4%;
@@ -30,6 +39,11 @@
     height: 50%;
     border-radius: 10px;
     object-fit: cover;
+  }
+
+  .soldOut {
+    filter: grayscale(100%);
+    opacity: .7;
   }
 
   &:hover {

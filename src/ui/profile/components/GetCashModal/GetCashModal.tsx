@@ -22,7 +22,6 @@ export const GetCashModal: React.VFC = () => {
               }}
               validationSchema={validate}
               onSubmit={(values) => {
-                console.log(values)
               }}>
             <Form>
               <Field name="cash" type="input"/>

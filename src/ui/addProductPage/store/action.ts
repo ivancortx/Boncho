@@ -45,7 +45,8 @@ export const addAuction = (formValues: formValuesType, startDate: Date|null, fin
     startDate,
     finishDate,
     photoUrlsData: photoUrlsData,
-    auctionId
+    auctionId,
+    isInStock: true
   }
    addNewAuction(obj)
 }

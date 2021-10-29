@@ -57,7 +57,6 @@ export const NavigationPage: React.VFC = () => {
     Cookies.remove('token')
     if (setIsAuth) setIsAuth(false)
   }
-  console.log(isAuth)
 
   return (
       <div onClick={() => {
