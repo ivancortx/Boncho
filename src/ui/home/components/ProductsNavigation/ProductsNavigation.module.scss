@@ -2,7 +2,7 @@
   height: 25px;
   margin: 15px 0 0 20px;
   display: flex;
-  padding-top: 12px;
+  padding-top: 15px;
 }
 
 .button {
@@ -16,7 +16,7 @@
     transition: color 0.4s;
   }
 
-  &:hover a{
-    color: #afafaf;
-  }
+  //&:hover a{
+  //  color: #afafaf;
+  //}
 }

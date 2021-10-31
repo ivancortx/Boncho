@@ -5,7 +5,7 @@ const numberOnlyReg: RegExp = /^[0-9]*$/
 export const validate = Yup.object({
   productName: Yup.string()
     .min(4, 'Должно быть не менее 4 символов')
-    .max(15, 'Должно быть не более 15 символов')
+    .max(35, 'Должно быть не более 35 символов')
     .required('Поле не должно быть пустым'),
   category: Yup.string()
     .max(50, 'Должно быть не более 50 символов')

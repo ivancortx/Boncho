@@ -1,7 +1,7 @@
 .container {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(10, 120px);
+  grid-template-columns: repeat(4, 120px);
   grid-gap: .3vw;
 }
 
@@ -16,4 +16,10 @@
   border-radius: 7px;
   width: 120px;
   height: 80px;
+}
+
+@media screen and (max-width: 700px) {
+  .container {
+    display: block;
+  }
 }

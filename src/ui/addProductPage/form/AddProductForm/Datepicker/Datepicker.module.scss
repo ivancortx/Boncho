@@ -25,3 +25,20 @@
   color: red;
   font-size: 0.8em;
 }
+
+@media screen and (max-width: 930px) {
+  .container {
+    grid-template-columns: 44.2% 44.2%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .container {
+    display: block;
+    width: 90%;
+  }
+
+  .dateDatepicker {
+    margin-bottom: 15px;
+  }
+}

@@ -27,6 +27,7 @@ export const AddProductForm: React.VFC = () => {
   const [isUploaded, setIsUploaded] = useState<boolean>(true)
   const [startDate, setStartDate] = useState<Date|null>(null);
   const [finishDate, setFinishDate] = useState<Date|null>(null);
+  const [isDownButton, setIsDownButton] = useState<boolean>(false)
 
   useEffect(() => {
     dispatch(fetchCategories())
@@ -65,11 +66,16 @@ export const AddProductForm: React.VFC = () => {
       onSubmit={(values) => {
         if (startDate !== null && finishDate !== null) {
           dispatch(addAuction(values, startDate, finishDate, photoUrlsData, auctionId, userData))
+          setIsDownButton(true)
         }
       }}>
       <div className={styles.container}>
         <Form className={styles.form}>
           <div className={styles.auctionHeader}><h3>Создание аукциона</h3></div>
+          <div className={styles.infoBlock}>
+            <div className={styles.header}><h4>Торги на понижение со скрытой ценой</h4></div>
+            <div className={styles.text}>Тип аукциона, в котором объявленная продавцом высокая цена на лот постепенно снижается до той, на которую согласится первый покупатель. Этот покупатель и становится победителем аукциона и обладателем лота. Просмотр текущей цены является платным</div>
+          </div>
           <div className={styles.generalCharacteristic}>
             <TextField label={'Название продукта'} name={'productName'} type={'input'}/>
             <SelectCategoryField categoriesData={categoriesData} label={'Выберите категорию продукта'} name={'category'} type={'input'}/>
@@ -98,6 +104,7 @@ export const AddProductForm: React.VFC = () => {
                            setStartDate={setStartDate} setFinishDate={setFinishDate}/>
           <div className={styles.btn}>
             <button type='submit' className="btn btn-success">Опубликовать</button>
+            <div className={styles.messageAddProduct}>{isDownButton && <span>Товар успешно добавлен!</span>}</div>
           </div>
         </Form>
       </div>

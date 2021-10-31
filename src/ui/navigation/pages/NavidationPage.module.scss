@@ -7,15 +7,3 @@
   background-color: #efeeee;
   box-shadow: 0 10px 10px 0 rgba(50, 50, 50, 0.2);
 }
-
-@media screen and (max-width: 950px) {
-  .navContainer {
-    grid-template-rows: 100px 90px;
-
-    .navButtonsContainer {
-      padding-top: 0;
-      grid-template-columns: repeat(3, 150px);
-      grid-gap: 5px;
-    }
-  }
-}

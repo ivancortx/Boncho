@@ -21,9 +21,6 @@ export const LogoAndNavButtons: React.VFC = () => (
           <Link to={Routes.Products}><Button text={'Категории'}/></Link>
         </div>
         <div className={styles.button}>
-          <Link to={Routes.Home}><Button text={'Новости'}/></Link>
-        </div>
-        <div className={styles.button}>
           <Link to={Routes.AddProductPage}><Button text={'Добавить аукцион'}/></Link>
         </div>
       </div>

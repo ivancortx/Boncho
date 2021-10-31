@@ -1,6 +1,7 @@
 .container {
   background-color: white;
-  width: 1400px;
+  //max-width: 1400px;
+  //width: 97%;
   margin: 20px;
   padding-top: 1vw;
   text-align: center;
@@ -10,11 +11,28 @@
 }
 
 .form {
+  position: relative;
   width: 100%;
-  min-width: 400px;
+  //min-width: 400px;
   text-align: center;
   margin-left: 5%;
   margin-bottom: 10px;
+}
+
+.infoBlock {
+  color: #8e8e8e;
+  font-style: italic;
+  position: absolute;
+  width: 45%;
+  text-align: left;
+  top: 65px;
+  left: 45%;
+
+  .header {
+  text-align: center;
+  }
+
+  .text {}
 }
 
 .generalCharacteristic {
@@ -22,7 +40,7 @@
 }
 
 .fieldName {
-  width: 100%;
+  //width: 100%;
   text-align: left;
 }
 
@@ -85,10 +103,60 @@
 }
 
 .btn {
+  position: relative;
   width: 90%;
   margin-top: 2vw;
 }
 
-@media screen and (max-width: 680px) {
+.messageAddProduct {
+  position: absolute;
+  top: 5px;
+  color: darkgreen;
+  font-style: italic;
+  left: 63%;
+}
 
+@media screen and (max-width: 930px) {
+  .priceParameters {
+    grid-template-columns: 44.2% 44.2%;
+  }
+
+  .stepTimeParameters {
+    grid-template-columns: 44.2% 44.2%;
+  }
+
+  .btn {
+    margin-top: 3vw;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .priceParameters {
+    display: block;
+    width: 90%;
+  }
+
+  .stepTimeParameters {
+    display: block;
+    width: 90%;
+  }
+
+  .btn {
+    margin-top: 3vw;
+  }
+
+  .generalCharacteristic {
+    width: 90%;
+  }
+
+  .infoBlock {
+    display: none;
+  }
+
+  .messageAddProduct {
+    top: -5px;
+    color: darkgreen;
+    font-style: italic;
+    left: 63%;
+  }
 }

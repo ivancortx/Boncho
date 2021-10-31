@@ -9,14 +9,23 @@ export const ProductsNavigation: React.VFC = () => {
     <div>
       <div className={styles.navButtonsContainer}>
         <div className={styles.button}>
-          <Link to={Routes.Home}>Новые</Link>
+          <div>Новые</div>
         </div>
         <div className={styles.button}>
-          <Link to={Routes.Home}>Популярные</Link>
+          <div>Популярные</div>
         </div>
         <div className={styles.button}>
-          <Link to={Routes.Home}>Скоро заканчиваются</Link>
+          <div>Скоро заканчиваются</div>
         </div>
+        {/*<div className={styles.button}>*/}
+        {/*  <Link to={Routes.Home}>Новые</Link>*/}
+        {/*</div>*/}
+        {/*<div className={styles.button}>*/}
+        {/*  <Link to={Routes.Home}>Популярные</Link>*/}
+        {/*</div>*/}
+        {/*<div className={styles.button}>*/}
+        {/*  <Link to={Routes.Home}>Скоро заканчиваются</Link>*/}
+        {/*</div>*/}
       </div>
     </div>
   )
