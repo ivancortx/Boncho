@@ -1,20 +1,20 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Cookies from 'js-cookie'
-import {useDispatch} from 'react-redux'
-import {RegModal} from '../components/RegModal/RegModal'
-import {LoginModal} from '../components/LoginModal/LoginModal'
+import { useDispatch } from 'react-redux'
+import { RegModal } from '../components/RegModal/RegModal'
+import { LoginModal } from '../components/LoginModal/LoginModal'
 import firebaseApp from 'firebase/firebase'
-import {AuthUpdateContext, IsAuthContext} from 'context/AuthContext'
-import {useNavigationPage} from '../hooks/useNavigationPage/useNavigationPage'
-import {useProfilePage} from 'ui/profile/hooks/useProfilePage'
-import {fetchProfileData} from 'ui/profile/store/action'
-import {ModalCloseContext, ModalShowContext, ModalStatusContext} from 'context/SettingsUserModalContext'
+import { AuthUpdateContext, IsAuthContext } from 'context/AuthContext'
+import { useNavigationPage } from '../hooks/useNavigationPage/useNavigationPage'
+import { useProfilePage } from 'ui/profile/hooks/useProfilePage'
+import { fetchProfileData } from 'ui/profile/store/action'
+import { ModalCloseContext, ModalShowContext, ModalStatusContext } from 'context/SettingsUserModalContext'
 
-import {GetCashModalCloseContext, GetCashModalShowContext} from 'context/GetCashModalContext'
-import {fetchUserCash} from '../store/action'
-import {LoginAndRegistrationBlock} from '../components/LoginAndRegistrationBlock/LoginAndRegistrationBlock'
-import {MoneyAndNameUserBlock} from '../components/MoneyAndNameUserBlock/MoneyAndNameUserBlock'
-import {LogoAndNavButtons} from '../components/LogoAndNavButtons/LogoAndNavButtons'
+import { GetCashModalCloseContext, GetCashModalShowContext } from 'context/GetCashModalContext'
+import { clearUserData, fetchUserCash } from '../store/action'
+import { LoginAndRegistrationBlock } from '../components/LoginAndRegistrationBlock/LoginAndRegistrationBlock'
+import { MoneyAndNameUserBlock } from '../components/MoneyAndNameUserBlock/MoneyAndNameUserBlock'
+import { LogoAndNavButtons } from '../components/LogoAndNavButtons/LogoAndNavButtons'
 
 import styles from './NavidationPage.module.scss'
 import { log } from 'util'
@@ -31,8 +31,8 @@ export const NavigationPage: React.VFC = () => {
 
   const [showRegModal, setShowRegModall] = useState<boolean>(false)
   const [showLoginModal, setShowLoginModall] = useState<boolean>(false)
-  const {userData, userCash} = useNavigationPage()
-  const {userProfile} = useProfilePage()
+  const { userData, userCash } = useNavigationPage()
+  const { userProfile } = useProfilePage()
 
   const openRegModal = () => setShowRegModall(true)
   const openLoginModal = () => setShowLoginModall(true)
@@ -56,27 +56,28 @@ export const NavigationPage: React.VFC = () => {
     firebaseApp.auth().signOut()
     Cookies.remove('token')
     if (setIsAuth) setIsAuth(false)
+    dispatch(clearUserData())
   }
 
   return (
-      <div onClick={() => {
-        closeGetCashModal()
-        closeModal()
-      }} className={styles.navContainer}>
-        {!isAuth && <LoginAndRegistrationBlock openLoginModal={openLoginModal} openRegModal={openRegModal}/>}
-        {isAuth &&
-        <MoneyAndNameUserBlock closeModal={closeModal} exit={exit} isActiveModal={isActiveModal}
-                               showGetCashModal={showGetCashModal} showModal={showModal} userCash={userCash}
-                               userProfile={userProfile}/>}
-        <LogoAndNavButtons/>
-        {showRegModal && <div className={styles.portal}>
-          <RegModal showModal={showRegModal}
-                    closeModal={closeRegModal}/>
-        </div>}
-        {showLoginModal && <div className={styles.portal}>
-          <LoginModal showModal={showLoginModal}
-                      closeModal={closeLoginModal}/>
-        </div>}
-      </div>
+    <div onClick={() => {
+      closeGetCashModal()
+      closeModal()
+    }} className={styles.navContainer}>
+      {!isAuth && <LoginAndRegistrationBlock openLoginModal={openLoginModal} openRegModal={openRegModal}/>}
+      {isAuth &&
+      <MoneyAndNameUserBlock closeModal={closeModal} exit={exit} isActiveModal={isActiveModal}
+                             showGetCashModal={showGetCashModal} showModal={showModal} userCash={userCash}
+                             userProfile={userProfile}/>}
+      <LogoAndNavButtons/>
+      {showRegModal && <div className={styles.portal}>
+        <RegModal showModal={showRegModal}
+                  closeModal={closeRegModal}/>
+      </div>}
+      {showLoginModal && <div className={styles.portal}>
+        <LoginModal showModal={showLoginModal}
+                    closeModal={closeLoginModal}/>
+      </div>}
+    </div>
   )
 }

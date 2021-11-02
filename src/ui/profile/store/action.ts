@@ -21,7 +21,7 @@ export const addProfile = (formValues: ProfileDataType, email: string, photoUrl:
   const obj = {
     email: email,
     login: formValues.login,
-    name: formValues.name,
+    name: formValues.login,
     secondName: formValues.secondName,
     photoUrl: photoUrl
   }

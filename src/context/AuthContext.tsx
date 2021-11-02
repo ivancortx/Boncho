@@ -19,6 +19,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   const checkUserAuth = async (token: string) => {
     firebaseApp.auth().onAuthStateChanged(user => {
       if (user) {
+
         dispatch(updateUserRole(token))
         setIsAuth(true)
       } else Cookies.remove('token')
@@ -29,7 +30,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     if (cookieToken) {
       checkUserAuth(cookieToken)
     }
-  }, [cookieToken])
+  }, [cookieToken, token])
 
   return (
     <IsAuthContext.Provider value={isAuth}>

@@ -7,7 +7,6 @@ import { DropDownSettingsList } from '../DropDownSettingsList/DropDownSettingsLi
 import { ProfileDataType } from 'ui/profile/interfaces/PrfilePageInterfaces'
 
 import styles from './MoneyAndNameUserBlock.module.scss'
-import { log } from 'util'
 
 type Props = {
   showGetCashModal: () => void

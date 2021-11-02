@@ -1,10 +1,10 @@
 import {Dispatch} from 'react'
 
-import {WRITE_CASH_DATA, WRITE_CURRENT_USER_DATA} from './types'
+import { CLEAN_USER_DATA, WRITE_CASH_DATA, WRITE_CURRENT_USER_DATA } from './types'
 import {loadUserCash, sendUserCash, sendUserData} from 'api/api'
 import {UserDataType} from '../interfaces/navigationPage/navigationPageInterfaces'
 
-export type ActionsTypes = WriteCurrentUserDataType | WriteCashDataType
+export type ActionsTypes = WriteCurrentUserDataType | WriteCashDataType | CleanUserDataType
 
 type WriteCurrentUserDataType = {
   type: typeof WRITE_CURRENT_USER_DATA
@@ -14,6 +14,11 @@ type WriteCurrentUserDataType = {
 type WriteCashDataType = {
   type: typeof WRITE_CASH_DATA
   data: number
+}
+
+type CleanUserDataType = {
+  type: typeof CLEAN_USER_DATA
+  data: []
 }
 
 export const writeCurrentUserData = (data: UserDataType): WriteCurrentUserDataType => ({
@@ -27,6 +32,7 @@ export const writeCashData = (data: number): WriteCashDataType => ({
 })
 
 export const updateUserRole = (token: string) => async (dispatch: Dispatch<ActionsTypes>) => {
+
   const response = await sendUserData(token)
   const newObj: UserDataType = {
     auth_time: response.data.auth_time,
@@ -40,6 +46,11 @@ export const updateUserRole = (token: string) => async (dispatch: Dispatch<Actio
   dispatch(writeCurrentUserData(newObj))
 }
 
+export const cleanUserData = () => ({
+  type: CLEAN_USER_DATA,
+  data: []
+})
+
 export const updateUserCash = (cash: number) => async (dispatch: Dispatch<ActionsTypes>) => {
   const response = await sendUserCash(cash)
   dispatch(writeCashData(response.data.cash))
@@ -47,5 +58,11 @@ export const updateUserCash = (cash: number) => async (dispatch: Dispatch<Action
 
 export const fetchUserCash = (email: string) => async (dispatch: Dispatch<ActionsTypes>) => {
   const response = await loadUserCash(email)
+  debugger
   dispatch(writeCashData(response.data.cash))
+}
+
+export const clearUserData = () => async (dispatch: Dispatch<ActionsTypes>) => {
+  // @ts-ignore
+  dispatch(cleanUserData())
 }

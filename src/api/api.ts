@@ -1,13 +1,12 @@
 import axios from 'axios'
 import {ProductDataType} from "../ui/productPage/interfaces/ProductPage/ProductPageInterfaces";
 import {UserDataType} from "../ui/navigation/interfaces/navigationPage/navigationPageInterfaces";
+import Cookies from 'js-cookie'
 
 const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
-  withCredentials: true,
   headers: {
-    'Content-Type': 'application/json;charset=UTF-8',
-    "Access-Control-Allow-Origin": "https://shop-6d93c.web.app"
+    token: Cookies.get('token')
   }
 })
 
@@ -40,12 +39,16 @@ export const loadProfile = (email: string) => {
 
 export const loadCategories = async () => {
   return instance.get(`api/fetch-categories`, {
-    withCredentials: false
+    headers: {
+      token: Cookies.get('token')
+      }
   })
 }
 
 export const sendUserData = async (token: string) => {
-  return instance.post('api/save-user')
+  return instance.post('api/save-user', {
+    token
+  })
 }
 
 export const addNewAuction = (data: object) => {
@@ -56,7 +59,11 @@ export const addNewAuction = (data: object) => {
 }
 
 export const loadProductsByCategory = (category: string) => {
-  return instance.get(`api/fetch-products-by-category/${category}`)
+  return instance.get(`api/fetch-products-by-category/${category}`, {
+    headers: {
+      token: Cookies.get('token')
+    }
+  })
 }
 
 export const sendUserCash = (cash: number) => {

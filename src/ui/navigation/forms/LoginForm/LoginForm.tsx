@@ -5,7 +5,7 @@ import Cookies from 'js-cookie'
 import firebase from 'firebase/compat'
 
 import firebaseApp, { auth } from 'firebase/firebase'
-import { updateUserRole } from '../../store/action'
+import { fetchUserCash, updateUserRole } from '../../store/action'
 import { validate } from './validate'
 import { AuthUpdateContext, AuthUpdateTokenContext, IsAuthContext } from 'context/AuthContext'
 import { TextlField } from './TextlField/TextlField'
@@ -22,6 +22,7 @@ export const LoginForm: React.VFC<Props> = ({ closeModal }) => {
   const setToken = useContext(AuthUpdateTokenContext)
   const isAuth = useContext(IsAuthContext)
   const [errorMessage, setErrorMessage] = useState('')
+
 
   useEffect(() => {
     if (isAuth) {
@@ -43,12 +44,13 @@ export const LoginForm: React.VFC<Props> = ({ closeModal }) => {
                   setIsAuth!(true)
                   setToken!(idToken)
                   Cookies.set('token', idToken, { expires: 5 })
-                  return dispatch(updateUserRole(idToken))
+                  dispatch(updateUserRole(idToken))
+                  // @ts-ignore
                 })
             })
           })
           .catch((error) => {
-           setErrorMessage('Логин и пароль не совпадают!')
+            setErrorMessage('Логин и пароль не совпадают!')
           })
       })
   }

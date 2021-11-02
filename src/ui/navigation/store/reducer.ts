@@ -1,4 +1,4 @@
-import { WRITE_CASH_DATA, WRITE_CURRENT_USER_DATA } from './types'
+import { CLEAN_USER_DATA, WRITE_CASH_DATA, WRITE_CURRENT_USER_DATA } from './types'
 import { ActionsTypes } from './action'
 import { UserDataType } from '../interfaces/navigationPage/navigationPageInterfaces'
 
@@ -23,6 +23,11 @@ export const reducer = (state = initialState, action: ActionsTypes): InitialStat
       return {
         ...state,
         currentCash: action.data
+      }
+    case CLEAN_USER_DATA:
+      return {
+        ...state,
+        userData: []
       }
     default:
       return state
