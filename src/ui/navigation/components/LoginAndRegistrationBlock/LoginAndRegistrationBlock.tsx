@@ -1,5 +1,8 @@
 import React from 'react'
 
+import login from 'assets/images/login.png'
+import registration from 'assets/images/registration.png'
+
 import styles from './LoginAndRegistrationBlock.module.scss'
 
 type Props = {
@@ -11,12 +14,8 @@ export const LoginAndRegistrationBlock: React.VFC<Props> = ({openLoginModal, ope
   return (
       <div className={styles.loginBlock}>
         <>
-          <div onClick={openLoginModal} className={styles.enterButton}>
-            Вход
-          </div>
-          <div onClick={openRegModal} className={styles.enterButton}>
-            Регистрация
-          </div>
+          <img onClick={openLoginModal} src={login} className={styles.button} alt={'log'}/>
+          <img onClick={openRegModal} src={registration} className={styles.button} alt={'reg'}/>
         </>
       </div>
   )

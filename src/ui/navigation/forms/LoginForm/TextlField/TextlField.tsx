@@ -16,7 +16,7 @@ export const TextlField: React.VFC<Props> = ({ ...props }) => {
     <div className={styles.label}>
       <label htmlFor={field.name}>{props.label}</label>
       <input
-        className={`form-control shadow-none ${meta.touched && meta.error && 'is-invalid'}`}
+        className={`form-control shadow-none ${meta.touched && meta.error && 'is-invalid'} ${styles.input}`}
         {...field} {...props}
         autoComplete='off'
       />
