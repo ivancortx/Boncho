@@ -5,7 +5,7 @@ import Cookies from 'js-cookie'
 import firebase from 'firebase/compat'
 
 import firebaseApp, { auth } from 'firebase/firebase'
-import { fetchUserCash, updateUserRole } from '../../store/action'
+import { updateUserRole } from '../../store/action'
 import { validate } from './validate'
 import { AuthUpdateContext, AuthUpdateTokenContext, IsAuthContext } from 'context/AuthContext'
 import { TextlField } from './TextlField/TextlField'
@@ -45,7 +45,6 @@ export const LoginForm: React.VFC<Props> = ({ closeModal }) => {
                   setToken!(idToken)
                   Cookies.set('token', idToken, { expires: 5 })
                   dispatch(updateUserRole(idToken))
-                  // @ts-ignore
                 })
             })
           })

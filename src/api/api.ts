@@ -1,13 +1,11 @@
 import axios from 'axios'
-import {ProductDataType} from "../ui/productPage/interfaces/ProductPage/ProductPageInterfaces";
-import {UserDataType} from "../ui/navigation/interfaces/navigationPage/navigationPageInterfaces";
+import { ProductDataType } from "../ui/productPage/interfaces/ProductPage/ProductPageInterfaces";
+import { UserDataType } from "../ui/navigation/interfaces/navigationPage/navigationPageInterfaces";
 import Cookies from 'js-cookie'
 
 const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
-  headers: {
-    token: Cookies.get('token')
-  }
+  headers: {}
 })
 
 export const loadAuctions = () => {
@@ -23,13 +21,17 @@ export const loadCurrentPrice = (auctionId: string) => {
 }
 
 export const modificatedCurrentPrice = (auctionId: string, stepPrice: string, seePrice: string) => {
-  return instance.get(`api/modificated-currentPrice/${auctionId}&${stepPrice}&${seePrice}`)
+  return instance.get(`api/modificated-currentPrice/${auctionId}&${stepPrice}&${seePrice}`, {
+    headers: {
+      token: Cookies.get('token')
+    }
+  })
 }
 
 export const addNewProfile = (profile: object) => {
   return instance.post(`api/add-profile`, {
-        profile
-      }
+      profile
+    }
   )
 }
 
@@ -41,7 +43,7 @@ export const loadCategories = async () => {
   return instance.get(`api/fetch-categories`, {
     headers: {
       token: Cookies.get('token')
-      }
+    }
   })
 }
 
@@ -53,8 +55,8 @@ export const sendUserData = async (token: string) => {
 
 export const addNewAuction = (data: object) => {
   return instance.post(`api/add-auction`, {
-        data
-      }
+      data
+    }
   )
 }
 
@@ -66,23 +68,26 @@ export const loadProductsByCategory = (category: string) => {
   })
 }
 
-export const sendUserCash = (cash: number) => {
+export const sendUserCash = (cash: number, token: string) => {
   return instance.post(`api/update-user-cash`, {
-    cash
+    cash,
+    token
   })
 }
 
-export const loadUserCash = (email: string) => {
+export const loadUserCash = (email: string, token: string) => {
   return instance.post(`api/fetch-user-cash`, {
-    email
+    email,
+    token
   })
 }
 
-export const buyCurrentProduct = (currentPrice: string, productData: ProductDataType, userData: UserDataType) => {
+export const buyCurrentProduct = (currentPrice: string, productData: ProductDataType, userData: UserDataType, token:string) => {
   return instance.post(`api/buy-product`, {
     currentPrice,
     productData,
-    userData
+    userData,
+    token
   })
 }
 

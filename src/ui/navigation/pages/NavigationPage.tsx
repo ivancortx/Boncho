@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { RegModal } from '../components/RegModal/RegModal'
 import { LoginModal } from '../components/LoginModal/LoginModal'
 import firebaseApp from 'firebase/firebase'
-import { AuthUpdateContext, IsAuthContext } from 'context/AuthContext'
+import { AuthContext, AuthUpdateContext, IsAuthContext } from 'context/AuthContext'
 import { useNavigationPage } from '../hooks/useNavigationPage/useNavigationPage'
 import { useProfilePage } from 'ui/profile/hooks/useProfilePage'
 import { fetchProfileData } from 'ui/profile/store/action'
@@ -17,7 +17,6 @@ import { MoneyAndNameUserBlock } from '../components/MoneyAndNameUserBlock/Money
 import { LogoAndNavButtons } from '../components/LogoAndNavButtons/LogoAndNavButtons'
 
 import styles from './NavidationPage.module.scss'
-import { log } from 'util'
 
 export const NavigationPage: React.VFC = () => {
   const dispatch = useDispatch()
@@ -28,6 +27,7 @@ export const NavigationPage: React.VFC = () => {
   const isActiveModal = useContext<boolean>(ModalStatusContext)
   const showGetCashModal = useContext(GetCashModalShowContext)
   const closeGetCashModal = useContext(GetCashModalCloseContext)
+  const token = useContext(AuthContext)
 
   const [showRegModal, setShowRegModall] = useState<boolean>(false)
   const [showLoginModal, setShowLoginModall] = useState<boolean>(false)
@@ -38,11 +38,11 @@ export const NavigationPage: React.VFC = () => {
   const openLoginModal = () => setShowLoginModall(true)
   const closeRegModal = () => setShowRegModall(false)
   const closeLoginModal = () => setShowLoginModall(false)
-
   useEffect(() => {
+
     if (userData[0] !== undefined) {
       dispatch(fetchProfileData(userData[0].email))
-      dispatch(fetchUserCash(userData[0].email))
+      dispatch(fetchUserCash(userData[0].email, token))
     }
   }, [userData])
 

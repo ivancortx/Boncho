@@ -2,6 +2,7 @@ import React from 'react'
 import { Modal } from 'react-bootstrap'
 
 import { LoginForm } from '../../forms/LoginForm/LoginForm'
+import background from 'assets/images/blue_background.jpg'
 
 import styles from './LoginModal.module.scss'
 
@@ -14,18 +15,17 @@ export const LoginModal: React.VFC<Props> = ({ showModal, closeModal }) => {
   return (
     <>
       <Modal
+        className={styles.container}
         show={showModal}
         onHide={closeModal}
         backdrop="static"
         keyboard={false}
       >
-        <Modal.Header closeButton>
+        <Modal.Header closeButton className={styles.header}>
           <div>Вход</div>
         </Modal.Header>
-        <Modal.Body>
-          <div className={styles.bodyContainer}>
-            <LoginForm closeModal={closeModal}/>
-          </div>
+        <Modal.Body className={styles.lolo}>
+          <LoginForm closeModal={closeModal}/>
         </Modal.Body>
       </Modal>
     </>

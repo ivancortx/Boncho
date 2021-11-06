@@ -56,7 +56,7 @@ export const MoneyAndNameUserBlock: React.VFC<Props> = ({ ...props }) => {
                 </div>
               </div>}
             </div>
-            : <div className='mt-4' onClick={exit}>Выход</div>}
+            : <div className={styles.hiddenExit} onClick={exit}>x</div>}
         </div>
       </div>
     </div>

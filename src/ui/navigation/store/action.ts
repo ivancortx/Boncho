@@ -32,7 +32,6 @@ export const writeCashData = (data: number): WriteCashDataType => ({
 })
 
 export const updateUserRole = (token: string) => async (dispatch: Dispatch<ActionsTypes>) => {
-
   const response = await sendUserData(token)
   const newObj: UserDataType = {
     auth_time: response.data.auth_time,
@@ -51,14 +50,13 @@ export const cleanUserData = () => ({
   data: []
 })
 
-export const updateUserCash = (cash: number) => async (dispatch: Dispatch<ActionsTypes>) => {
-  const response = await sendUserCash(cash)
+export const updateUserCash = (cash: number, token: string) => async (dispatch: Dispatch<ActionsTypes>) => {
+  const response = await sendUserCash(cash, token)
   dispatch(writeCashData(response.data.cash))
 }
 
-export const fetchUserCash = (email: string) => async (dispatch: Dispatch<ActionsTypes>) => {
-  const response = await loadUserCash(email)
-  debugger
+export const fetchUserCash = (email: string, token: string) => async (dispatch: Dispatch<ActionsTypes>) => {
+  const response = await loadUserCash(email, token)
   dispatch(writeCashData(response.data.cash))
 }
 

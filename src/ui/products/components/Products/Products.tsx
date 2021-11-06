@@ -15,7 +15,7 @@ export const Products: React.VFC = () => {
       {productsData.length > 0 ?
         <div className={styles.itemContainer}>
           {productsData.map(product => (
-            <NavLink className={styles.link} to={`/auctions-page/${product.auctionId}`}>
+            <NavLink className={styles.link} to={`/auctions-page/${product.auctionId}`} key={product.auctionId}>
               <div className={styles.item}>
                 <div className={styles.photo}>
                   {!product.isInStock && <img src={sold_out} className={styles.isInStock} alt={'sold out'}/>}

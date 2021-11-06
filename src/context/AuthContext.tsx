@@ -32,6 +32,12 @@ export const AuthProvider: React.FC = ({ children }) => {
     }
   }, [cookieToken, token])
 
+  useEffect(() => {
+    if (token === '' && cookieToken !== undefined) {
+      setToken(cookieToken)
+    }
+  }, [token])
+
   return (
     <IsAuthContext.Provider value={isAuth}>
       <AuthContext.Provider value={token}>

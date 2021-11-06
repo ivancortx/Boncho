@@ -27,7 +27,8 @@ export const reducer = (state = initialState, action: ActionsTypes): InitialStat
     case CLEAN_USER_DATA:
       return {
         ...state,
-        userData: []
+        userData: [],
+        currentCash: 0
       }
     default:
       return state

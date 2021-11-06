@@ -60,7 +60,7 @@ export const ItemsCarousel4Position: React.VFC = () => {
           <Carousel.Item>
             <div className={styles.itemsContainer}>
               {firstBl.map(block => (
-                <Auction auct={block}/>
+                <Auction auct={block} key={block.auctionId}/>
               ))
               }
             </div>
@@ -68,7 +68,7 @@ export const ItemsCarousel4Position: React.VFC = () => {
           <Carousel.Item>
             <div className={styles.itemsContainer}>
               {secondBl.map(block => (
-                <Auction auct={block}/>
+                <Auction auct={block} key={block.auctionId}/>
               ))
               }
             </div>
@@ -76,7 +76,7 @@ export const ItemsCarousel4Position: React.VFC = () => {
           <Carousel.Item>
             <div className={styles.itemsContainer}>
               {thirdBl.map(block => (
-                <Auction auct={block}/>
+                <Auction auct={block} key={block.auctionId}/>
               ))
               }
             </div>

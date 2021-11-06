@@ -18,11 +18,18 @@
   padding-top: 7px;
   display: grid;
   grid-template-columns: 90px 115px 117px 205px;
-  grid-gap: 30px;
+  grid-gap: 3px;
 }
 
 .button {
+  margin-top: -7px;
+  padding-top: 3px;
+  height: 60px;
   a {
     text-decoration: none;
+  }
+
+  &:hover {
+    background: linear-gradient(to left, #404040, #5f5f5f, #5f5f5f, #5f5f5f, #5f5f5f, #404040);
   }
 }

@@ -44,14 +44,14 @@ export const clearCurrentPrice = () => (dispatch: Dispatch<ActionsTypes>) => {
   dispatch(setCurrentPrice(''))
 }
 
-export const buyProduct = (currentPrice: string, productData: ProductDataType, userData: UserDataType) =>
+export const buyProduct = (currentPrice: string, productData: ProductDataType, userData: UserDataType, token: string) =>
   async (dispatch: Dispatch<ActionsTypes>) => {
-    const response = await buyCurrentProduct(currentPrice, productData, userData)
+    const response = await buyCurrentProduct(currentPrice, productData, userData, token)
     const data = await response.data
     if (data.status === 'good') {
       // @ts-ignore
       dispatch(fetchProduct(productData.auctionId))
       // @ts-ignore
-      dispatch(fetchUserCash(userData.email))
+      dispatch(fetchUserCash(userData.email, token))
     }
   }

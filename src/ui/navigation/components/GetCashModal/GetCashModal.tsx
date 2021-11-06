@@ -3,6 +3,7 @@ import React, { useContext } from 'react'
 import { GetCashModalCloseContext, GetCashModalStatusContext } from 'context/GetCashModalContext'
 import { validate } from './validate'
 import { ErrorMessage, Field, Form, Formik } from 'formik'
+import { AuthContext } from 'context/AuthContext'
 import cn from 'classnames'
 import { useDispatch } from 'react-redux'
 import { updateUserCash } from '../../store/action'
@@ -13,6 +14,7 @@ export const GetCashModal: React.VFC = () => {
   const dispatch = useDispatch()
   const isActiveModal = useContext(GetCashModalStatusContext)
   const closeGetCashModal = useContext(GetCashModalCloseContext)
+  const token = useContext(AuthContext)
 
   return (
     <>
@@ -24,7 +26,7 @@ export const GetCashModal: React.VFC = () => {
           }}
           validationSchema={validate}
           onSubmit={(values) => {
-            dispatch(updateUserCash(Number(values.cash)))
+            dispatch(updateUserCash(Number(values.cash), token))
             setTimeout(closeGetCashModal, 1000)
           }}>
           {({ errors, touched }) => (

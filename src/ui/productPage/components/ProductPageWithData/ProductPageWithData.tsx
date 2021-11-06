@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {Spinner} from 'react-bootstrap'
 import {useDispatch} from 'react-redux'
 
@@ -14,6 +14,7 @@ import {fetchUserCash} from 'ui/navigation'
 import {UserDataType} from 'ui/navigation/interfaces/navigationPage/navigationPageInterfaces'
 
 import styles from './ProductPageWithData.module.scss'
+import { AuthContext } from '../../../../context/AuthContext'
 
 type Props = {
   productData: ProductDataType
@@ -22,6 +23,7 @@ type Props = {
 
 export const ProductPageWithData: React.VFC<Props> = ({productData, userData}) => {
   const dispatch = useDispatch()
+  const token = useContext(AuthContext)
   const {currentPrice} = useProductPageWithData()
   const [openModal, setOpenModal] = useState<boolean>(false)
   const [showSeePriceModal, setShowSeePriceModal] = useState<boolean>(false)
@@ -68,7 +70,7 @@ export const ProductPageWithData: React.VFC<Props> = ({productData, userData}) =
   const openCurrentPrice = async () => {
     await modificatedCurrentPrice(productData.auctionId, productData.priceStep, productData.seePrice)
     dispatch(fetchCurrentPrice(productData.auctionId))
-    dispatch(fetchUserCash(userData[0].email))
+    dispatch(fetchUserCash(userData[0].email, token))
     setLoader(true)
   }
 
@@ -84,7 +86,7 @@ export const ProductPageWithData: React.VFC<Props> = ({productData, userData}) =
 
   const buyThisProduct = () => {
     if (currentPrice !== '') {
-      dispatch(buyProduct(currentPrice, productData, userData[0]))
+      dispatch(buyProduct(currentPrice, productData, userData[0], token))
     }
   }
 
