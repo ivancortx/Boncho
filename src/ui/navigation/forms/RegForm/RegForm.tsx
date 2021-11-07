@@ -38,12 +38,12 @@ export const RegForm: React.VFC<Props> = ({ closeModal }) => {
       initialValues={{
         email: '',
         login: '',
-        password: '',
+        reg_password: '',
         confirmPassword: ''
       }}
       validationSchema={validate}
       onSubmit={(values) => {
-        addUser(values.email, values.password)
+        addUser(values.email, values.reg_password)
         dispatch(addProfile({login: values.login, name: '', secondName: ''},
         values.email, '', []))
       }}>
@@ -51,10 +51,10 @@ export const RegForm: React.VFC<Props> = ({ closeModal }) => {
         <Form className={styles.form}>
           <TextlField label={'Введите email'} name={'email'} type={'input'}/>
           <TextlField label={'Введите логин'} name={'login'} type={'input'}/>
-          <TextlField label={'Введите пароль'} name={'password'} type={'password'}/>
+          <TextlField label={'Введите пароль'} name={'reg_password'} type={'password'}/>
           <TextlField label={'Повторите пароль'} name={'confirmPassword'} type={'password'}/>
           {errorMessage !== '' && <div className={styles.error}>{errorMessage}</div>}
-          <button type='submit' className="btn btn-success mt-3">Зарегистрировать</button>
+          <button type='submit' className={styles.button}>Зарегистрировать</button>
           {isRegister && <div className={styles.userIsRegistred}>Пользователь успешно зарегистрирован</div>}
         </Form>
       </div>

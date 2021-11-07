@@ -1,7 +1,8 @@
 import React from 'react'
 import { Modal } from 'react-bootstrap'
 
-import {RegForm} from "../../forms/RegForm/RegForm";
+import {RegForm} from '../../forms/RegForm/RegForm'
+import regUser from 'assets/images/reg_user.png'
 
 import styles from './RegModal.module.scss'
 
@@ -20,9 +21,10 @@ export const RegModal: React.VFC<Props> = ({ showModal, closeModal }) => {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <div>Регистрация</div>
+          <div className={styles.header}>Регистрация нового пользователя</div>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className={styles.content}>
+          <img src={regUser} className={styles.image}/>
           <div className={styles.bodyContainer}>
             <RegForm closeModal={closeModal}/>
           </div>

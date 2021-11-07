@@ -8,53 +8,9 @@
   border-bottom-left-radius: 14px;
 }
 
-.container:before {
-  text-align: center;
-  display: none;
-  content: "";
-  width: 60%;
-  background-color: #8e8e8e;
-  height: 1px;
-  margin-left: 20%;
-  margin-bottom: 20px;
-}
-
-.contactsBlock {
-  margin: 0 auto 15px;
-  width: 82%;
-}
-
-.contactsItem {
-  margin-top: 30px;
-  text-align: center;
-}
-
-.contactsItem a{
-  text-decoration: none;
-  font-size: 1em;
-  color: #bababa;
-}
-
-.contactsItem a:hover {
-  color: greenyellow;
-}
-
-.messengers {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.messengers img {
-  width: 25px;
-  margin: 10px 5px;
-}
-
 .copyright {
+  margin-top: 20px;
   text-align: center;
   font-size: 0.9em;
   color: #8e8e8e;
-}
-
-@media screen and (max-width: 680px) {
 }

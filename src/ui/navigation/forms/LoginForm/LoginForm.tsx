@@ -69,7 +69,7 @@ export const LoginForm: React.VFC<Props> = ({ closeModal }) => {
           <TextlField label={'Введите email'} name={'email'} type={'input'}/>
           <TextlField label={'Введите пароль'} name={'password'} type={'password'}/>
           {errorMessage !== '' && <div className={styles.error}>{errorMessage}</div>}
-          <button type='submit' className="btn btn-success mt-3">Войти</button>
+          <button type='submit' className={styles.button}>Войти</button>
         </Form>
       </div>
     </Formik>

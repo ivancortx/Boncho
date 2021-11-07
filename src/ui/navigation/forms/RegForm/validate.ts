@@ -10,10 +10,10 @@ export const validate = Yup.object({
       .min(4, 'Логин должен быть не менее 4 символов')
       .max(15, 'Логин должен быть не более 15 символов')
       .required('Логин не может быть пустым'),
-  password: Yup.string()
+  reg_password: Yup.string()
     .min(6, 'Пароль должень иметь не менее 6 символов')
     .required('Введите пароль'),
   confirmPassword: Yup.string()
-    .oneOf([Yup.ref('password'), null], 'Пароли не совпадают')
+    .oneOf([Yup.ref('reg_password'), null], 'Пароли не совпадают')
     .required('Повторите пароль')
 })
