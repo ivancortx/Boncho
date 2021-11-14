@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
 import { useDispatch } from 'react-redux'
-import { useAuctionPage } from 'ui/auctions/hooks/useAuctionPage'
-import { Auction, fetchAuctions } from 'ui/auctions'
+import { useAuctionPage } from '@/ui/auctions/hooks/useAuctionPage'
+import { Auction, fetchAuctions } from '@/ui/auctions'
 
-import prev from 'assets/images/HomePage/ItemsCarousel/prev.png'
-import next from 'assets/images/HomePage/ItemsCarousel/next.png'
+import prev from '@/assets/images/HomePage/ItemsCarousel/prev.png'
+import next from '@/assets/images/HomePage/ItemsCarousel/next.png'
 
 import styles from "./ItemsCarousel3Position.module.scss"
-import 'scss/custom.scss'
+import '@/scss/custom.scss'
 
 export const ItemsCarousel3Position: React.VFC = () => {
   const dispatch = useDispatch()

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-import logo from 'assets/images/logo_boncho.png'
+import logo from '@/assets/images/logo_boncho.png'
 import {Routes} from '../../const/routes'
 import {Button} from '../Button/Button'
 

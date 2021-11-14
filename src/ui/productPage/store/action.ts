@@ -2,7 +2,7 @@ import { Dispatch } from 'react'
 
 import { FETCH_CURRENT_PRICE, FETCH_PRODUCT } from './types'
 import { ProductDataType } from '../interfaces/ProductPage/ProductPageInterfaces'
-import { buyCurrentProduct, loadCurrentPrice, loadProduct } from 'api/api'
+import { buyCurrentProduct, loadCurrentPrice, loadProduct } from '@/api/api'
 import { UserDataType } from "../../navigation/interfaces/navigationPage/navigationPageInterfaces";
 import { fetchUserCash } from '../../navigation'
 

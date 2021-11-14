@@ -1,7 +1,7 @@
 import { Dispatch } from 'react'
 
 import { WRITE_AUCTIONS } from './types'
-import { loadAuctions } from 'api/api'
+import { loadAuctions } from '@/api/api'
 import { AuctionDataType } from '../interfaces/AddProductPage/addProductPageInterfaces'
 
 export type ActionsTypes = writeAuctionsType

@@ -2,7 +2,7 @@ import React from 'react'
 import { Modal } from 'react-bootstrap'
 
 import {RegForm} from '../../forms/RegForm/RegForm'
-import regUser from 'assets/images/reg_user.png'
+import regUser from '@/assets/images/reg_user.png'
 
 import styles from './RegModal.module.scss'
 

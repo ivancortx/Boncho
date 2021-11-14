@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import close from 'assets/images/closeModal.png'
+import close from '@/assets/images/closeModal.png'
 
 import styles from './Portal.module.scss'
 

@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { ProductDataType } from "../ui/productPage/interfaces/ProductPage/ProductPageInterfaces";
-import { UserDataType } from "../ui/navigation/interfaces/navigationPage/navigationPageInterfaces";
+import { ProductDataType } from "@/ui/productPage/interfaces/ProductPage/ProductPageInterfaces";
+import { UserDataType } from "@/ui/navigation/interfaces/navigationPage/navigationPageInterfaces";
 import Cookies from 'js-cookie'
 
 const instance = axios.create({

@@ -5,8 +5,8 @@ import { useDispatch } from 'react-redux'
 
 import { validate } from './validate'
 import { TextField } from './TextField/TextField'
-import emptyPhoto from 'assets/images/empty_image.png'
-import firebaseApp from 'firebase/firebase'
+import emptyPhoto from '@/assets/images/empty_image.png'
+import firebaseApp from 'src/firebase/firebase'
 import { UserDataType } from '../../navigation/interfaces/navigationPage/navigationPageInterfaces'
 import { addPhotoToProfile, addProfile } from '../store/action'
 import { ProfileDataType } from '../interfaces/PrfilePageInterfaces'
@@ -41,7 +41,6 @@ export const ProfilePageForm: React.VFC<Props> = ({ ...props }) => {
       setIsUploaded(true)
     }
   }
-
   useEffect(() => {
     if (photoUrl !== '') {
       setFilePath(photoUrl)

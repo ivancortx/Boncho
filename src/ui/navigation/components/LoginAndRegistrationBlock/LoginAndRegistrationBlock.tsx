@@ -1,7 +1,7 @@
 import React from 'react'
 
-import login from 'assets/images/login.png'
-import registration from 'assets/images/registration.png'
+import login from '@/assets/images/login.png'
+import registration from '@/assets/images/registration.png'
 
 import styles from './LoginAndRegistrationBlock.module.scss'
 

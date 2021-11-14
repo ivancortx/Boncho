@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 
-import { GetCashModalCloseContext, GetCashModalStatusContext } from 'context/GetCashModalContext'
+import { GetCashModalCloseContext, GetCashModalStatusContext } from '@/context/GetCashModalContext'
 import { validate } from './validate'
 import { ErrorMessage, Field, Form, Formik } from 'formik'
-import { AuthContext } from 'context/AuthContext'
+import { AuthContext } from '@/context/AuthContext'
 import cn from 'classnames'
 import { useDispatch } from 'react-redux'
 import { updateUserCash } from '../../store/action'

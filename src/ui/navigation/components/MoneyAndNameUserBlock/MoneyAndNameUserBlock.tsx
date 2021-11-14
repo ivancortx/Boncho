@@ -1,10 +1,10 @@
 import React from 'react'
 
-import cash from 'assets/images/purse.png'
+import cash from '@/assets/images/purse.png'
 import { GetCashModal } from '../GetCashModal/GetCashModal'
-import configure from 'assets/images/configure.png'
+import configure from '@/assets/images/configure.png'
 import { DropDownSettingsList } from '../DropDownSettingsList/DropDownSettingsList'
-import { ProfileDataType } from 'ui/profile/interfaces/PrfilePageInterfaces'
+import { ProfileDataType } from '@/ui/profile/interfaces/PrfilePageInterfaces'
 
 import styles from './MoneyAndNameUserBlock.module.scss'
 

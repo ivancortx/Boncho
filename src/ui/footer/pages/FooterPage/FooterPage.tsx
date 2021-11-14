@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
 
 import styles from './FooterPage.module.scss'
-import {GetCashModalCloseContext} from "context/GetCashModalContext";
+import {GetCashModalCloseContext} from "@/context/GetCashModalContext";
 
 export const FooterPage: React.VFC = () => {
   const closeModal = useContext(GetCashModalCloseContext)

@@ -3,18 +3,18 @@ import {Spinner} from 'react-bootstrap'
 import {useDispatch} from 'react-redux'
 
 import {ProductDataType} from '../../interfaces/ProductPage/ProductPageInterfaces'
-import {Portal} from 'ui/productPage/components/Portal/Portal'
-import emptyImage from 'assets/images/empty_image.png'
-import sold_out from 'assets/images/sold_out.png'
+import {Portal} from '@/ui/productPage/components/Portal/Portal'
+import emptyImage from '@/assets/images/empty_image.png'
+import sold_out from '@/assets/images/sold_out.png'
 import {SeePriceModal} from '../SeePriceModal/SeePriceModal'
 import {buyProduct, clearCurrentPrice, fetchCurrentPrice} from '../../store/action'
 import {useProductPageWithData} from '../../hooks/useProductPageWithData'
-import {modificatedCurrentPrice} from 'api/api'
-import {fetchUserCash} from 'ui/navigation'
-import {UserDataType} from 'ui/navigation/interfaces/navigationPage/navigationPageInterfaces'
+import {modificatedCurrentPrice} from '@/api/api'
+import {fetchUserCash} from '@/ui/navigation'
+import {UserDataType} from '@/ui/navigation/interfaces/navigationPage/navigationPageInterfaces'
 
 import styles from './ProductPageWithData.module.scss'
-import { AuthContext } from '../../../../context/AuthContext'
+import { AuthContext } from '@/context/AuthContext'
 
 type Props = {
   productData: ProductDataType

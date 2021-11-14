@@ -1,9 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-import emptyImage from 'assets/images/empty_image.png'
-import timer from 'assets/images/timer.png'
-import sold_out from 'assets/images/sold_out.png'
+import emptyImage from '@/assets/images/empty_image.png'
+import timer from '@/assets/images/timer.png'
+import sold_out from '@/assets/images/sold_out.png'
 import { AuctionDataType } from '../../interfaces/AddProductPage/addProductPageInterfaces'
 
 import styles from "./Auction.module.scss"

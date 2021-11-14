@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
 
-import slide1 from 'assets/images/HomePage/Slider/slide1.jpg'
-import slide2 from 'assets/images/HomePage/Slider/slide2.jpg'
-import slide3 from 'assets/images/HomePage/Slider/slide3.jpg'
+import slide1 from '@/assets/images/HomePage/Slider/slide1.jpg'
+import slide2 from '@/assets/images/HomePage/Slider/slide2.jpg'
+import slide3 from '@/assets/images/HomePage/Slider/slide3.jpg'
 
 import styles from './Slider.module.scss'
-import 'scss/custom.scss'
+import '@/scss/custom.scss'
 
 export const Slider: React.VFC = () => {
   const [index, setIndex] = useState(0);

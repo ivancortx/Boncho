@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
 
-import prev from 'assets/images/HomePage/ItemsCarousel/prev.png'
-import next from 'assets/images/HomePage/ItemsCarousel/next.png'
+import prev from '@/assets/images/HomePage/ItemsCarousel/prev.png'
+import next from '@/assets/images/HomePage/ItemsCarousel/next.png'
 
 import styles from './ItemsCarousel.module.scss'
 import 'scss/custom.scss'

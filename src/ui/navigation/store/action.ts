@@ -1,7 +1,7 @@
 import {Dispatch} from 'react'
 
 import { CLEAN_USER_DATA, WRITE_CASH_DATA, WRITE_CURRENT_USER_DATA } from './types'
-import {loadUserCash, sendUserCash, sendUserData} from 'api/api'
+import {loadUserCash, sendUserCash, sendUserData} from '@/api/api'
 import {UserDataType} from '../interfaces/navigationPage/navigationPageInterfaces'
 
 export type ActionsTypes = WriteCurrentUserDataType | WriteCashDataType | CleanUserDataType

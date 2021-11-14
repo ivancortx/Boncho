@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
 
 import styles from './GetCashModal.module.scss'
-import {GetCashModalShowContext, GetCashModalStatusContext} from "context/GetCashModalContext";
+import {GetCashModalShowContext, GetCashModalStatusContext} from "@/context/GetCashModalContext";
 import {validate} from './validate'
 import {Field, Form, Formik} from "formik";
 

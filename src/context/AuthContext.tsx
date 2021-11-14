@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import Cookies from 'js-cookie'
 
-import { updateUserRole } from 'ui/navigation/store/action'
+import { updateUserRole } from '@/ui/navigation/store/action'
 import firebaseApp from '../firebase/firebase'
 
 export const AuthContext = createContext<string>('')

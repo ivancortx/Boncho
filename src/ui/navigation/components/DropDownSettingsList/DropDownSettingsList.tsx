@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import { Routes } from '../../const/routes'
-import userIcon from 'assets/images/userIcon.png'
-import salesIcon from 'assets/images/salesIcon.png'
-import outIcon from 'assets/images/outIcon.png'
+import userIcon from '@/assets/images/userIcon.png'
+import salesIcon from '@/assets/images/salesIcon.png'
+import outIcon from '@/assets/images/outIcon.png'
 
 import styles from './DropDownSettingsList.module.scss'
 

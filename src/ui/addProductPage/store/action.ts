@@ -1,8 +1,8 @@
 import { Dispatch } from 'react'
 
 import { WRITE_PHOTO_URL } from './types'
-import { addNewAuction } from 'api/api'
-import { UserDataType } from 'ui/navigation/interfaces/navigationPage/navigationPageInterfaces'
+import { addNewAuction } from '@/api/api'
+import { UserDataType } from '@/ui/navigation/interfaces/navigationPage/navigationPageInterfaces'
 
 export type ActionsTypes = WriteCurrentUserDataType
 export type formValuesType = {

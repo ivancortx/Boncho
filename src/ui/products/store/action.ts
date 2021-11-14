@@ -1,7 +1,7 @@
 import { Dispatch } from 'react'
 
 import { FETCH_CATEGORIES_DATA, FETCH_PRODUCTS_DATA } from './types'
-import { loadCategories, loadProductsByCategory } from "api/api"
+import { loadCategories, loadProductsByCategory } from "@/api/api"
 import { Category } from ".."
 import { ProductDataType } from '../interfaces/CategoriesPage/categoriesPageInterfaces'
 

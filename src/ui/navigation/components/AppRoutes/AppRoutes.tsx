@@ -2,13 +2,13 @@ import React, { useContext } from 'react'
 import {Redirect, Route, Switch} from 'react-router-dom'
 
 import {Routes} from '../../const/routes'
-import {HomePage} from 'ui/home';
-import {CategoriesPage} from 'ui/products/pages/CategoriesPage'
-import {AddProductPage} from 'ui/addProductPage/pages/AddProductPage'
-import {AuctionsPage} from 'ui/auctions/pages/AuctionsPage'
-import {ProductPage} from 'ui/productPage/pages/ProductPage'
-import {ProfilePage} from 'ui/profile/pages/ProfilePage'
-import { ModalCloseContext } from 'context/SettingsUserModalContext'
+import {HomePage} from '@/ui/home';
+import {CategoriesPage} from '@/ui/products/pages/CategoriesPage'
+import {AddProductPage} from '@/ui/addProductPage/pages/AddProductPage'
+import {AuctionsPage} from '@/ui/auctions/pages/AuctionsPage'
+import {ProductPage} from '@/ui/productPage/pages/ProductPage'
+import {ProfilePage} from '@/ui/profile/pages/ProfilePage'
+import { ModalCloseContext } from '@/context/SettingsUserModalContext'
 
 export const AppRoutes: React.VFC = () => {
   const closeSettingsUserModal = useContext<() => void>(ModalCloseContext)

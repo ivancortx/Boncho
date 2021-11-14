@@ -2,7 +2,7 @@ import {Dispatch} from 'react'
 
 import {WRITE_PROFILE_DATA} from './types'
 import {ProfileDataType} from '../interfaces/PrfilePageInterfaces'
-import {addNewProfile, loadProfile} from '../../../api/api'
+import {addNewProfile, loadProfile} from '@/api/api'
 
 export type ActionsTypes = writeProfileType
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { Modal } from 'react-bootstrap'
 
 import { LoginForm } from '../../forms/LoginForm/LoginForm'
-import user_auth from 'assets/images/user_auth_model.png'
+import user_auth from '@/assets/images/user_auth_model.png'
 
 import styles from './LoginModal.module.scss'
 

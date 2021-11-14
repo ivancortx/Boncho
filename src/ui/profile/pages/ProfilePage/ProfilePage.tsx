@@ -1,10 +1,10 @@
 import React, {useContext, useEffect, useState} from 'react'
 import { useDispatch } from 'react-redux'
-import { useNavigationPage } from 'ui/navigation'
+import { useNavigationPage } from '@/ui/navigation'
 import { ProfilePageForm } from '../../forms/ProfilePageForm'
 import { useProfilePage } from '../../hooks/useProfilePage'
 import { fetchProfileData } from '../../store/action'
-import {GetCashModalCloseContext} from "context/GetCashModalContext";
+import {GetCashModalCloseContext} from "@/context/GetCashModalContext";
 
 export const ProfilePage: React.VFC = () => {
   const dispatch = useDispatch()
