@@ -3,15 +3,19 @@ import { Button, Modal } from 'react-bootstrap'
 
 import styles from './SeePriceModal.module.scss'
 
-
 type Props = {
-  showSeePriceModal: boolean
-  closeSeePriceModal: () => void
-  openCurrentPrice: () => void
-  seePrice: string
-}
+  showSeePriceModal: boolean;
+  closeSeePriceModal: () => void;
+  openCurrentPrice: () => void;
+  seePrice: string;
+};
 
-export const SeePriceModal: React.VFC<Props> = ({ showSeePriceModal, closeSeePriceModal, openCurrentPrice, seePrice }) => {
+export const SeePriceModal: React.VFC<Props> = ({
+  showSeePriceModal,
+  closeSeePriceModal,
+  openCurrentPrice,
+  seePrice,
+}) => {
   const startSeePriceProcess = () => {
     openCurrentPrice()
     closeSeePriceModal()
@@ -26,13 +30,26 @@ export const SeePriceModal: React.VFC<Props> = ({ showSeePriceModal, closeSeePri
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <div className={styles.warning}>Стоимость просмотра цены {seePrice} $, Вы точно желаете прододжить?</div>
+          <div className={styles.warning}>
+            Стоимость просмотра цены {seePrice} $, Вы точно желаете прододжить?
+          </div>
         </Modal.Header>
         <Modal.Body>
           <div className={styles.bodyContainer}>
-            <div><Button onClick={startSeePriceProcess} className={styles.btn} variant="outline-success">Да</Button>
+            <div>
+              <Button
+                onClick={startSeePriceProcess}
+                className={styles.btn}
+                variant="outline-success"
+              >
+                Да
+              </Button>
             </div>
-            <div><Button onClick={closeSeePriceModal} className={styles.btn} variant="outline-danger">Нет</Button></div>
+            <div>
+              <Button onClick={closeSeePriceModal} className={styles.btn} variant="outline-danger">
+                Нет
+              </Button>
+            </div>
           </div>
         </Modal.Body>
       </Modal>

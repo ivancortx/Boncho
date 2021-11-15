@@ -9,35 +9,22 @@ import styles from './Slider.module.scss'
 import '@/scss/custom.scss'
 
 export const Slider: React.VFC = () => {
-  const [index, setIndex] = useState(0);
-
-  const handleSelect = (selectedIndex: number) => {
-    setIndex(selectedIndex);
-  };
+  const [index, setIndex] = useState(0),
+    handleSelect = (selectedIndex: number) => {
+      setIndex(selectedIndex)
+    }
 
   return (
     <div className={styles.container}>
-      <Carousel activeIndex={index} onSelect={handleSelect} prevLabel='' nextLabel=''>
+      <Carousel activeIndex={index} onSelect={handleSelect} prevLabel="" nextLabel="">
         <Carousel.Item interval={2500}>
-          <img
-            className="d-block w-100"
-            src={slide1}
-            alt="First slide"
-          />
+          <img className="d-block w-100" src={slide1} alt="First slide" />
         </Carousel.Item>
         <Carousel.Item interval={2500}>
-          <img
-            className="d-block w-100"
-            src={slide2}
-            alt="Second slide"
-          />
+          <img className="d-block w-100" src={slide2} alt="Second slide" />
         </Carousel.Item>
         <Carousel.Item interval={2500}>
-          <img
-            className="d-block w-100"
-            src={slide3}
-            alt="Third slide"
-          />
+          <img className="d-block w-100" src={slide3} alt="Third slide" />
         </Carousel.Item>
       </Carousel>
     </div>

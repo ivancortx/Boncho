@@ -7,9 +7,9 @@ import user_auth from '@/assets/images/user_auth_model.png'
 import styles from './LoginModal.module.scss'
 
 type Props = {
-  showModal: boolean
-  closeModal: () => void
-}
+  showModal: boolean;
+  closeModal: () => void;
+};
 
 export const LoginModal: React.VFC<Props> = ({ showModal, closeModal }) => {
   return (
@@ -21,12 +21,12 @@ export const LoginModal: React.VFC<Props> = ({ showModal, closeModal }) => {
         backdrop="static"
         keyboard={false}
       >
-        <Modal.Header closeButton >
+        <Modal.Header closeButton>
           <div className={styles.header}>Войти в аккаунт</div>
         </Modal.Header>
         <Modal.Body className={styles.content}>
-          <img src={user_auth} className={styles.image}/>
-          <LoginForm closeModal={closeModal}/>
+          <img src={user_auth} className={styles.image} />
+          <LoginForm closeModal={closeModal} />
         </Modal.Body>
       </Modal>
     </>

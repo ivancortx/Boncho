@@ -17,15 +17,15 @@ export const ProductsNavigation: React.VFC = () => {
         <div className={styles.button}>
           <div>Скоро заканчиваются</div>
         </div>
-        {/*<div className={styles.button}>*/}
+        {/* <div className={styles.button}>*/}
         {/*  <Link to={Routes.Home}>Новые</Link>*/}
-        {/*</div>*/}
-        {/*<div className={styles.button}>*/}
+        {/* </div>*/}
+        {/* <div className={styles.button}>*/}
         {/*  <Link to={Routes.Home}>Популярные</Link>*/}
-        {/*</div>*/}
-        {/*<div className={styles.button}>*/}
+        {/* </div>*/}
+        {/* <div className={styles.button}>*/}
         {/*  <Link to={Routes.Home}>Скоро заканчиваются</Link>*/}
-        {/*</div>*/}
+        {/* </div>*/}
       </div>
     </div>
   )

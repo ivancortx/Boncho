@@ -1,56 +1,63 @@
-import {Dispatch} from 'react'
+import { Dispatch } from 'react'
 
-import {WRITE_PROFILE_DATA} from './types'
-import {ProfileDataType} from '../interfaces/PrfilePageInterfaces'
-import {addNewProfile, loadProfile} from '@/api/api'
+import { WRITE_PROFILE_DATA } from './types'
+import { ProfileDataType } from '../interfaces/PrfilePageInterfaces'
+import { addNewProfile, loadProfile } from '@/api/api'
 
-export type ActionsTypes = writeProfileType
+export type ActionsTypes = writeProfileType;
 
 type writeProfileType = {
-  type: typeof WRITE_PROFILE_DATA
-  data: ProfileDataType
-}
+  type: typeof WRITE_PROFILE_DATA;
+  data: ProfileDataType;
+};
 
 export const writeProfile = (data: ProfileDataType): writeProfileType => ({
   type: WRITE_PROFILE_DATA,
-  data
+  data,
 })
 
-export const addProfile = (formValues: ProfileDataType, email: string, photoUrl: string,
-                           currentUserProfile: ProfileDataType[]) => async (dispatch: Dispatch<ActionsTypes>) => {
-  const obj = {
-    email: email,
-    login: formValues.login,
-    name: formValues.login,
-    secondName: formValues.secondName,
-    photoUrl: photoUrl
-  }
-  if (obj.photoUrl == '' && currentUserProfile[0] !== undefined) {
-    if (currentUserProfile[0].photoUrl !== undefined) {
-      if (currentUserProfile[0].photoUrl.length > 0) {
-        obj.photoUrl = currentUserProfile[0].photoUrl
+export const addProfile =
+  (
+    formValues: ProfileDataType,
+    email: string,
+    photoUrl: string,
+    currentUserProfile: ProfileDataType[]
+  ) =>
+    async (dispatch: Dispatch<ActionsTypes>) => {
+      const obj = {
+        email: email,
+        login: formValues.login,
+        name: formValues.login,
+        secondName: formValues.secondName,
+        photoUrl,
       }
+      if (obj.photoUrl == '' && currentUserProfile[0] !== undefined) {
+        if (currentUserProfile[0].photoUrl !== undefined) {
+          if (currentUserProfile[0].photoUrl.length > 0) {
+            obj.photoUrl = currentUserProfile[0].photoUrl
+          }
+        }
+      }
+      addNewProfile(obj)
     }
-  }
-  addNewProfile(obj)
-}
 
-export const addPhotoToProfile = (email: string, photoUrl: string,
-                                  currentUserProfile: ProfileDataType[]) => async (dispatch: Dispatch<ActionsTypes>) => {
-  const obj = {
-    email: email,
-    login: currentUserProfile[0].login,
-    name: currentUserProfile[0].name,
-    secondName: currentUserProfile[0].secondName,
-    photoUrl: photoUrl
-  }
-  await addNewProfile(obj)
-  // @ts-ignore
-  dispatch(fetchProfileData(email))
-}
+export const addPhotoToProfile =
+  (email: string, photoUrl: string, currentUserProfile: ProfileDataType[]) =>
+    async (dispatch: Dispatch<ActionsTypes>) => {
+      const obj = {
+        email: email,
+        login: currentUserProfile[0].login,
+        name: currentUserProfile[0].name,
+        secondName: currentUserProfile[0].secondName,
+        photoUrl: photoUrl,
+      }
+      await addNewProfile(obj)
+      // @ts-ignore
+      dispatch(fetchProfileData(email))
+    }
 
 export const fetchProfileData = (email: string) => async (dispatch: Dispatch<ActionsTypes>) => {
-  const res = await loadProfile(email)
-  const data = await res.data
+  const res = await loadProfile(email),
+    data = await res.data
   dispatch(writeProfile(data))
 }

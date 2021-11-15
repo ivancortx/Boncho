@@ -8,10 +8,10 @@ import { ProductPageWithData } from '../../components/ProductPageWithData/Produc
 import { useNavigationPage } from '@/ui/navigation'
 
 export const ProductPage: React.VFC = () => {
-  const { auctionId } = useParams<{ auctionId: string }>()
-  const dispatch = useDispatch()
-  const { productData } = useProductPage()
-  const { userData } = useNavigationPage()
+  const { auctionId } = useParams<{ auctionId: string }>(),
+    dispatch = useDispatch(),
+    { productData } = useProductPage(),
+    { userData } = useNavigationPage()
 
   useEffect(() => {
     dispatch(fetchProduct(auctionId))
@@ -19,9 +19,9 @@ export const ProductPage: React.VFC = () => {
 
   return (
     <>
-      {productData !== undefined &&
-      <ProductPageWithData productData={productData} userData={userData}/>
-      }
+      {productData !== undefined && (
+        <ProductPageWithData productData={productData} userData={userData} />
+      )}
     </>
   )
 }

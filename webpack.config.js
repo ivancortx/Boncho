@@ -10,7 +10,7 @@ require('dotenv').config({
   path: '.env.webpack',
 })
 
-const DotenvPlugin = require('webpack-dotenv-plugin');
+const DotenvPlugin = require('webpack-dotenv-plugin')
 
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = !isDev
@@ -18,7 +18,7 @@ const isProd = !isDev
 const optimization = () => {
   const config = {
     splitChunks: {
-      chunks: "all"
+      chunks: 'all'
     }
   }
 
@@ -33,7 +33,8 @@ const optimization = () => {
   return config
 }
 
-const filename = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}`  //имя документов в продакшн и дев разные
+//имя документов в продакшн и дев разные
+const filename = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}`
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
@@ -45,7 +46,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   resolve: {
-    extensions: ['.jpg', '.css', '.js', '.jsx', '.tsx', '.ts', '.html'],  //разрешения файлов поддерживаемые
+    extensions: ['.jpg', '.css', 'scss', '.js', '.jsx', '.tsx', '.ts', '.html'],  //разрешения файлов поддерживаемые
     alias: {
       '@': path.resolve(__dirname, 'src'),
       src: path.resolve(__dirname, 'src'),
@@ -65,7 +66,7 @@ module.exports = {
   devtool: isDev ? 'source-map' : 'hidden-source-map',
   plugins: [
     new HtmlWebpackPlugin({
-      template: "index.html",
+      template: 'index.html',
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({

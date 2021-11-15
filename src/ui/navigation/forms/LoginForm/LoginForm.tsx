@@ -1,50 +1,49 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Form, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
-import Cookies from 'js-cookie';
-import firebase from 'firebase/compat/app';
+import React, { useContext, useEffect, useState } from 'react'
+import { Form, Formik } from 'formik'
+import { useDispatch } from 'react-redux'
+import Cookies from 'js-cookie'
+import firebase from 'firebase/compat/app'
 
-import firebaseApp, { auth } from '@/firebase/firebase';
-import { updateUserRole } from '../../store/action';
-import { validate } from './validate';
-import { AuthUpdateContext, AuthUpdateTokenContext, IsAuthContext } from '@/context/AuthContext';
-import { TextlField } from './TextlField/TextlField';
+import firebaseApp, { auth } from '@/firebase/firebase'
+import { updateUserRole } from '../../store/action'
+import { validate } from './validate'
+import { AuthUpdateContext, AuthUpdateTokenContext, IsAuthContext } from '@/context/AuthContext'
+import { TextlField } from './TextlField/TextlField'
 
-import styles from './LoginForm.module.scss';
+import styles from './LoginForm.module.scss'
 
 type Props = {
-  closeModal: () => void
-}
+  closeModal: () => void;
+};
 
 export const LoginForm: React.VFC<Props> = ({ closeModal }) => {
-  const dispatch = useDispatch();
-  const setIsAuth: ((arg: boolean) => void) | undefined = useContext(AuthUpdateContext);
-  const setToken: ((arg: string) => void) | undefined = useContext(AuthUpdateTokenContext);
-  const isAuth = useContext(IsAuthContext);
-  const [errorMessage, setErrorMessage] = useState('');
+  const dispatch = useDispatch(),
+    setIsAuth: ((arg: boolean) => void) | undefined = useContext(AuthUpdateContext),
+    setToken: ((arg: string) => void) | undefined = useContext(AuthUpdateTokenContext),
+    isAuth = useContext(IsAuthContext),
+    [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
     if (isAuth) {
-      closeModal();
+      closeModal()
     }
-  }, [isAuth]);
+  }, [isAuth])
 
   const addUser = async (email: string, password: string) => {
     try {
-      await firebaseApp.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
-      await auth.signInWithEmailAndPassword(email, password);
+      await firebaseApp.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+      await auth.signInWithEmailAndPassword(email, password)
       await firebaseApp.auth().onAuthStateChanged(async (userCred: any) => {
-        const idToken = await userCred?.getIdToken();
-        setIsAuth!(true);
-        setToken!(idToken);
-        Cookies.set('token', idToken, { expires: 5 });
-        dispatch(updateUserRole(idToken));
-      });
+        const idToken = await userCred?.getIdToken()
+        setIsAuth!(true)
+        setToken!(idToken)
+        Cookies.set('token', idToken, { expires: 5 })
+        dispatch(updateUserRole(idToken))
+      })
     } catch {
-      setErrorMessage('Логин и пароль не совпадают!');
+      setErrorMessage('Логин и пароль не совпадают!')
     }
-  };
-
+  }
 
   return (
     <Formik
@@ -54,16 +53,19 @@ export const LoginForm: React.VFC<Props> = ({ closeModal }) => {
       }}
       validationSchema={validate}
       onSubmit={(values) => {
-        addUser(values.email, values.password);
-      }}>
+        addUser(values.email, values.password)
+      }}
+    >
       <div className={styles.container}>
         <Form className={styles.form}>
-          <TextlField label={'Введите email'} name={'email'} type={'input'}/>
-          <TextlField label={'Введите пароль'} name={'password'} type={'password'}/>
+          <TextlField label={'Введите email'} name={'email'} type={'input'} />
+          <TextlField label={'Введите пароль'} name={'password'} type={'password'} />
           {errorMessage !== '' && <div className={styles.error}>{errorMessage}</div>}
-          <button type='submit' className={styles.button}>Войти</button>
+          <button type="submit" className={styles.button}>
+            Войти
+          </button>
         </Form>
       </div>
     </Formik>
-  );
-};
+  )
+}

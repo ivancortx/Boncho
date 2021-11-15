@@ -1,1 +1,1 @@
-export {FooterPage} from './FooterPage'
+export { FooterPage } from './FooterPage'

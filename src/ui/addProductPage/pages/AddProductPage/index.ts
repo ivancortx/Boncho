@@ -1,1 +1,1 @@
-export {AddProductPage} from './AddProductPage'
+export { AddProductPage } from './AddProductPage'

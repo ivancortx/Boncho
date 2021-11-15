@@ -1,36 +1,38 @@
-import React, {useState} from 'react';
-import {Form, Formik} from 'formik';
-import firebaseApp from '@/firebase/firebase';
-import {useDispatch} from 'react-redux';
+import React, { useState } from 'react'
+import { Form, Formik } from 'formik'
+import firebaseApp from '@/firebase/firebase'
+import { useDispatch } from 'react-redux'
 
-import {validate} from './validate';
-import {TextlField} from '../LoginForm/TextlField/TextlField';
-import {addProfile} from '@/ui/profile/store/action';
+import { validate } from './validate'
+import { TextlField } from '../LoginForm/TextlField/TextlField'
+import { addProfile } from '@/ui/profile/store/action'
 
-import styles from './RegForm.module.scss';
+import styles from './RegForm.module.scss'
 
 type Props = {
-  closeModal: () => void
-}
+  closeModal: () => void;
+};
 
-export const RegForm: React.VFC<Props> = ({closeModal}) => {
-  const [isRegister, setIsRegister] = useState<boolean>(false);
-  const [errorMessage, setErrorMessage] = useState('');
-  const dispatch = useDispatch();
-
-  const addUser = async (email: string, password: string) => {
-    try {
-      await firebaseApp.auth().createUserWithEmailAndPassword(email, password);
-      setErrorMessage('');
-      setIsRegister(true);
-      setTimeout(closeModal, 2500);
-    } catch (error: any) {
-      const errorMessage = error.message;
-      if (errorMessage === 'Firebase: The email address is already in use by another account. (auth/email-already-in-use).') {
-        setErrorMessage('Указанный Вами email уже используется');
+export const RegForm: React.VFC<Props> = ({ closeModal }) => {
+  const [isRegister, setIsRegister] = useState<boolean>(false),
+    [errorMessage, setErrorMessage] = useState(''),
+    dispatch = useDispatch(),
+    addUser = async (email: string, password: string) => {
+      try {
+        await firebaseApp.auth().createUserWithEmailAndPassword(email, password)
+        setErrorMessage('')
+        setIsRegister(true)
+        setTimeout(closeModal, 2500)
+      } catch (error: any) {
+        const errorMessage = error.message
+        if (
+          errorMessage ===
+          'Firebase: The email address is already in use by another account. (auth/email-already-in-use).'
+        ) {
+          setErrorMessage('Указанный Вами email уже используется')
+        }
       }
     }
-  };
 
   return (
     <Formik
@@ -42,21 +44,27 @@ export const RegForm: React.VFC<Props> = ({closeModal}) => {
       }}
       validationSchema={validate}
       onSubmit={(values) => {
-        addUser(values.email, values.reg_password);
-        dispatch(addProfile({login: values.login, name: '', secondName: ''},
-            values.email, '', []));
-      }}>
+        addUser(values.email, values.reg_password)
+        dispatch(
+          addProfile({ login: values.login, name: '', secondName: '' }, values.email, '', [])
+        )
+      }}
+    >
       <div className={styles.container}>
         <Form className={styles.form}>
-          <TextlField label={'Введите email'} name={'email'} type={'input'}/>
-          <TextlField label={'Введите логин'} name={'login'} type={'input'}/>
-          <TextlField label={'Введите пароль'} name={'reg_password'} type={'password'}/>
-          <TextlField label={'Повторите пароль'} name={'confirmPassword'} type={'password'}/>
+          <TextlField label={'Введите email'} name={'email'} type={'input'} />
+          <TextlField label={'Введите логин'} name={'login'} type={'input'} />
+          <TextlField label={'Введите пароль'} name={'reg_password'} type={'password'} />
+          <TextlField label={'Повторите пароль'} name={'confirmPassword'} type={'password'} />
           {errorMessage !== '' && <div className={styles.error}>{errorMessage}</div>}
-          <button type='submit' className={styles.button}>Зарегистрировать</button>
-          {isRegister && <div className={styles.userIsRegistred}>Пользователь успешно зарегистрирован</div>}
+          <button type="submit" className={styles.button}>
+            Зарегистрировать
+          </button>
+          {isRegister && (
+            <div className={styles.userIsRegistred}>Пользователь успешно зарегистрирован</div>
+          )}
         </Form>
       </div>
     </Formik>
-  );
-};
+  )
+}

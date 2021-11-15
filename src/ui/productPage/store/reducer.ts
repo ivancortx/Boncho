@@ -3,29 +3,29 @@ import { ActionsTypes } from './action'
 import { ProductDataType } from '../interfaces/ProductPage/ProductPageInterfaces'
 
 type InitialStateType = {
-  product: ProductDataType[]
-  currentPrice: string
-}
+  product: ProductDataType[];
+  currentPrice: string;
+};
 
 const initialState: InitialStateType = {
   product: [],
-  currentPrice: ''
+  currentPrice: '',
 }
 
 export const reducer = (state = initialState, action: ActionsTypes): InitialStateType => {
   switch (action.type) {
-    case FETCH_PRODUCT:
-      return {
-        ...state,
-        product: action.data
-      }
+  case FETCH_PRODUCT:
+    return {
+      ...state,
+      product: action.data,
+    }
 
-    case FETCH_CURRENT_PRICE:
-      return {
-        ...state,
-        currentPrice: action.data
-      }
-    default:
-      return state
+  case FETCH_CURRENT_PRICE:
+    return {
+      ...state,
+      currentPrice: action.data,
+    }
+  default:
+    return state
   }
 }

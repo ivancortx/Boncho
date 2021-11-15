@@ -4,10 +4,10 @@ import { ErrorMessage, useField } from 'formik'
 import styles from './TextField.module.scss'
 
 type Props = {
-  label: string,
-  name: string,
-  type: string
-}
+  label: string;
+  name: string;
+  type: string;
+};
 
 export const TextlField: React.VFC<Props> = ({ ...props }) => {
   const [field, meta] = useField(props)
@@ -16,11 +16,14 @@ export const TextlField: React.VFC<Props> = ({ ...props }) => {
     <div className={styles.label}>
       <label htmlFor={field.name}>{props.label}</label>
       <input
-        className={`form-control shadow-none ${meta.touched && meta.error && 'is-invalid'} ${styles.input}`}
-        {...field} {...props}
-        autoComplete='off'
+        className={`form-control shadow-none ${meta.touched && meta.error && 'is-invalid'} ${
+          styles.input
+        }`}
+        {...field}
+        {...props}
+        autoComplete="off"
       />
-      <ErrorMessage component={'div'} name={field.name} className={styles.error}/>
+      <ErrorMessage component={'div'} name={field.name} className={styles.error} />
     </div>
   )
 }

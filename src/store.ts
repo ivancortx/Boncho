@@ -8,24 +8,21 @@ import { reducer as auctionsDataReducer } from '@/ui/auctions'
 import { reducer as productDataReducer } from '@/ui/productPage'
 import { reducer as profileDataReducer } from '@/ui/profile'
 
-
 const reducers = combineReducers({
   loginData: loginDataReducer,
   categoriesData: categoriesDatareducer,
   addProductPageData: addProductPageDataReducer,
   auctionsData: auctionsDataReducer,
   productData: productDataReducer,
-  profileData: profileDataReducer
+  profileData: profileDataReducer,
 })
 
-type RootReducerType = typeof reducers
-export type AppStateType = ReturnType<RootReducerType>
+type RootReducerType = typeof reducers;
+export type AppStateType = ReturnType<RootReducerType>;
 
 // @ts-ignore;
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-const store = createStore(reducers, composeEnhancers(
-  applyMiddleware(thunkMiddleware)
-))
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose,
+  store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)))
 
 // @ts-ignore
 window.store = store

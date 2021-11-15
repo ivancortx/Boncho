@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
 
-const numberOnlyReg: RegExp = /^[0-9]*$/
+const numberOnlyReg = /^[0-9]*$/
 
 export const validate = Yup.object({
   productName: Yup.string()

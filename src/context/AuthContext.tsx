@@ -11,20 +11,20 @@ export const IsAuthContext = createContext<boolean>(false)
 export const AuthUpdateTokenContext = createContext<((arg: string) => void) | undefined>(undefined)
 
 export const AuthProvider: React.FC = ({ children }) => {
-  const [token, setToken] = useState('')
-  const [isAuth, setIsAuth] = useState(false)
-  const dispatch = useDispatch()
-  const cookieToken = Cookies.get('token')
-
-  const checkUserAuth = async (token: string) => {
-    firebaseApp.auth().onAuthStateChanged(user => {
-      if (user) {
-
-        dispatch(updateUserRole(token))
-        setIsAuth(true)
-      } else Cookies.remove('token')
-    })
-  }
+  const [token, setToken] = useState(''),
+    [isAuth, setIsAuth] = useState(false),
+    dispatch = useDispatch(),
+    cookieToken = Cookies.get('token'),
+    checkUserAuth = (token: string) => {
+      firebaseApp.auth().onAuthStateChanged((user) => {
+        if (user) {
+          dispatch(updateUserRole(token))
+          setIsAuth(true)
+        } else {
+          Cookies.remove('token')
+        }
+      })
+    }
 
   useEffect(() => {
     if (cookieToken) {

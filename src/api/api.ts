@@ -1,15 +1,15 @@
 import axios from 'axios'
-import { ProductDataType } from "@/ui/productPage/interfaces/ProductPage/ProductPageInterfaces";
-import { UserDataType } from "@/ui/navigation/interfaces/navigationPage/navigationPageInterfaces";
+import { ProductDataType } from '@/ui/productPage/interfaces/ProductPage/ProductPageInterfaces'
+import { UserDataType } from '@/ui/navigation/interfaces/navigationPage/navigationPageInterfaces'
 import Cookies from 'js-cookie'
 
 const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
-  headers: {}
+  headers: {},
 })
 
 export const loadAuctions = () => {
-  return instance.get(`api/fetch-auctions`)
+  return instance.get('api/fetch-auctions')
 }
 
 export const loadProduct = (auctionId: string) => {
@@ -23,16 +23,15 @@ export const loadCurrentPrice = (auctionId: string) => {
 export const modificatedCurrentPrice = (auctionId: string, stepPrice: string, seePrice: string) => {
   return instance.get(`api/modificated-currentPrice/${auctionId}&${stepPrice}&${seePrice}`, {
     headers: {
-      token: Cookies.get('token')
-    }
+      token: Cookies.get('token'),
+    },
   })
 }
 
 export const addNewProfile = (profile: object) => {
-  return instance.post(`api/add-profile`, {
-      profile
-    }
-  )
+  return instance.post('api/add-profile', {
+    profile,
+  })
 }
 
 export const loadProfile = (email: string) => {
@@ -40,57 +39,57 @@ export const loadProfile = (email: string) => {
 }
 
 export const loadCategories = async () => {
-  return instance.get(`api/fetch-categories`, {
+  return instance.get('api/fetch-categories', {
     headers: {
-      token: Cookies.get('token')
-    }
+      token: Cookies.get('token'),
+    },
   })
 }
 
 export const sendUserData = async (token: string) => {
   return instance.post('api/save-user', {
-    token
+    token,
   })
 }
 
 export const addNewAuction = (data: object) => {
-  return instance.post(`api/add-auction`, {
-      data
-    }
-  )
+  return instance.post('api/add-auction', {
+    data,
+  })
 }
 
 export const loadProductsByCategory = (category: string) => {
   return instance.get(`api/fetch-products-by-category/${category}`, {
     headers: {
-      token: Cookies.get('token')
-    }
+      token: Cookies.get('token'),
+    },
   })
 }
 
 export const sendUserCash = (cash: number, token: string) => {
-  return instance.post(`api/update-user-cash`, {
+  return instance.post('api/update-user-cash', {
     cash,
-    token
+    token,
   })
 }
 
 export const loadUserCash = (email: string, token: string) => {
-  return instance.post(`api/fetch-user-cash`, {
+  return instance.post('api/fetch-user-cash', {
     email,
-    token
+    token,
   })
 }
 
-export const buyCurrentProduct = (currentPrice: string, productData: ProductDataType, userData: UserDataType, token:string) => {
-  return instance.post(`api/buy-product`, {
+export const buyCurrentProduct = (
+  currentPrice: string,
+  productData: ProductDataType,
+  userData: UserDataType,
+  token: string
+) => {
+  return instance.post('api/buy-product', {
     currentPrice,
     productData,
     userData,
-    token
+    token,
   })
 }
-
-
-
-

@@ -1,19 +1,22 @@
 {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "node": true
     },
+    "ignorePatterns": ["dist"],
     "extends": [
+        "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:react-hooks/recommended",
-        "plugin:react/recommended",
-        "plugin:import/errors",
-        "plugin:import/warnings",
-        "plugin:import/typescript",
-        "google"
-//        "plugin:prettier/recommended",
-//        "prettier",
-//        "prettier/react"
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+//        "plugin:react-hooks/recommended",
+//        "plugin:react/recommended",
+//        "plugin:import/errors",
+//        "plugin:import/warnings",
+//        "plugin:import/typescript",
+//        "google"
+//        "plugin:prettier/recommended"
+//        "prettier"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -21,7 +24,9 @@
             "jsx": true
         },
         "ecmaVersion": 12,
-        "sourceType": "module"
+        "sourceType": "module",
+        "tsconfigRootDir": "./",
+        "project": ["./typescript.eslint.json"]
     },
     "plugins": [
         "react",
@@ -29,14 +34,19 @@
 //        "prettier"
     ],
     "rules": {
+        "react/prop-types": 0,
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
         "no-var": "error",
-        "semi": "error",
-        "indent": "error",
         "no-multi-spaces": "error",
         "space-in-parens": "error",
         "no-multiple-empty-lines": "error",
         "prefer-const": "error",
-        "no-use-before-define": "error",
-        "linebreak-style": 0
+        "linebreak-style": 0,
+        "semi": [2, "never"],
+        "max-len": ["warn", {"code": 100, "ignoreUrls": true}],
+        "curly": ["error", "all"],
+        "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": false }],
+        "indent": ["error", 2]
     }
 }
