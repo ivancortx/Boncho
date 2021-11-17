@@ -1,8 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 import styles from './ProductsNavigation.module.scss'
-import { Routes } from 'ui/navigation/const/routes'
 
 export const ProductsNavigation: React.VFC = () => {
   return (

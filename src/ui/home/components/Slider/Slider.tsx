@@ -7,6 +7,7 @@ import slide3 from '@/assets/images/HomePage/Slider/slide3.jpg'
 
 import styles from './Slider.module.scss'
 import '@/scss/custom.scss'
+import 'bootstrap/dist/css/bootstrap.css'
 
 export const Slider: React.VFC = () => {
   const [index, setIndex] = useState(0),

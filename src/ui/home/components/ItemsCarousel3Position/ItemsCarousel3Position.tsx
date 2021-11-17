@@ -9,6 +9,7 @@ import next from '@/assets/images/HomePage/ItemsCarousel/next.png'
 
 import styles from './ItemsCarousel3Position.module.scss'
 import '@/scss/custom.scss'
+import 'bootstrap/dist/css/bootstrap.css'
 
 export const ItemsCarousel3Position: React.VFC = () => {
   const dispatch = useDispatch(),

@@ -4,6 +4,7 @@ import Carousel from 'react-bootstrap/Carousel'
 import prev from '@/assets/images/HomePage/ItemsCarousel/prev.png'
 import next from '@/assets/images/HomePage/ItemsCarousel/next.png'
 
+import 'bootstrap/dist/css/bootstrap.css'
 import styles from './ItemsCarousel5Position.module.scss'
 import '@/scss/custom.scss'
 import { useDispatch } from 'react-redux'

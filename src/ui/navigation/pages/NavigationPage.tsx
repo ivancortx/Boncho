@@ -53,8 +53,8 @@ export const NavigationPage: React.VFC = () => {
     }
   }, [userCash])
 
-  const exit = () => {
-    firebaseApp.auth().signOut()
+  const exit = async () => {
+    await firebaseApp.auth().signOut()
     Cookies.remove('token')
     if (setIsAuth) {
       setIsAuth(false)

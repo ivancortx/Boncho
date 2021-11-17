@@ -16,6 +16,7 @@ import { DescriptionField } from './DescriptionField/DescriptionField'
 import { SelectCategoryField } from './SelectCategoryField/SelectCategoryField'
 import { SettingAuctionField } from './SettingAuctionField/SettingAuctionField'
 
+import 'bootstrap/dist/css/bootstrap.css'
 import styles from './AddProductForm.module.scss'
 import 'react-datepicker/dist/react-datepicker.css'
 
@@ -23,7 +24,6 @@ export const AddProductForm: React.VFC = () => {
   const dispatch = useDispatch(),
     { categoriesData, photoUrlsData, userData } = useAddProductForm(),
     [auctionId, setAuctionId] = useState<string>(''),
-    [filePath, setFilePath] = useState<string>(''),
     [isUploaded, setIsUploaded] = useState<boolean>(true),
     [startDate, setStartDate] = useState<Date | null>(null),
     [finishDate, setFinishDate] = useState<Date | null>(null),
@@ -36,14 +36,13 @@ export const AddProductForm: React.VFC = () => {
 
   const saveFile = async (e: any) => {
     setIsUploaded(false)
-    const file = e.target.files[0],
+    const file: any = e.target.files[0],
       storageRef = firebaseApp.storage().ref(),
       pathPhoto = `assets/images/auctions/${auctionId}/${file.name}`,
       fileRef = storageRef.child(pathPhoto),
       metadata = { contentType: 'image/jpeg' }
     await fileRef.put(file, metadata)
     dispatch(writePhotoUrl(await fileRef.getDownloadURL()))
-    setFilePath(pathPhoto)
 
     if (await fileRef.getDownloadURL()) {
       setIsUploaded(true)
@@ -79,7 +78,7 @@ export const AddProductForm: React.VFC = () => {
             <div className={styles.header}>
               <h4>Торги на понижение со скрытой ценой</h4>
             </div>
-            <div className={styles.text}>
+            <div>
               Тип аукциона, в котором объявленная продавцом высокая цена на лот постепенно снижается
               до той, на которую согласится первый покупатель. Этот покупатель и становится
               победителем аукциона и обладателем лота. Просмотр текущей цены является платным

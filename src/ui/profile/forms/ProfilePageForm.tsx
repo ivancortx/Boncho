@@ -11,6 +11,7 @@ import { UserDataType } from '../../navigation/interfaces/navigationPage/navigat
 import { addPhotoToProfile, addProfile } from '../store/action'
 import { ProfileDataType } from '../interfaces/PrfilePageInterfaces'
 
+import 'bootstrap/dist/css/bootstrap.css'
 import styles from './ProfilePageForm.module.scss'
 
 type Props = {

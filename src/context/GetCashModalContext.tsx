@@ -1,7 +1,11 @@
 import React, { createContext, useState } from 'react'
 
-export const GetCashModalShowContext = createContext<() => void>(() => {})
-export const GetCashModalCloseContext = createContext<() => void>(() => {})
+export const GetCashModalShowContext = createContext<() => void>(() => {
+  //empty
+})
+export const GetCashModalCloseContext = createContext<() => void>(() => {
+  //empty
+})
 export const GetCashModalStatusContext = createContext<boolean>(false)
 
 export const GetCashModalProvider: React.FC = ({ children }) => {

@@ -1,7 +1,11 @@
 import React, { createContext, useState } from 'react'
 
-export const ModalShowContext = createContext<() => void>(() => {})
-export const ModalCloseContext = createContext<() => void>(() => {})
+export const ModalShowContext = createContext<() => void>(() => {
+  //empty
+})
+export const ModalCloseContext = createContext<() => void>(() => {
+  //empty
+})
 export const ModalStatusContext = createContext<boolean>(false)
 
 export const UserModalProvider: React.FC = ({ children }) => {

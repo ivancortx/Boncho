@@ -14,48 +14,41 @@ export type formValuesType = {
   seePrice: string;
   stepTime: string;
   percentTimeStep: string;
-};
+}
 
 type WriteCurrentUserDataType = {
   type: typeof WRITE_PHOTO_URL;
   data: string;
-};
+}
 
 export const writePhotoUrlAction = (data: string): WriteCurrentUserDataType => ({
   type: WRITE_PHOTO_URL,
-  data,
+  data
 })
 
-export const writePhotoUrl = (url: string) => async (dispatch: Dispatch<ActionsTypes>) => {
+export const writePhotoUrl = (url: string) => (dispatch: Dispatch<ActionsTypes>) => {
   dispatch(writePhotoUrlAction(url))
 }
 
-export const addAuction =
-  (
-    formValues: formValuesType,
-    startDate: Date | null,
-    finishDate: Date | null,
-    photoUrlsData: string[],
-    auctionId: string,
-    userData: UserDataType[]
-  ) =>
-    async (dispatch: Dispatch<ActionsTypes>) => {
-      const obj = {
-        userEmail: userData[0].email,
-        userUid: userData[0].uid,
-        productName: formValues.productName,
-        category: formValues.category,
-        description: formValues.description,
-        startPrice: formValues.startPrice,
-        priceStep: formValues.priceStep,
-        seePrice: formValues.seePrice,
-        stepTime: formValues.stepTime,
-        percentTimeStep: formValues.percentTimeStep,
-        startDate,
-        finishDate,
-        photoUrlsData,
-        auctionId,
-        isInStock: true,
-      }
-      addNewAuction(obj)
-    }
+export const addAuction = (formValues: formValuesType, startDate: Date | null,
+  finishDate: Date | null, photoUrlsData: string[], auctionId: string,
+  userData: UserDataType[]) => () => {
+  const obj = {
+    userEmail: userData[0].email,
+    userUid: userData[0].uid,
+    productName: formValues.productName,
+    category: formValues.category,
+    description: formValues.description,
+    startPrice: formValues.startPrice,
+    priceStep: formValues.priceStep,
+    seePrice: formValues.seePrice,
+    stepTime: formValues.stepTime,
+    percentTimeStep: formValues.percentTimeStep,
+    startDate,
+    finishDate,
+    photoUrlsData,
+    auctionId,
+    isInStock: true
+  }
+  addNewAuction(obj)
+}

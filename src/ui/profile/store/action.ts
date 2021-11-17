@@ -13,7 +13,7 @@ type writeProfileType = {
 
 export const writeProfile = (data: ProfileDataType): writeProfileType => ({
   type: WRITE_PROFILE_DATA,
-  data,
+  data
 })
 
 export const addProfile =
@@ -23,13 +23,13 @@ export const addProfile =
     photoUrl: string,
     currentUserProfile: ProfileDataType[]
   ) =>
-    async (dispatch: Dispatch<ActionsTypes>) => {
+    async () => {
       const obj = {
         email: email,
         login: formValues.login,
         name: formValues.login,
         secondName: formValues.secondName,
-        photoUrl,
+        photoUrl
       }
       if (obj.photoUrl == '' && currentUserProfile[0] !== undefined) {
         if (currentUserProfile[0].photoUrl !== undefined) {
@@ -38,7 +38,11 @@ export const addProfile =
           }
         }
       }
-      addNewProfile(obj)
+      try {
+        await addNewProfile(obj)
+      } catch (e) {
+        console.log(e)
+      }
     }
 
 export const addPhotoToProfile =
@@ -49,7 +53,7 @@ export const addPhotoToProfile =
         login: currentUserProfile[0].login,
         name: currentUserProfile[0].name,
         secondName: currentUserProfile[0].secondName,
-        photoUrl: photoUrl,
+        photoUrl: photoUrl
       }
       await addNewProfile(obj)
       // @ts-ignore

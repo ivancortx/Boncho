@@ -43,8 +43,8 @@ export const RegForm: React.VFC<Props> = ({ closeModal }) => {
         confirmPassword: '',
       }}
       validationSchema={validate}
-      onSubmit={(values) => {
-        addUser(values.email, values.reg_password)
+      onSubmit={async (values) => {
+        await addUser(values.email, values.reg_password)
         dispatch(
           addProfile({ login: values.login, name: '', secondName: '' }, values.email, '', [])
         )

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button, Modal } from 'react-bootstrap'
 
+import 'bootstrap/dist/css/bootstrap.css'
 import styles from './SeePriceModal.module.scss'
 
 type Props = {

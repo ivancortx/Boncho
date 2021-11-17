@@ -62,7 +62,7 @@ export const fetchUserCash =
     dispatch(writeCashData(response.data.cash))
   }
 
-export const clearUserData = () => async (dispatch: Dispatch<ActionsTypes>) => {
+export const clearUserData = () => (dispatch: Dispatch<ActionsTypes>) => {
   // @ts-ignore
   dispatch(cleanUserData())
 }

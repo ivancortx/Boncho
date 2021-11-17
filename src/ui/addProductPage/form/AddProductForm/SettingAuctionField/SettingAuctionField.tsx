@@ -2,6 +2,7 @@ import React from 'react'
 import { ErrorMessage, Field, useField } from 'formik'
 import { InputGroup } from 'react-bootstrap'
 
+import 'bootstrap/dist/css/bootstrap.css'
 import styles from './SettingAuctionField.module.scss'
 
 type Props = {

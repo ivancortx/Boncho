@@ -33,7 +33,7 @@ export const LoginForm: React.VFC<Props> = ({ closeModal }) => {
     try {
       await firebaseApp.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
       await auth.signInWithEmailAndPassword(email, password)
-      await firebaseApp.auth().onAuthStateChanged(async (userCred: any) => {
+      firebaseApp.auth().onAuthStateChanged(async (userCred: any) => {
         const idToken = await userCred?.getIdToken()
         setIsAuth!(true)
         setToken!(idToken)
@@ -52,8 +52,8 @@ export const LoginForm: React.VFC<Props> = ({ closeModal }) => {
         password: '',
       }}
       validationSchema={validate}
-      onSubmit={(values) => {
-        addUser(values.email, values.password)
+      onSubmit={async (values) => {
+        await addUser(values.email, values.password)
       }}
     >
       <div className={styles.container}>
