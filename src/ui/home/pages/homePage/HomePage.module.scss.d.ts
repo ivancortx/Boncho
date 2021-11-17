@@ -7,5 +7,5 @@ interface CssExports {
   'itemCarousel5Position': string;
   'productNavigation': string;
 }
-export const cssExports: CssExports
-export default cssExports
+export const cssExports: CssExports;
+export default cssExports;

@@ -10,7 +10,7 @@ export const validate = Yup.object({
     .min(4, 'Логин должен быть не менее 4 символов')
     .max(15, 'Логин должен быть не более 15 символов')
     .required('Логин не может быть пустым'),
-  reg_password: Yup.string()
+  regPassword: Yup.string()
     .min(6, 'Пароль должень иметь не менее 6 символов')
     .required('Введите пароль'),
   confirmPassword: Yup.string()

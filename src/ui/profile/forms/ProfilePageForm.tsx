@@ -15,8 +15,8 @@ import 'bootstrap/dist/css/bootstrap.css'
 import styles from './ProfilePageForm.module.scss'
 
 type Props = {
-  setIsUploaded: (x: boolean) => void
-  setFilePath: (x: string) => void
+  setIsUploaded: (arg: boolean) => void
+  setFilePath: (arg: string) => void
   isUploaded: boolean
   filePath: string
   userData: UserDataType[]
@@ -90,7 +90,7 @@ export const ProfilePageForm: React.VFC<Props> = ({ ...props }) => {
                   <div className={styles.deleteImageButton}>Удалить</div>
                 </div>
               </div>
-              <div className={styles.profileInformationContainer}>
+              <div>
                 <div className={styles.emailContainer}>
                   <div>Email</div>
                   {userData[0] !== undefined && (

@@ -4,5 +4,5 @@ interface CssExports {
   'error': string;
   'label': string;
 }
-export const cssExports: CssExports
-export default cssExports
+export const cssExports: CssExports;
+export default cssExports;

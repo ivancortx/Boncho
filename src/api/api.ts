@@ -80,6 +80,14 @@ export const loadUserCash = (email: string, token: string) => {
   })
 }
 
+export const loadItemsInCart = () => {
+  return instance.get('api/fetch-items-in-cart', {
+    headers: {
+      token: Cookies.get('token'),
+    },
+  })
+}
+
 export const buyCurrentProduct = (
   currentPrice: string,
   productData: ProductDataType,

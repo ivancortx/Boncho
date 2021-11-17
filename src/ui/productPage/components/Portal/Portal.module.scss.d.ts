@@ -6,5 +6,5 @@ interface CssExports {
   'container': string;
   'image': string;
 }
-export const cssExports: CssExports
-export default cssExports
+export const cssExports: CssExports;
+export default cssExports;

@@ -9,6 +9,7 @@ import { AuctionsPage } from '@/ui/auctions/pages/AuctionsPage'
 import { ProductPage } from '@/ui/productPage/pages/ProductPage'
 import { ProfilePage } from '@/ui/profile/pages/ProfilePage'
 import { ModalCloseContext } from '@/context/SettingsUserModalContext'
+import { CartPage } from '@/ui/cart'
 
 export const AppRoutes: React.VFC = () => {
   const closeSettingsUserModal = useContext<() => void>(ModalCloseContext)
@@ -21,6 +22,7 @@ export const AppRoutes: React.VFC = () => {
         <Route path={Routes.AuctionsPage} exact component={AuctionsPage} />
         <Route path={Routes.AuctionsPageItem} exact component={ProductPage} />
         <Route path={Routes.ProfilePage} exact component={ProfilePage} />
+        <Route path={Routes.CartPage} exact component={CartPage} />
         <Redirect to={Routes.Home} />
       </Switch>
     </div>

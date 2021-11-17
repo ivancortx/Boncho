@@ -16,6 +16,7 @@ import { UserDataType } from '@/ui/navigation/interfaces/navigationPage/navigati
 import 'bootstrap/dist/css/bootstrap.css'
 import styles from './ProductPageWithData.module.scss'
 import { AuthContext } from '@/context/AuthContext'
+import { fetchItemsInCart } from '@/ui/cart/store/action'
 
 type Props = {
   productData: ProductDataType;
@@ -83,9 +84,10 @@ export const ProductPageWithData: React.VFC<Props> = ({ productData, userData })
         dispatch(clearCurrentPrice())
       }, Number(productData.stepTime) * 1000)
     },
-    buyThisProduct = () => {
+    buyThisProduct = async () => {
       if (currentPrice !== '') {
-        dispatch(buyProduct(currentPrice, productData, userData[0], token))
+        await dispatch(buyProduct(currentPrice, productData, userData[0], token))
+        dispatch(fetchItemsInCart())
       }
     }
 

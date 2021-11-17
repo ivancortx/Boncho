@@ -9,5 +9,5 @@ interface CssExports {
   'form': string;
   'userIsRegistred': string;
 }
-export const cssExports: CssExports
-export default cssExports
+export const cssExports: CssExports;
+export default cssExports;

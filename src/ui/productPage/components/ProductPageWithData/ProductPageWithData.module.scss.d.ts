@@ -20,5 +20,5 @@ interface CssExports {
   'stringContainer__content': string;
   'stringContainer__name': string;
 }
-export const cssExports: CssExports
-export default cssExports
+export const cssExports: CssExports;
+export default cssExports;

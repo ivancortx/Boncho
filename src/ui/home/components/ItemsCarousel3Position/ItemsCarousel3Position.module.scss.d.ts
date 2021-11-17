@@ -8,5 +8,5 @@ interface CssExports {
   'nextButton': string;
   'prevButton': string;
 }
-export const cssExports: CssExports
-export default cssExports
+export const cssExports: CssExports;
+export default cssExports;

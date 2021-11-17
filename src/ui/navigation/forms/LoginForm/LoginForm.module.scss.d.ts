@@ -8,5 +8,5 @@ interface CssExports {
   'fieldName': string;
   'form': string;
 }
-export const cssExports: CssExports
-export default cssExports
+export const cssExports: CssExports;
+export default cssExports;

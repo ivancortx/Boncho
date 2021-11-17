@@ -4,5 +4,5 @@ interface CssExports {
   'button': string;
   'navButtonsContainer': string;
 }
-export const cssExports: CssExports
-export default cssExports
+export const cssExports: CssExports;
+export default cssExports;

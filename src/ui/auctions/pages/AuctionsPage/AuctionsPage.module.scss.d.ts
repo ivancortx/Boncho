@@ -4,5 +4,5 @@ interface CssExports {
   'container': string;
   'itemsContainer': string;
 }
-export const cssExports: CssExports
-export default cssExports
+export const cssExports: CssExports;
+export default cssExports;

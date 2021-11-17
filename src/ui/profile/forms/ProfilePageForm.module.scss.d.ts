@@ -14,5 +14,5 @@ interface CssExports {
   'photoContainer': string;
   'spinner': string;
 }
-export const cssExports: CssExports
-export default cssExports
+export const cssExports: CssExports;
+export default cssExports;

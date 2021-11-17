@@ -4,7 +4,7 @@ import { Modal } from 'react-bootstrap'
 import { LoginForm } from '../../forms/LoginForm/LoginForm'
 import 'bootstrap/dist/css/bootstrap.css'
 import styles from './LoginModal.module.scss'
-import user_auth from '@/assets/images/user_auth_model.png'
+import userAuth from '@/assets/images/user_auth_model.png'
 
 
 type Props = {
@@ -25,7 +25,7 @@ export const LoginModal: React.VFC<Props> = ({ showModal, closeModal }) => {
           <div className={styles.header}>Войти в аккаунт</div>
         </Modal.Header>
         <Modal.Body className={styles.content}>
-          <img src={String(user_auth)} className={styles.image} />
+          <img src={String(userAuth)} className={styles.image} alt={'user'}/>
           <LoginForm closeModal={closeModal} />
         </Modal.Body>
       </Modal>

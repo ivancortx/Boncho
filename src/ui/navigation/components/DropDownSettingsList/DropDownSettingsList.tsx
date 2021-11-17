@@ -7,6 +7,7 @@ import salesIcon from '@/assets/images/salesIcon.png'
 import outIcon from '@/assets/images/outIcon.png'
 
 import styles from './DropDownSettingsList.module.scss'
+import { CartPage } from '@/ui/cart'
 
 type Props = {
   exit: () => void;
@@ -21,7 +22,7 @@ export const DropDownSettingsList: React.VFC<Props> = ({ exit, hideSettingsList 
     <div className={styles.container}>
       <div className={styles.item}>
         <div className={styles.icon}>
-          <img src={userIcon} alt="u" />
+          <img src={userIcon} alt="u"/>
         </div>
         <div onClick={hideSettingsList} className={styles.link}>
           <Link to={Routes.ProfilePage}>Мой профиль</Link>
@@ -29,9 +30,11 @@ export const DropDownSettingsList: React.VFC<Props> = ({ exit, hideSettingsList 
       </div>
       <div className={styles.item}>
         <div className={styles.icon}>
-          <img src={salesIcon} alt="u" />
+          <img src={salesIcon} alt="u"/>
         </div>
-        <div className={styles.link}>Покупки</div>
+        <div onClick={hideSettingsList} className={styles.link}>
+          <Link to={Routes.CartPage}>Покупки</Link>
+        </div>
       </div>
       <div
         onClick={() => {
@@ -41,7 +44,7 @@ export const DropDownSettingsList: React.VFC<Props> = ({ exit, hideSettingsList 
         className={styles.item}
       >
         <div className={styles.icon}>
-          <img src={outIcon} alt="u" />
+          <img src={outIcon} alt="u"/>
         </div>
         <div onClick={clearLocalStorage} className={styles.link}>
           Выйти

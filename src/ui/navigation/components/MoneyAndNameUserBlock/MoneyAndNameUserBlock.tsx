@@ -16,7 +16,7 @@ type Props = {
   closeModal: () => void;
   isActiveModal: boolean;
   exit: () => void;
-};
+}
 
 export const MoneyAndNameUserBlock: React.VFC<Props> = ({ ...props }) => {
   const { showGetCashModal, userCash, userProfile, showModal, isActiveModal, closeModal, exit } =

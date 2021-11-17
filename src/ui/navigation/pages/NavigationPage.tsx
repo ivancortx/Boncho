@@ -21,6 +21,7 @@ import { MoneyAndNameUserBlock } from '../components/MoneyAndNameUserBlock/Money
 import { LogoAndNavButtons } from '../components/LogoAndNavButtons/LogoAndNavButtons'
 
 import styles from './NavidationPage.module.scss'
+import { fetchItemsInCart } from '@/ui/cart/store/action'
 
 export const NavigationPage: React.VFC = () => {
   const dispatch = useDispatch(),
@@ -44,6 +45,7 @@ export const NavigationPage: React.VFC = () => {
     if (userData[0] !== undefined) {
       dispatch(fetchProfileData(userData[0].email))
       dispatch(fetchUserCash(userData[0].email, token))
+      dispatch(fetchItemsInCart())
     }
   }, [userData])
 

@@ -6,5 +6,5 @@ interface CssExports {
   'buttons': string;
   'container': string;
 }
-export const cssExports: CssExports
-export default cssExports
+export const cssExports: CssExports;
+export default cssExports;
