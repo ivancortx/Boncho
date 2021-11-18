@@ -22,7 +22,6 @@ import { LogoAndNavButtons } from '../components/LogoAndNavButtons/LogoAndNavBut
 
 import styles from './NavidationPage.module.scss'
 import { fetchItemsInCart } from '@/ui/cart/store/action'
-import { CartButton } from '@/ui/navigation/components/CartButton/CartButton'
 
 export const NavigationPage: React.VFC = () => {
   const dispatch = useDispatch(),

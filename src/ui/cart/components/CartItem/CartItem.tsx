@@ -5,12 +5,13 @@ import { AuctionDataType } from '@/ui/auctions'
 import CheckOutButton from '@/ui/cart/components/CheckOutButton/CheckOutButton'
 
 export type Props = {
-  item: AuctionDataType
+  item: AuctionDataType,
+  openModal: (arg: AuctionDataType) => void
 }
 
-export const CartItem:React.VFC<Props> = ({item}) => {
+export const CartItem:React.VFC<Props> = ({item, openModal}) => {
   const orderDelivery = () => {
-    console.log(item.productName)
+    openModal(item)
   }
 
   return (
