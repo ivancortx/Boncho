@@ -22,6 +22,7 @@ import { LogoAndNavButtons } from '../components/LogoAndNavButtons/LogoAndNavBut
 
 import styles from './NavidationPage.module.scss'
 import { fetchItemsInCart } from '@/ui/cart/store/action'
+import { CartButton } from '@/ui/navigation/components/CartButton/CartButton'
 
 export const NavigationPage: React.VFC = () => {
   const dispatch = useDispatch(),
@@ -41,6 +42,7 @@ export const NavigationPage: React.VFC = () => {
     openLoginModal = () => setShowLoginModall(true),
     closeRegModal = () => setShowRegModall(false),
     closeLoginModal = () => setShowLoginModall(false)
+
   useEffect(() => {
     if (userData[0] !== undefined) {
       dispatch(fetchProfileData(userData[0].email))
@@ -88,12 +90,12 @@ export const NavigationPage: React.VFC = () => {
       )}
       <LogoAndNavButtons />
       {showRegModal && (
-        <div className={styles.portal}>
+        <div>
           <RegModal showModal={showRegModal} closeModal={closeRegModal} />
         </div>
       )}
       {showLoginModal && (
-        <div className={styles.portal}>
+        <div>
           <LoginModal showModal={showLoginModal} closeModal={closeLoginModal} />
         </div>
       )}

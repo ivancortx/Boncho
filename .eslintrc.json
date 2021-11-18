@@ -48,6 +48,12 @@
         "max-len": ["warn", {"code": 100, "ignoreUrls": true}],
         "curly": ["error", "all"],
         "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": false }],
-        "indent": ["error", 2]
+        "indent": ["error", 2],
+        "no-restricted-imports": [
+            "error",
+            {
+                "patterns": ["@material-ui/*/*/*"]
+            }
+        ]
     }
 }

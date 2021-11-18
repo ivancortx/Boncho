@@ -7,6 +7,9 @@ import { DropDownSettingsList } from '../DropDownSettingsList/DropDownSettingsLi
 import { ProfileDataType } from '@/ui/profile/interfaces/PrfilePageInterfaces'
 
 import styles from './MoneyAndNameUserBlock.module.scss'
+import { CartButton } from '@/ui/navigation/components/CartButton/CartButton'
+import { Routes } from '@/ui/navigation/const/routes'
+import { Link } from 'react-router-dom'
 
 type Props = {
   showGetCashModal: () => void;
@@ -23,19 +26,22 @@ export const MoneyAndNameUserBlock: React.VFC<Props> = ({ ...props }) => {
     props
   return (
     <div className={styles.exitBlock}>
+      <Link to={Routes.CartPage}>
+        <CartButton/>
+      </Link>
       <div onClick={(e) => e.stopPropagation()} className={styles.moneyBlock}>
         <div onClick={showGetCashModal} className={styles.money}>
-          <img src={cash} alt="$" />
+          <img src={cash} alt="$"/>
           {userCash === 0 ? <>{localStorage.getItem('userCash')} $</> : <>{userCash} $</>}
         </div>
-        <div className={styles.cashContainer}>
-          <GetCashModal />
+        <div>
+          <GetCashModal/>
         </div>
       </div>
       <div>
         <div className={styles.exitButtonContainer}>
           {userProfile[0] !== undefined ? (
-            <div className={styles.userNameBlock}>
+            <div>
               {userProfile[0].login && (
                 <div className={styles.configureIconContainer}>
                   <span className={styles.userName}>{`${userProfile[0].login}`}</span>
@@ -51,7 +57,7 @@ export const MoneyAndNameUserBlock: React.VFC<Props> = ({ ...props }) => {
                       alt="c"
                     />
                     <div className={isActiveModal ? styles.configureList : styles.hide}>
-                      <DropDownSettingsList exit={exit} hideSettingsList={closeModal} />
+                      <DropDownSettingsList exit={exit} hideSettingsList={closeModal}/>
                     </div>
                   </div>
                 </div>

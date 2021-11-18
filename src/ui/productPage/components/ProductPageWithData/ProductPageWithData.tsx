@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import { ProductDataType } from '../../interfaces/ProductPage/ProductPageInterfaces'
 import { Portal } from '@/ui/productPage/components/Portal/Portal'
 import emptyImage from '@/assets/images/empty_image.png'
-import sold_out from '@/assets/images/sold_out.png'
+import soldOut from '@/assets/images/sold_out.png'
 import { SeePriceModal } from '../SeePriceModal/SeePriceModal'
 import { buyProduct, clearCurrentPrice, fetchCurrentPrice } from '../../store/action'
 import { useProductPageWithData } from '../../hooks/useProductPageWithData'
@@ -93,7 +93,7 @@ export const ProductPageWithData: React.VFC<Props> = ({ productData, userData })
 
   return (
     <div className={styles.container}>
-      {!productData.isInStock && <img src={sold_out} className={styles.isInStock} />}
+      {!productData.isInStock && <img src={soldOut} className={styles.isInStock} />}
       <div className={styles.photoBlock}>
         {openModal && (
           <div>
@@ -169,7 +169,7 @@ export const ProductPageWithData: React.VFC<Props> = ({ productData, userData })
                 </>
               )}
             </div>
-            <div className={styles.currentPriceBlock__timeStep}>
+            <div>
               {seePricePeriod ? (
                 <div className="mt-1">{timerSeconds} сек</div>
               ) : (
@@ -197,7 +197,7 @@ export const ProductPageWithData: React.VFC<Props> = ({ productData, userData })
         </div>
         <div className={styles.descriptionBlock}>
           <div className={styles.descriptionBlock__title}>Описание:</div>
-          <div className={styles.descriptionBlock__content}>{productData.description}</div>
+          <div>{productData.description}</div>
         </div>
       </div>
       {showSeePriceModal && (
