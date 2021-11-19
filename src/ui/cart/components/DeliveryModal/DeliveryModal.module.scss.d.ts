@@ -5,7 +5,7 @@ interface CssExports {
   'image': string;
   'itemContent': string;
   'itemName': string;
-  'sendButton': string;
+  'message': string;
 }
 export const cssExports: CssExports;
 export default cssExports;

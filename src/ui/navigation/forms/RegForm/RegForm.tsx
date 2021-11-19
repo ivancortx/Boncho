@@ -22,7 +22,7 @@ export const RegForm: React.VFC<Props> = ({ closeModal }) => {
         await firebaseApp.auth().createUserWithEmailAndPassword(email, password)
         setErrorMessage('')
         setIsRegister(true)
-        setTimeout(closeModal, 2500)
+        setTimeout(closeModal, 2000)
       } catch (error: any) {
         const errorMessage = error.message
         if (

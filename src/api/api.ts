@@ -2,6 +2,8 @@ import axios from 'axios'
 import { ProductDataType } from '@/ui/productPage/interfaces/ProductPage/ProductPageInterfaces'
 import { UserDataType } from '@/ui/navigation/interfaces/navigationPage/navigationPageInterfaces'
 import Cookies from 'js-cookie'
+import { DeliveryDataType } from '@/ui/cart'
+import { AuctionDataType } from '@/ui/auctions'
 
 const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
@@ -101,3 +103,13 @@ export const buyCurrentProduct = (
     token,
   })
 }
+
+export const sendDeliveryForm = (deliveryData: DeliveryDataType,
+                                 productData: AuctionDataType) => {
+  return instance.post('api/send-delivery-data', {
+    deliveryData,
+    productData,
+    token: Cookies.get('token')
+  })
+}
+

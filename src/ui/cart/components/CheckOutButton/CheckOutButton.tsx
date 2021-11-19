@@ -46,12 +46,16 @@ const useStyles = makeStyles((theme: any) => ({
   },
 }))
 
-export default function CheckOutButton() {
+export type Props = {
+  orderDelivery: () => void
+}
+
+export const CheckOutButton:React.VFC<Props> = ({orderDelivery}) => {
   const classes = useStyles()
 
   return (
     <div>
-      <BootstrapButton variant="contained" color="primary" disableRipple className={classes.margin}>
+      <BootstrapButton onClick={orderDelivery} variant="contained" color="primary" disableRipple className={classes.margin}>
         Оформить доставку
       </BootstrapButton>
     </div>

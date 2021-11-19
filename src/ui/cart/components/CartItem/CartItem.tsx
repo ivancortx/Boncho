@@ -2,7 +2,7 @@ import React from 'react'
 
 import styles from './CartItem.module.scss'
 import { AuctionDataType } from '@/ui/auctions'
-import CheckOutButton from '@/ui/cart/components/CheckOutButton/CheckOutButton'
+import { CheckOutButton } from './../CheckOutButton/CheckOutButton'
 
 export type Props = {
   item: AuctionDataType,
@@ -24,8 +24,8 @@ export const CartItem:React.VFC<Props> = ({item, openModal}) => {
         <div className={styles.descriptionParagraph}>Описание товара:</div>
         <div className={styles.description}>{item.description}</div>
       </div>
-      <div onClick={orderDelivery} className={styles.navigate}>
-        <CheckOutButton />
+      <div className={styles.navigate}>
+        <CheckOutButton orderDelivery={orderDelivery}/>
       </div>
     </div>
   )

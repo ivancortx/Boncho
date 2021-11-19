@@ -14,6 +14,6 @@ export const validate = Yup.object({
     .min(6, 'Пароль должень иметь не менее 6 символов')
     .required('Введите пароль'),
   confirmPassword: Yup.string()
-    .oneOf([Yup.ref('reg_password'), null], 'Пароли не совпадают')
+    .oneOf([Yup.ref('regPassword'), null], 'Пароли не совпадают')
     .required('Повторите пароль'),
 })

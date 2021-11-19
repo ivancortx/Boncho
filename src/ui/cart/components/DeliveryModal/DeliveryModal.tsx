@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import styles from './DeliveryModal.module.scss'
 import { AuctionDataType } from '@/ui/auctions'
-import {SendButton} from '@/ui/cart/components/SendButton/SendButton'
+import { DeliveryOrderForm } from '@/ui/cart/forms/DeliveryOrderForm/DeliveryOrderForm'
 
 
 type Props = {
@@ -14,6 +14,8 @@ type Props = {
 }
 
 export const DeliveryModal: React.VFC<Props> = ({ showModal, closeModal, productData }) => {
+  const [showMessage, setShowMessage] = useState<boolean>(false)
+
   return (
     <>
       <Modal
@@ -35,11 +37,12 @@ export const DeliveryModal: React.VFC<Props> = ({ showModal, closeModal, product
               {productData.productName}
             </div>
           </div>
-          <div className={styles.sendButton}>
-            <SendButton />
-          </div>
-
-          {/*<LoginForm closeModal={closeModal} />*/}
+          <DeliveryOrderForm closeModal={closeModal}
+                             productData={productData}
+                             setShowMessage={setShowMessage}/>
+          {showMessage && <div className={styles.message}>
+            Товар передан для обработки!
+          </div>}
         </Modal.Body>
       </Modal>
     </>

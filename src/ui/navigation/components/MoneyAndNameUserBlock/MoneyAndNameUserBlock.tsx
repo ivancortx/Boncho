@@ -26,9 +26,7 @@ export const MoneyAndNameUserBlock: React.VFC<Props> = ({ ...props }) => {
     props
   return (
     <div className={styles.exitBlock}>
-      <Link to={Routes.CartPage}>
-        <CartButton/>
-      </Link>
+      <CartButton/>
       <div onClick={(e) => e.stopPropagation()} className={styles.moneyBlock}>
         <div onClick={showGetCashModal} className={styles.money}>
           <img src={cash} alt="$"/>
