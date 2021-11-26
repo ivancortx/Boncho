@@ -113,3 +113,12 @@ export const sendDeliveryForm = (deliveryData: DeliveryDataType,
   })
 }
 
+export const loadWaitingDeliveries = () => {
+  return instance.get('api/fetch-waiting-deliveries', {
+    headers: {
+      token: Cookies.get('token'),
+    },
+  })
+}
+
+
