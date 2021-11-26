@@ -19,9 +19,10 @@ import { clearUserData, fetchUserCash } from '../store/action'
 import { LoginAndRegistrationBlock } from '../components/LoginAndRegistrationBlock/LoginAndRegistrationBlock'
 import { MoneyAndNameUserBlock } from '../components/MoneyAndNameUserBlock/MoneyAndNameUserBlock'
 import { LogoAndNavButtons } from '../components/LogoAndNavButtons/LogoAndNavButtons'
+import { fetchItemsInCart } from '@/ui/cart/store/action'
+import { fetchAllWaitingDeliveries } from '@/ui/registrationOfDeliveries'
 
 import styles from './NavidationPage.module.scss'
-import { fetchItemsInCart } from '@/ui/cart/store/action'
 
 export const NavigationPage: React.VFC = () => {
   const dispatch = useDispatch(),
@@ -47,6 +48,9 @@ export const NavigationPage: React.VFC = () => {
       dispatch(fetchProfileData(userData[0].email))
       dispatch(fetchUserCash(userData[0].email, token))
       dispatch(fetchItemsInCart())
+      if (userData[0].roles?.includes('admin')) {
+        dispatch(fetchAllWaitingDeliveries())
+      }
     }
   }, [userData])
 

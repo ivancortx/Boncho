@@ -6,6 +6,7 @@ type RoutesType = {
   AuctionsPageItem: string;
   ProfilePage: string;
   CartPage: string
+  RegistrationOfDeliveriesPage: string
 }
 
 export const Routes: RoutesType = {
@@ -15,5 +16,6 @@ export const Routes: RoutesType = {
   AuctionsPage: '/auctions-page',
   AuctionsPageItem: '/auctions-page/:auctionId?',
   ProfilePage: '/profile',
-  CartPage: '/cart'
+  CartPage: '/cart',
+  RegistrationOfDeliveriesPage: '/reg-delivery'
 }

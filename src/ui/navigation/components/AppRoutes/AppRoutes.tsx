@@ -10,6 +10,7 @@ import { ProductPage } from '@/ui/productPage/pages/ProductPage'
 import { ProfilePage } from '@/ui/profile/pages/ProfilePage'
 import { ModalCloseContext } from '@/context/SettingsUserModalContext'
 import { CartPage } from '@/ui/cart'
+import { RegistrationOfDeliveriesPage } from '@/ui/registrationOfDeliveries'
 
 export const AppRoutes: React.VFC = () => {
   const closeSettingsUserModal = useContext<() => void>(ModalCloseContext)
@@ -23,6 +24,8 @@ export const AppRoutes: React.VFC = () => {
         <Route path={Routes.AuctionsPageItem} exact component={ProductPage} />
         <Route path={Routes.ProfilePage} exact component={ProfilePage} />
         <Route path={Routes.CartPage} exact component={CartPage} />
+        <Route path={Routes.RegistrationOfDeliveriesPage}
+               exact component={RegistrationOfDeliveriesPage} />
         <Redirect to={Routes.Home} />
       </Switch>
     </div>

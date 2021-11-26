@@ -1,25 +1,26 @@
 import { Dispatch } from 'react'
 
 import { CLEAN_USER_DATA, WRITE_CASH_DATA, WRITE_CURRENT_USER_DATA } from './types'
-import { loadUserCash, sendUserCash, sendUserData } from '@/api/api'
+import { loadUserCash, loadAllWaitingDeliveries, sendUserCash, sendUserData } from '@/api/api'
 import { UserDataType } from '../interfaces/navigationPage/navigationPageInterfaces'
+import { writeWaitingDeliveries } from '@/ui/cart/store/action'
 
 export type ActionsTypes = WriteCurrentUserDataType | WriteCashDataType | CleanUserDataType;
 
 type WriteCurrentUserDataType = {
-  type: typeof WRITE_CURRENT_USER_DATA;
-  data: UserDataType;
-};
+  type: typeof WRITE_CURRENT_USER_DATA
+  data: UserDataType
+}
 
 type WriteCashDataType = {
-  type: typeof WRITE_CASH_DATA;
-  data: number;
-};
+  type: typeof WRITE_CASH_DATA
+  data: number
+}
 
 type CleanUserDataType = {
-  type: typeof CLEAN_USER_DATA;
-  data: [];
-};
+  type: typeof CLEAN_USER_DATA
+  data: []
+}
 
 export const writeCurrentUserData = (data: UserDataType): WriteCurrentUserDataType => ({
   type: WRITE_CURRENT_USER_DATA,

@@ -1,0 +1,1 @@
+export { RegistrationOfDeliveriesPage } from './RegistrationOfDeliveriesPage'

@@ -6,6 +6,7 @@ import { useAuctionPage } from '../../hooks/useAuctionPage'
 import { Auction } from '../../components/Auction/Auction'
 
 import styles from './AuctionsPage.module.scss'
+import shortid from 'shortid'
 
 export const AuctionsPage: React.VFC = () => {
   const dispatch = useDispatch(),
@@ -19,8 +20,8 @@ export const AuctionsPage: React.VFC = () => {
         {auctionsData && (
           <>
             {auctionsData.map((auct) => (
-              <div className={styles.item}>
-                <Auction auct={auct} key={auct.auctionId} />
+              <div key={shortid.generate()}>
+                <Auction auct={auct} />
               </div>
             ))}
           </>

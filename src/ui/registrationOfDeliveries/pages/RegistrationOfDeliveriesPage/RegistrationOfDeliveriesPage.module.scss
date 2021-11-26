@@ -1,0 +1,29 @@
+.container {
+  margin: 15px 0;
+  width: 100%;
+}
+
+.title {
+  text-align: center;
+  font-size: 22px;
+  color: #383838;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.emptyCartImage {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+
+  img {
+    width: 60%;
+  }
+}
+
+.emptyCartText {
+  width: 100%;
+  text-align: center;
+  font-size: 22px;
+  font-style: italic;
+}

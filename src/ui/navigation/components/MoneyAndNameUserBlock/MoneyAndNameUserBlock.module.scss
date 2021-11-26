@@ -36,7 +36,19 @@
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 70px 250px;
+  grid-template-columns: 1fr 30px 70px 250px;
+
+  .deliveryIcon {
+    width: 100%;
+    text-align: right;
+    padding-top: 30px;
+
+    img {
+      cursor: pointer;
+      width: 35px;
+      height: 35px;
+    }
+  }
 
   .moneyBlock {
     margin-left: 90%;

@@ -121,4 +121,12 @@ export const loadWaitingDeliveries = () => {
   })
 }
 
+export const loadAllWaitingDeliveries = () => {
+  return instance.get('api/fetch-all-waiting-deliveries', {
+    headers: {
+      token: Cookies.get('token'),
+    },
+  })
+}
+
 

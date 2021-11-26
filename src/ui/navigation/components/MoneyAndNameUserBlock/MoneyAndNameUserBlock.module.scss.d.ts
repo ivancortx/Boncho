@@ -4,6 +4,7 @@ interface CssExports {
   'configureIcon': string;
   'configureIconContainer': string;
   'configureList': string;
+  'deliveryIcon': string;
   'enterButton': string;
   'exitBlock': string;
   'exitButtonContainer': string;

@@ -3,13 +3,14 @@ import React from 'react'
 import cash from '@/assets/images/purse.png'
 import { GetCashModal } from '../GetCashModal/GetCashModal'
 import configure from '@/assets/images/configure.png'
+import deliveryIcon from '@/assets/images/deliveryIcon.png'
 import { DropDownSettingsList } from '../DropDownSettingsList/DropDownSettingsList'
 import { ProfileDataType } from '@/ui/profile/interfaces/PrfilePageInterfaces'
 
 import styles from './MoneyAndNameUserBlock.module.scss'
 import { CartButton } from '@/ui/navigation/components/CartButton/CartButton'
-import { Routes } from '@/ui/navigation/const/routes'
 import { Link } from 'react-router-dom'
+import { Routes } from '@/ui/navigation/const/routes'
 
 type Props = {
   showGetCashModal: () => void;
@@ -26,6 +27,11 @@ export const MoneyAndNameUserBlock: React.VFC<Props> = ({ ...props }) => {
     props
   return (
     <div className={styles.exitBlock}>
+      <div className={styles.deliveryIcon}>
+        <Link to={Routes.RegistrationOfDeliveriesPage}>
+          <img src={deliveryIcon} alt={'delivery'}/>
+        </Link>
+      </div>
       <CartButton/>
       <div onClick={(e) => e.stopPropagation()} className={styles.moneyBlock}>
         <div onClick={showGetCashModal} className={styles.money}>

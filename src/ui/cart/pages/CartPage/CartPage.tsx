@@ -44,7 +44,7 @@ export const CartPage: React.VFC = () => {
           </div>
         </div>
       }
-      {waitingDeliveries.length > 0 &&
+      {waitingDeliveries && waitingDeliveries.length > 0 &&
         <div>
           {waitingDeliveries.map(itemData => (
             <WaitingDeliveryItem key={shortid.generate()} itemData={itemData} />

@@ -8,6 +8,7 @@ import { reducer as auctionsDataReducer } from '@/ui/auctions'
 import { reducer as productDataReducer } from '@/ui/productPage'
 import { reducer as profileDataReducer } from '@/ui/profile'
 import { reducer as cartDataReducer } from '@/ui/cart'
+import { reducer as registrationDeliveriesDataReducer } from '@/ui/registrationOfDeliveries'
 
 const reducers = combineReducers({
   loginData: loginDataReducer,
@@ -16,7 +17,8 @@ const reducers = combineReducers({
   auctionsData: auctionsDataReducer,
   productData: productDataReducer,
   profileData: profileDataReducer,
-  cartData: cartDataReducer
+  cartData: cartDataReducer,
+  registrationDeliveriesData: registrationDeliveriesDataReducer
 })
 
 type RootReducerType = typeof reducers;
