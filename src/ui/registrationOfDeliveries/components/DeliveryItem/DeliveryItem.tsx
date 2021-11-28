@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { WaitingDeliveryDataType } from '@/ui/registrationOfDeliveries/interfaces/RegistrationOfDeliveriesPageInterfaces'
-import { CheckOutButton } from '@/ui/cart'
+import { CheckOutButton } from '../CheckOutButton/CheckOutButton'
 
 import styles from './DeliveryItem.module.scss'
 

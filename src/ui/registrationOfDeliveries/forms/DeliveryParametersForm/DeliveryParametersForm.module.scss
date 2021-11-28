@@ -1,0 +1,35 @@
+.container {
+   width: 100%;
+  text-align: center;
+}
+
+.form {
+  width: 74%;
+  min-width: 200px;
+  text-align: center;
+  margin: 20px 0 10px 13%;
+}
+
+.fieldName {
+  width: 100%;
+  text-align: left;
+  font-size: 14px;
+}
+
+.fieldInput {
+  margin-bottom: 10px;
+}
+
+.error {
+  margin-top: -18px;
+  text-align: center;
+  position: absolute;
+  color: red;
+  font-size: 0.8em;
+}
+
+.button {
+  border: none;
+  outline: none;
+  background-color: white;
+}
