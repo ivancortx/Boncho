@@ -1,8 +1,8 @@
 import React from 'react'
-import { useCategoriesPage } from '../../hooks/useCategoriesPage'
-
-import timer from '@/assets/images/timer.png'
 import { NavLink } from 'react-router-dom'
+
+import { useCategoriesPage } from '../../hooks/useCategoriesPage'
+import timer from '@/assets/images/timer.png'
 import sold_out from '@/assets/images/sold_out.png'
 
 import styles from './Products.module.scss'

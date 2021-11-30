@@ -11,6 +11,8 @@ export type WaitingDeliveryDataType = {
   productId: string,
   productDescription: string,
   productImages: string[],
+  deliveryStatus?: string,
+  deliveryStatusDescription?: string,
   userName: string,
   surName: string,
   tel: string,

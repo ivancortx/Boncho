@@ -8,14 +8,14 @@ import { ProductDataType } from '../interfaces/CategoriesPage/categoriesPageInte
 export type ActionsTypes = SetCategoryesType | SetProductsType;
 
 type SetCategoryesType = {
-  type: typeof FETCH_CATEGORIES_DATA;
-  data: Category[];
-};
+  type: typeof FETCH_CATEGORIES_DATA
+  data: Category[]
+}
 
 type SetProductsType = {
-  type: typeof FETCH_PRODUCTS_DATA;
-  data: ProductDataType[];
-};
+  type: typeof FETCH_PRODUCTS_DATA
+  data: ProductDataType[]
+}
 
 export const setCategories = (data: Category[]): SetCategoryesType => ({
   type: FETCH_CATEGORIES_DATA,

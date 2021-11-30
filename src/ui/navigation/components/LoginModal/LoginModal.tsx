@@ -2,15 +2,15 @@ import React from 'react'
 import { Modal } from 'react-bootstrap'
 
 import { LoginForm } from '../../forms/LoginForm/LoginForm'
-import 'bootstrap/dist/css/bootstrap.css'
-import styles from './LoginModal.module.scss'
 import userAuth from '@/assets/images/user_auth_model.png'
 
+import 'bootstrap/dist/css/bootstrap.css'
+import styles from './LoginModal.module.scss'
 
 type Props = {
-  showModal: boolean;
-  closeModal: () => void;
-};
+  showModal: boolean
+  closeModal: () => void
+}
 
 export const LoginModal: React.VFC<Props> = ({ showModal, closeModal }) => {
   return (

@@ -10,8 +10,8 @@ import { addProfile } from '@/ui/profile/store/action'
 import styles from './RegForm.module.scss'
 
 type Props = {
-  closeModal: () => void;
-};
+  closeModal: () => void
+}
 
 export const RegForm: React.VFC<Props> = ({ closeModal }) => {
   const [isRegister, setIsRegister] = useState<boolean>(false),
@@ -40,7 +40,7 @@ export const RegForm: React.VFC<Props> = ({ closeModal }) => {
         email: '',
         login: '',
         regPassword: '',
-        confirmPassword: '',
+        confirmPassword: ''
       }}
       validationSchema={validate}
       onSubmit={async (values) => {
@@ -52,10 +52,10 @@ export const RegForm: React.VFC<Props> = ({ closeModal }) => {
     >
       <div className={styles.container}>
         <Form className={styles.form}>
-          <TextlField label={'Введите email'} name={'email'} type={'input'} />
-          <TextlField label={'Введите логин'} name={'login'} type={'input'} />
-          <TextlField label={'Введите пароль'} name={'regPassword'} type={'password'} />
-          <TextlField label={'Повторите пароль'} name={'confirmPassword'} type={'password'} />
+          <TextlField label={'Введите email'} name={'email'} type={'input'}/>
+          <TextlField label={'Введите логин'} name={'login'} type={'input'}/>
+          <TextlField label={'Введите пароль'} name={'regPassword'} type={'password'}/>
+          <TextlField label={'Повторите пароль'} name={'confirmPassword'} type={'password'}/>
           {errorMessage !== '' && <div className={styles.error}>{errorMessage}</div>}
           <button type="submit" className={styles.button}>
             Зарегистрировать

@@ -7,12 +7,11 @@ import salesIcon from '@/assets/images/salesIcon.png'
 import outIcon from '@/assets/images/outIcon.png'
 
 import styles from './DropDownSettingsList.module.scss'
-import { CartPage } from '@/ui/cart'
 
 type Props = {
   exit: () => void;
-  hideSettingsList: () => void;
-};
+  hideSettingsList: () => void
+}
 
 export const DropDownSettingsList: React.VFC<Props> = ({ exit, hideSettingsList }) => {
   const clearLocalStorage = () => {

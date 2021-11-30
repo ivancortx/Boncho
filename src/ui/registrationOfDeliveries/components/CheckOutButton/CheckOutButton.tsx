@@ -55,7 +55,11 @@ export const CheckOutButton:React.VFC<Props> = ({orderDelivery}) => {
 
   return (
     <div>
-      <BootstrapButton onClick={orderDelivery} variant="contained" color="primary" disableRipple className={classes.margin}>
+      <BootstrapButton onClick={orderDelivery}
+                       variant="contained"
+                       color="primary"
+                       disableRipple
+                       className={classes.margin}>
         Изменить статус заказа
       </BootstrapButton>
     </div>

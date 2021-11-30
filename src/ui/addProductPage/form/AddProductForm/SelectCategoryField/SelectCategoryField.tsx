@@ -7,10 +7,10 @@ import { Category } from '@/ui/products'
 import styles from './SelectCategoryField.module.scss'
 
 type Props = {
-  label: string;
-  name: string;
-  type: string;
-  categoriesData: Category[];
+  label: string
+  name: string
+  type: string
+  categoriesData: Category[]
 };
 
 export const SelectCategoryField: React.VFC<Props> = ({ ...props }) => {

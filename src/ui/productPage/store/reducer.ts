@@ -3,9 +3,9 @@ import { ActionsTypes } from './action'
 import { ProductDataType } from '../interfaces/ProductPage/ProductPageInterfaces'
 
 type InitialStateType = {
-  product: ProductDataType[];
-  currentPrice: string;
-};
+  product: ProductDataType[]
+  currentPrice: string
+}
 
 const initialState: InitialStateType = {
   product: [],

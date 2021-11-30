@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import cash from '@/assets/images/purse.png'
 import { GetCashModal } from '../GetCashModal/GetCashModal'
@@ -6,20 +7,19 @@ import configure from '@/assets/images/configure.png'
 import deliveryIcon from '@/assets/images/deliveryIcon.png'
 import { DropDownSettingsList } from '../DropDownSettingsList/DropDownSettingsList'
 import { ProfileDataType } from '@/ui/profile/interfaces/PrfilePageInterfaces'
-
-import styles from './MoneyAndNameUserBlock.module.scss'
 import { CartButton } from '@/ui/navigation/components/CartButton/CartButton'
-import { Link } from 'react-router-dom'
 import { Routes } from '@/ui/navigation/const/routes'
 
+import styles from './MoneyAndNameUserBlock.module.scss'
+
 type Props = {
-  showGetCashModal: () => void;
-  userCash: number;
-  userProfile: ProfileDataType[];
-  showModal: () => void;
-  closeModal: () => void;
-  isActiveModal: boolean;
-  exit: () => void;
+  showGetCashModal: () => void
+  userCash: number
+  userProfile: ProfileDataType[]
+  showModal: () => void
+  closeModal: () => void
+  isActiveModal: boolean
+  exit: () => void
 }
 
 export const MoneyAndNameUserBlock: React.VFC<Props> = ({ ...props }) => {

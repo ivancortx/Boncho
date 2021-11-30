@@ -3,8 +3,8 @@ import { ActionsTypes } from './action'
 import { ProfileDataType } from '../interfaces/PrfilePageInterfaces'
 
 type InitialStateType = {
-  profileData: ProfileDataType[];
-};
+  profileData: ProfileDataType[]
+}
 
 const initialState: InitialStateType = {
   profileData: [],

@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import shortid from 'shortid'
 
 import { fetchAuctions } from '../../store/action'
 import { useAuctionPage } from '../../hooks/useAuctionPage'
 import { Auction } from '../../components/Auction/Auction'
 
 import styles from './AuctionsPage.module.scss'
-import shortid from 'shortid'
 
 export const AuctionsPage: React.VFC = () => {
   const dispatch = useDispatch(),

@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap'
 
-import 'bootstrap/dist/css/bootstrap.css'
-import styles from './DeliveryModal.module.scss'
 import { AuctionDataType } from '@/ui/auctions'
 import { DeliveryOrderForm } from '@/ui/cart/forms/DeliveryOrderForm/DeliveryOrderForm'
 
+import 'bootstrap/dist/css/bootstrap.css'
+import styles from './DeliveryModal.module.scss'
 
 type Props = {
   showModal: boolean

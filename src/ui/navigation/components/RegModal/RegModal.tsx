@@ -8,9 +8,9 @@ import 'bootstrap/dist/css/bootstrap.css'
 import styles from './RegModal.module.scss'
 
 type Props = {
-  showModal: boolean;
-  closeModal: () => void;
-};
+  showModal: boolean
+  closeModal: () => void
+}
 
 export const RegModal: React.VFC<Props> = ({ showModal, closeModal }) => {
   return (

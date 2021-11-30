@@ -6,19 +6,19 @@ import { UserDataType } from '@/ui/navigation/interfaces/navigationPage/navigati
 
 export type ActionsTypes = WriteCurrentUserDataType;
 export type formValuesType = {
-  productName: string;
-  category: string;
-  description: string;
-  startPrice: string;
-  priceStep: string;
-  seePrice: string;
-  stepTime: string;
-  percentTimeStep: string;
+  productName: string
+  category: string
+  description: string
+  startPrice: string
+  priceStep: string
+  seePrice: string
+  stepTime: string
+  percentTimeStep: string
 }
 
 type WriteCurrentUserDataType = {
-  type: typeof WRITE_PHOTO_URL;
-  data: string;
+  type: typeof WRITE_PHOTO_URL
+  data: string
 }
 
 export const writePhotoUrlAction = (data: string): WriteCurrentUserDataType => ({

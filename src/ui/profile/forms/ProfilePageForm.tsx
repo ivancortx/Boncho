@@ -21,26 +21,29 @@ type Props = {
   filePath: string
   userData: UserDataType[]
   userProfile: ProfileDataType[]
-};
+}
 
 export const ProfilePageForm: React.VFC<Props> = ({ ...props }) => {
   const dispatch = useDispatch(),
     { setFilePath, setIsUploaded, isUploaded, filePath, userData, userProfile } = props,
-    [photoUrl, setPhotoUrl] = useState<string>(''),
-    saveFile = async (e: any) => {
-      setIsUploaded(false)
-      const file = e.target.files[0],
-        storageRef = firebaseApp.storage().ref(),
-        pathPhoto = `assets/images/usersProfiles/${userData[0].email}/${file.name}`,
-        fileRef = storageRef.child(pathPhoto),
-        metadata = { contentType: 'image/jpeg' }
-      await fileRef.put(file, metadata)
-      setPhotoUrl(await fileRef.getDownloadURL())
+    [photoUrl, setPhotoUrl] = useState<string>('')
 
-      if (await fileRef.getDownloadURL()) {
-        setIsUploaded(true)
-      }
+  const saveFile = async (e: any) => {
+    setIsUploaded(false)
+
+    const file = e.target.files[0],
+      storageRef = firebaseApp.storage().ref(),
+      pathPhoto = `assets/images/usersProfiles/${userData[0].email}/${file.name}`,
+      fileRef = storageRef.child(pathPhoto),
+      metadata = { contentType: 'image/jpeg' }
+
+    await fileRef.put(file, metadata)
+    setPhotoUrl(await fileRef.getDownloadURL())
+
+    if (await fileRef.getDownloadURL()) {
+      setIsUploaded(true)
     }
+  }
   useEffect(() => {
     if (photoUrl !== '') {
       setFilePath(photoUrl)

@@ -1,10 +1,10 @@
 type RoutesType = {
-  Home: string;
-  Products: string;
-  AddProductPage: string;
-  AuctionsPage: string;
-  AuctionsPageItem: string;
-  ProfilePage: string;
+  Home: string
+  Products: string
+  AddProductPage: string
+  AuctionsPage: string
+  AuctionsPageItem: string
+  ProfilePage: string
   CartPage: string
   RegistrationOfDeliveriesPage: string
 }

@@ -2,8 +2,8 @@ import { WRITE_PHOTO_URL } from './types'
 import { ActionsTypes } from './action'
 
 type InitialStateType = {
-  photoUrls: string[];
-};
+  photoUrls: string[]
+}
 
 const initialState: InitialStateType = {
   photoUrls: [],

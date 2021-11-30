@@ -38,7 +38,7 @@ const BootstrapButton = withStyles({
       boxShadow: '0 0 0 0.1rem rgba(100, 232, 60, 0.5)',
     },
   },
-})(Button);
+})(Button)
 
 const useStyles = makeStyles((theme: any) => ({
   margin: {

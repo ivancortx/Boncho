@@ -1,12 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Badge from '@material-ui/core/Badge'
 import { withStyles } from '@material-ui/core/styles'
 import IconButton from '@material-ui/core/IconButton'
+
 import cartIcon from '@/assets/images/cart_icon.png'
-import style from './CartButton.module.scss'
 import { useNavigationPage } from '../..'
 import { Routes } from '@/ui/navigation/const/routes'
-import { Link } from 'react-router-dom'
+
+import style from './CartButton.module.scss'
 
 const StyledBadge = withStyles((theme) => ({
   badge: {

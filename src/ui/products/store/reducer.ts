@@ -4,9 +4,9 @@ import { FETCH_CATEGORIES_DATA, FETCH_PRODUCTS_DATA } from './types'
 import { ProductDataType } from '../interfaces/CategoriesPage/categoriesPageInterfaces'
 
 type InitialStateType = {
-  categories: Category[];
-  productsByCategory: ProductDataType[];
-};
+  categories: Category[]
+  productsByCategory: ProductDataType[]
+}
 
 const initialState: InitialStateType = {
   categories: [],

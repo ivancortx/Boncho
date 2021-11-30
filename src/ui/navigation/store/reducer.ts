@@ -3,9 +3,9 @@ import { ActionsTypes } from './action'
 import { UserDataType } from '../interfaces/navigationPage/navigationPageInterfaces'
 
 type InitialStateType = {
-  userData: UserDataType[];
-  currentCash: number;
-};
+  userData: UserDataType[]
+  currentCash: number
+}
 
 const initialState: InitialStateType = {
   userData: [],

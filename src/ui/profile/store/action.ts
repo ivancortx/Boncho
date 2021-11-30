@@ -4,12 +4,12 @@ import { WRITE_PROFILE_DATA } from './types'
 import { ProfileDataType } from '../interfaces/PrfilePageInterfaces'
 import { addNewProfile, loadProfile } from '@/api/api'
 
-export type ActionsTypes = writeProfileType;
+export type ActionsTypes = writeProfileType
 
 type writeProfileType = {
-  type: typeof WRITE_PROFILE_DATA;
-  data: ProfileDataType;
-};
+  type: typeof WRITE_PROFILE_DATA
+  data: ProfileDataType
+}
 
 export const writeProfile = (data: ProfileDataType): writeProfileType => ({
   type: WRITE_PROFILE_DATA,

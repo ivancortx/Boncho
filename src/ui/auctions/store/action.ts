@@ -4,12 +4,12 @@ import { WRITE_AUCTIONS } from './types'
 import { loadAuctions } from '@/api/api'
 import { AuctionDataType } from '../interfaces/AddProductPage/addProductPageInterfaces'
 
-export type ActionsTypes = writeAuctionsType;
+export type ActionsTypes = writeAuctionsType
 
 type writeAuctionsType = {
-  type: typeof WRITE_AUCTIONS;
-  data: AuctionDataType[];
-};
+  type: typeof WRITE_AUCTIONS
+  data: AuctionDataType[]
+}
 
 export const writeAuctions = (data: AuctionDataType[]): writeAuctionsType => ({
   type: WRITE_AUCTIONS,

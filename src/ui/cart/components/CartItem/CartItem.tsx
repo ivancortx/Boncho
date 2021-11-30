@@ -9,7 +9,7 @@ export type Props = {
   openModal: (arg: AuctionDataType) => void
 }
 
-export const CartItem:React.VFC<Props> = ({item, openModal}) => {
+export const CartItem: React.VFC<Props> = ({ item, openModal }) => {
   const orderDelivery = () => {
     openModal(item)
   }

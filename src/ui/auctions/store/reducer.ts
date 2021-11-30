@@ -3,8 +3,8 @@ import { ActionsTypes } from './action'
 import { AuctionDataType } from '../interfaces/AddProductPage/addProductPageInterfaces'
 
 type InitialStateType = {
-  auctions: AuctionDataType[];
-};
+  auctions: AuctionDataType[]
+}
 
 const initialState: InitialStateType = {
   auctions: [],

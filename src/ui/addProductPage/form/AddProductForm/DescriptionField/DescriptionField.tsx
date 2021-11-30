@@ -7,7 +7,7 @@ type Props = {
   label: string;
   name: string;
   type: string;
-};
+}
 
 export const DescriptionField: React.VFC<Props> = ({ ...props }) => {
   const [field, meta] = useField(props)

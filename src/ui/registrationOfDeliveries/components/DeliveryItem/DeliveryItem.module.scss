@@ -48,6 +48,13 @@
   }
 }
 
+.deliveryStatus {
+  span {
+    font-weight: 500;
+    color: #095a09;
+  }
+}
+
 .navigate {
   width: 80%;
   height: 80%;
@@ -88,5 +95,4 @@
     text-align: center;
     margin-bottom: 20px;
   }
-
 }

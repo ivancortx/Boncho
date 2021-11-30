@@ -3,6 +3,7 @@
 interface CssExports {
   'container': string;
   'customerData': string;
+  'deliveryStatus': string;
   'description': string;
   'descriptionContainer': string;
   'descriptionParagraph': string;

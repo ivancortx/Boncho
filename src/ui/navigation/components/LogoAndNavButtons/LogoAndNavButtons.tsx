@@ -11,28 +11,28 @@ export const LogoAndNavButtons: React.VFC = () => {
   return (
     <div className={styles.logoAndNavButtons}>
       <Link to={Routes.Home}>
-        <img className={styles.logo} src={logo} alt={'logo'} />
+        <img className={styles.logo} src={logo} alt={'logo'}/>
       </Link>
 
       <div className={styles.navButtonsContainer}>
         <div className={styles.button}>
           <Link to={Routes.Home}>
-            <Button text={'Главная'} />
+            <Button text={'Главная'}/>
           </Link>
         </div>
         <div className={styles.button}>
           <Link to={Routes.AuctionsPage}>
-            <Button text={'Аукционы'} />
+            <Button text={'Аукционы'}/>
           </Link>
         </div>
         <div className={styles.button}>
           <Link to={Routes.Products}>
-            <Button text={'Категории'} />
+            <Button text={'Категории'}/>
           </Link>
         </div>
         <div className={styles.button}>
           <Link to={Routes.AddProductPage}>
-            <Button text={'Добавить аукцион'} />
+            <Button text={'Добавить аукцион'}/>
           </Link>
         </div>
       </div>

@@ -6,11 +6,11 @@ import 'bootstrap/dist/css/bootstrap.css'
 import styles from './SettingAuctionField.module.scss'
 
 type Props = {
-  label: string;
-  name: string;
-  type: string;
-  triggerText: string;
-};
+  label: string
+  name: string
+  type: string
+  triggerText: string
+}
 
 export const SettingAuctionField: React.VFC<Props> = ({ ...props }) => {
   const [field, meta] = useField(props)

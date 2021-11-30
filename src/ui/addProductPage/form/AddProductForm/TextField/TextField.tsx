@@ -4,10 +4,10 @@ import { ErrorMessage, useField } from 'formik'
 import styles from './TextField.module.scss'
 
 type Props = {
-  label: string;
-  name: string;
-  type: string;
-};
+  label: string
+  name: string
+  type: string
+}
 
 export const TextField: React.VFC<Props> = ({ ...props }) => {
   const [field, meta] = useField(props)

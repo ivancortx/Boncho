@@ -13,8 +13,8 @@ import { TextlField } from './TextlField/TextlField'
 import styles from './LoginForm.module.scss'
 
 type Props = {
-  closeModal: () => void;
-};
+  closeModal: () => void
+}
 
 export const LoginForm: React.VFC<Props> = ({ closeModal }) => {
   const dispatch = useDispatch(),

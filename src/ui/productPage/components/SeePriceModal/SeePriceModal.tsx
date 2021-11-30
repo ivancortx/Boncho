@@ -5,10 +5,10 @@ import 'bootstrap/dist/css/bootstrap.css'
 import styles from './SeePriceModal.module.scss'
 
 type Props = {
-  showSeePriceModal: boolean;
-  closeSeePriceModal: () => void;
-  openCurrentPrice: () => void;
-  seePrice: string;
+  showSeePriceModal: boolean
+  closeSeePriceModal: () => void
+  openCurrentPrice: () => void
+  seePrice: string
 };
 
 export const SeePriceModal: React.VFC<Props> = ({

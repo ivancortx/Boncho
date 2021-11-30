@@ -3,8 +3,8 @@ import React from 'react'
 import styles from './LoadingImageInForm.module.scss'
 
 type Props = {
-  photoUrlsData: string[];
-};
+  photoUrlsData: string[]
+}
 
 export const LoadingImageInForm: React.VFC<Props> = ({ photoUrlsData }) => {
   return (

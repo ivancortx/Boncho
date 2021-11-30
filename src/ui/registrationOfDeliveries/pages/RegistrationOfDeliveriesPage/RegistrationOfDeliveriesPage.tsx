@@ -1,17 +1,16 @@
 import React, { useState } from 'react'
-
-import styles from './RegistrationOfDeliveriesPage.module.scss'
-import emptyCart from '@/assets/images/emptyCart.png'
 import { useDispatch } from 'react-redux'
 import shortid from 'shortid'
+
 import { useRegistrationOfDeliveriesPage } from '@/ui/registrationOfDeliveries/hooks/useRegistrationOfDeliveriesPage'
 import { DeliveryItem } from '@/ui/registrationOfDeliveries/components/DeliveryItem/DeliveryItem'
 import { WaitingDeliveryDataType } from '@/ui/registrationOfDeliveries/interfaces/RegistrationOfDeliveriesPageInterfaces'
-import { DeliveryParametersForm } from '@/ui/registrationOfDeliveries/forms/DeliveryParametersForm/DeliveryParametersForm'
 import { RegDeliveryModal } from '@/ui/registrationOfDeliveries/components/RegDeliveryModal/RegDeliveryModal'
+import emptyCart from '@/assets/images/emptyCart.png'
+
+import styles from './RegistrationOfDeliveriesPage.module.scss'
 
 export const RegistrationOfDeliveriesPage: React.VFC = () => {
-  const dispatch = useDispatch()
   const { allDeliveries } = useRegistrationOfDeliveriesPage()
   const [showModal, setShowModal] = useState<boolean>(false)
   const [productData, setProductData] = useState<WaitingDeliveryDataType>()
@@ -20,9 +19,6 @@ export const RegistrationOfDeliveriesPage: React.VFC = () => {
     setShowModal(true)
     setProductData(item)
   }
-  // useEffect(() => {
-  //   dispatch(fetchWaitingDeliveries())
-  // }, [])
 
   return (
     <div className={styles.container}>

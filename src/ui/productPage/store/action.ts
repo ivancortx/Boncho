@@ -9,14 +9,14 @@ import { fetchUserCash } from '../../navigation'
 export type ActionsTypes = SetProductType | SetCurrentPriceType;
 
 type SetProductType = {
-  type: typeof FETCH_PRODUCT;
-  data: ProductDataType[];
-};
+  type: typeof FETCH_PRODUCT
+  data: ProductDataType[]
+}
 
 type SetCurrentPriceType = {
-  type: typeof FETCH_CURRENT_PRICE;
-  data: string;
-};
+  type: typeof FETCH_CURRENT_PRICE
+  data: string
+}
 
 export const setProduct = (data: ProductDataType[]): SetProductType => ({
   type: FETCH_PRODUCT,

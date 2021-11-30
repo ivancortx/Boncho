@@ -6,9 +6,9 @@ import registration from '@/assets/images/registration.png'
 import styles from './LoginAndRegistrationBlock.module.scss'
 
 type Props = {
-  openLoginModal: () => void;
-  openRegModal: () => void;
-};
+  openLoginModal: () => void
+  openRegModal: () => void
+}
 
 export const LoginAndRegistrationBlock: React.VFC<Props> = ({ openLoginModal, openRegModal }) => {
   return (

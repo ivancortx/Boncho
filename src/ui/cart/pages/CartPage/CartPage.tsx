@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
+import shortid from 'shortid'
+import { useDispatch } from 'react-redux'
 
-import styles from './CartPage.module.scss'
 import { useCartPage } from '@/ui/cart/hooks/useCartPage'
 import { CartItem } from '@/ui/cart/components/CartItem/CartItem'
 import { DeliveryModal } from '@/ui/cart/components/DeliveryModal/DeliveryModal'
 import { AuctionDataType } from '@/ui/auctions'
 import emptyCart from '@/assets/images/emptyCart.png'
-import { useDispatch } from 'react-redux'
 import { fetchWaitingDeliveries } from '@/ui/cart/store/action'
-import shortid from 'shortid'
 import { WaitingDeliveryItem } from '@/ui/cart/components/WaitingDeliveryItem/WaitingDeliveryItem'
+
+import styles from './CartPage.module.scss'
 
 export const CartPage: React.VFC = () => {
   const dispatch = useDispatch()
@@ -45,11 +46,11 @@ export const CartPage: React.VFC = () => {
         </div>
       }
       {waitingDeliveries && waitingDeliveries.length > 0 &&
-        <div>
-          {waitingDeliveries.map(itemData => (
-            <WaitingDeliveryItem key={shortid.generate()} itemData={itemData} />
-          ))}
-        </div>
+      <div>
+        {waitingDeliveries.map(itemData => (
+          <WaitingDeliveryItem key={shortid.generate()} itemData={itemData}/>
+        ))}
+      </div>
       }
       {showModal && productData &&
       <div>

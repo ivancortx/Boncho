@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap'
 
+import { WaitingDeliveryDataType } from
+    '@/ui/registrationOfDeliveries/interfaces/RegistrationOfDeliveriesPageInterfaces'
+import { DeliveryParametersForm } from
+    '@/ui/registrationOfDeliveries/forms/DeliveryParametersForm/DeliveryParametersForm'
+
 import 'bootstrap/dist/css/bootstrap.css'
 import styles from './RegDeliveryModal.module.scss'
-import { WaitingDeliveryDataType } from '@/ui/registrationOfDeliveries/interfaces/RegistrationOfDeliveriesPageInterfaces'
-import { DeliveryParametersForm } from '@/ui/registrationOfDeliveries/forms/DeliveryParametersForm/DeliveryParametersForm'
-
 
 type Props = {
   showModal: boolean
@@ -38,10 +40,10 @@ export const RegDeliveryModal: React.VFC<Props> = ({ showModal, closeModal, prod
             </div>
           </div>
           <DeliveryParametersForm closeModal={closeModal}
-                             productData={productData}
-                             setShowMessage={setShowMessage}/>
+                                  productData={productData}
+                                  setShowMessage={setShowMessage}/>
           {showMessage && <div className={styles.message}>
-            Товар передан для обработки!
+            Сохранено
           </div>}
         </Modal.Body>
       </Modal>

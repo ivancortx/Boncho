@@ -3,10 +3,10 @@ import { useDispatch } from 'react-redux'
 
 import { useCategoriesPage } from '../../hooks/useCategoriesPage'
 import { fetchCategories } from '../../'
-
-import styles from './CategoriesPage.module.scss'
 import { fetchProductsByCategory } from '../../store/action'
 import { Products } from '../../components/Products/Products'
+
+import styles from './CategoriesPage.module.scss'
 
 export const CategoriesPage: React.VFC = () => {
   const { categoriesData } = useCategoriesPage(),
@@ -55,7 +55,7 @@ export const CategoriesPage: React.VFC = () => {
         )}
       </div>
       <div>
-        <Products />
+        <Products/>
       </div>
     </div>
   )

@@ -3,8 +3,8 @@ import React from 'react'
 import styles from './Button.module.scss'
 
 type Props = {
-  text: string;
-};
+  text: string
+}
 
 export const Button: React.VFC<Props> = ({ text }) => {
   return (

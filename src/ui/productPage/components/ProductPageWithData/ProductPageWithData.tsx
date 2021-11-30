@@ -12,16 +12,16 @@ import { useProductPageWithData } from '../../hooks/useProductPageWithData'
 import { modificatedCurrentPrice } from '@/api/api'
 import { fetchUserCash } from '@/ui/navigation'
 import { UserDataType } from '@/ui/navigation/interfaces/navigationPage/navigationPageInterfaces'
-
-import 'bootstrap/dist/css/bootstrap.css'
-import styles from './ProductPageWithData.module.scss'
 import { AuthContext } from '@/context/AuthContext'
 import { fetchItemsInCart } from '@/ui/cart/store/action'
 
+import 'bootstrap/dist/css/bootstrap.css'
+import styles from './ProductPageWithData.module.scss'
+
 type Props = {
-  productData: ProductDataType;
-  userData: UserDataType[];
-};
+  productData: ProductDataType
+  userData: UserDataType[]
+}
 
 export const ProductPageWithData: React.VFC<Props> = ({ productData, userData }) => {
   const dispatch = useDispatch(),

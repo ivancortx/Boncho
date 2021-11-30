@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { WaitingDeliveryDataType } from '@/ui/registrationOfDeliveries/interfaces/RegistrationOfDeliveriesPageInterfaces'
+import { WaitingDeliveryDataType } from
+    '@/ui/registrationOfDeliveries/interfaces/RegistrationOfDeliveriesPageInterfaces'
 import { CheckOutButton } from '../CheckOutButton/CheckOutButton'
 
 import styles from './DeliveryItem.module.scss'
@@ -10,7 +11,7 @@ export type Props = {
   openModal: (arg: WaitingDeliveryDataType) => void
 }
 
-export const DeliveryItem:React.VFC<Props> = ({item, openModal}) => {
+export const DeliveryItem: React.VFC<Props> = ({ item, openModal }) => {
   const orderDelivery = () => {
     openModal(item)
   }
@@ -47,9 +48,17 @@ export const DeliveryItem:React.VFC<Props> = ({item, openModal}) => {
             {item.region}
           </div>
           <div className={styles.description}>
-            <span>н.п.: </span>
+            <span>Город: </span>
             {item.city}
           </div>
+          {item.deliveryStatus && <div className={styles.deliveryStatus}>
+            <span>Статус заказа: </span>
+            {item.deliveryStatus}
+          </div>}
+          {item.deliveryStatusDescription && <div className={styles.deliveryStatus}>
+            <span>Детально: </span>
+            {item.deliveryStatusDescription}
+          </div>}
         </div>
       </div>
       <div className={styles.navigate}>
