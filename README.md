@@ -16,7 +16,7 @@ This web application is an internet auction similar to the Dutch internet auctio
 
 ## Project structure
 <p align="center">
-<img src="https://github.com/ivancortx/Boncho/blob/main/readme_assets/schema.png" width="90%">
+<img src="https://github.com/ivancortx/Boncho/blob/main/readme_assets/schema1.png" width="90%">
 </p>
 
 ## Tech stack
