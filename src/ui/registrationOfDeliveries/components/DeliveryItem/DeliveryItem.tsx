@@ -5,6 +5,7 @@ import { WaitingDeliveryDataType } from
 import { CheckOutButton } from '../CheckOutButton/CheckOutButton'
 
 import styles from './DeliveryItem.module.scss'
+import cn from 'classnames'
 
 export type Props = {
   item: WaitingDeliveryDataType,
@@ -17,7 +18,7 @@ export const DeliveryItem: React.VFC<Props> = ({ item, openModal }) => {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={item.deliveryStatus === 'sent' ? cn(styles.container, styles.sentContainer) : styles.container}>
       <div className={styles.photo}>
         <img src={item.productImages[0]} alt="photo"/>
       </div>

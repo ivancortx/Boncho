@@ -18,8 +18,19 @@ export const writeAllDeliveries = (data: WaitingDeliveryDataType[]): WaitingDeli
 
 export const fetchAllWaitingDeliveries = () => async (dispatch: Dispatch<ActionsTypes>) => {
   const response = await loadAllWaitingDeliveries()
-  const data: [] = await response.data
-  dispatch(writeAllDeliveries(data))
+  const data: WaitingDeliveryDataType[] = await response.data
+
+  //--------------Сотрировка...сначала необработаные посылки--------------//
+  const acceptedDeliveries: WaitingDeliveryDataType[] = []
+  const newDeliveries: WaitingDeliveryDataType[] = []
+  data.forEach(item => {
+    if (item.deliveryStatus === 'sent') {
+      acceptedDeliveries.push(item)
+    } else {
+      newDeliveries.push(item)
+    }
+  })
+  dispatch(writeAllDeliveries([...newDeliveries, ...acceptedDeliveries]))
 }
 
 

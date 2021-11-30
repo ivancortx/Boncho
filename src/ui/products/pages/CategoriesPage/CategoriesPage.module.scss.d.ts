@@ -2,7 +2,7 @@
 // Please do not change this file!
 interface CssExports {
   'activeItem': string;
-  'categoryes': string;
+  'categories': string;
   'container': string;
   'item': string;
 }

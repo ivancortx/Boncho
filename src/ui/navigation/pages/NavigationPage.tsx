@@ -89,6 +89,7 @@ export const NavigationPage: React.VFC = () => {
           showModal={showModal}
           userCash={userCash}
           userProfile={userProfile}
+          userData={userData}
         />
       )}
       <LogoAndNavButtons />

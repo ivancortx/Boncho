@@ -29,7 +29,7 @@ export const CategoriesPage: React.VFC = () => {
     <div className={styles.container}>
       <div>
         {categoriesData !== [] && (
-          <div className={styles.categoryes}>
+          <div className={styles.categories}>
             <div
               className={activeCategory === 'all' ? styles.activeItem : styles.item}
               onClick={() => {

@@ -11,6 +11,7 @@ import { CartButton } from '@/ui/navigation/components/CartButton/CartButton'
 import { Routes } from '@/ui/navigation/const/routes'
 
 import styles from './MoneyAndNameUserBlock.module.scss'
+import { UserDataType } from '@/ui/navigation/interfaces/navigationPage/navigationPageInterfaces'
 
 type Props = {
   showGetCashModal: () => void
@@ -20,17 +21,20 @@ type Props = {
   closeModal: () => void
   isActiveModal: boolean
   exit: () => void
+  userData: UserDataType[]
 }
 
 export const MoneyAndNameUserBlock: React.VFC<Props> = ({ ...props }) => {
-  const { showGetCashModal, userCash, userProfile, showModal, isActiveModal, closeModal, exit } =
+  const { showGetCashModal, userCash, userProfile, showModal, isActiveModal, closeModal, exit, userData } =
     props
   return (
     <div className={styles.exitBlock}>
       <div className={styles.deliveryIcon}>
+        {userData[0]?.roles.includes('admin') &&
         <Link to={Routes.RegistrationOfDeliveriesPage}>
           <img src={deliveryIcon} alt={'delivery'}/>
         </Link>
+        }
       </div>
       <CartButton/>
       <div onClick={(e) => e.stopPropagation()} className={styles.moneyBlock}>

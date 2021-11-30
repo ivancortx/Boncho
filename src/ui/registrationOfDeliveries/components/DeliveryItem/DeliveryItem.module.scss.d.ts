@@ -9,6 +9,7 @@ interface CssExports {
   'descriptionParagraph': string;
   'navigate': string;
   'photo': string;
+  'sentContainer': string;
   'title': string;
 }
 export const cssExports: CssExports;
